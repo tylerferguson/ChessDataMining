@@ -18,8 +18,8 @@ namespace Week1
             this.frequentPatternsMiner = frequentPatternsMiner;
             this.candidateRuleGenerator = candidateRuleGenerator;
         }
-
-        public List<AssociationRule<T>> Generate(List<IFact<T>> projectionFacts, List<IFact<T>> targetFacts, Double relativeMinsup, Double minconf) 
+        
+        public List<AssociationRule<T>> Generate(Double relativeMinsup, Double minconf, List<IFact<T>> projectionFacts = null, List<IFact<T>> targetFacts = null ) 
         {
             Database<T> projectedDatabase = database;
 
@@ -35,7 +35,7 @@ namespace Week1
                 targetDatabase = projectedDatabase.Project(fact);
             }
             
-            List<ItemSet<IFact<T>>> frequentPatterns = frequentPatternsMiner.mine(projectedDatabase, targetDatabase, relativeMinsup);
+            List<ItemSet<IFact<T>>> frequentPatterns = frequentPatternsMiner.Mine(projectedDatabase, targetDatabase, relativeMinsup);
             List<AssociationRule<T>> candidateRules = GenerateCandidateRules(targetFacts, frequentPatterns);
 
             candidateRules = FilterByMinThresholds(projectedDatabase, frequentPatterns, candidateRules, relativeMinsup, minconf);
@@ -48,14 +48,13 @@ namespace Week1
             candidateRules.ForEach(candidateRule =>
             {
                 var leftSet = frequentPatterns.Find(x => x.Equals(candidateRule.Left));
-                //var rightSet = frequentPatterns.Find(x => x.Equals(candidateRule.Right));
-                //var unionSet = frequentPatterns.Find(x => x.Equals(candidateRule.Union()));
 
                 candidateRule.RelativeSupport = leftSet.RelativeSupport;
-                candidateRule.Left.RelativeSupport = projectedDatabase.CalculateSupport(leftSet);
-                //candidateRule.Right.RelativeSupport = rightSet.RelativeSupport;
+                candidateRule.Left.RelativeSupport = projectedDatabase.CalculateSupport(candidateRule.Left);
+                candidateRule.Right.RelativeSupport = projectedDatabase.CalculateSupport(candidateRule.Right);
 
                 candidateRule.Confidence = candidateRule.RelativeSupport / candidateRule.Left.RelativeSupport;
+                candidateRule.LiftCorrelation = candidateRule.Confidence / candidateRule.Right.RelativeSupport;
             });
 
             return candidateRules.Where(rule => rule.RelativeSupport >= relativeMinsup && rule.Confidence >= minconf).ToList(); 

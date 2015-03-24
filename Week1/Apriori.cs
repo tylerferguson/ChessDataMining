@@ -17,12 +17,16 @@ namespace Week1
             this.factFactory = factFactory;
         }
 
-        public List<ItemSet<IFact<ChessGame>>> mine(Database<ChessGame> projectedDatabase, Database<ChessGame> database, Double relativeMinsup)
+        public List<ItemSet<IFact<ChessGame>>> Mine(Database<ChessGame> database, Double relativeMinsup)
+        {
+            return Mine(database, database, relativeMinsup);
+        }
+        public List<ItemSet<IFact<ChessGame>>> Mine(Database<ChessGame> projectedDatabase, Database<ChessGame> targetDatabase, Double relativeMinsup)
         {
             List<ItemSet<IFact<ChessGame>>> result = new List<ItemSet<IFact<ChessGame>>>();
             var projectedCount = projectedDatabase.Transactions.Count;
 
-            var frequentItemSets = database.FindFrequentOneItemSets(projectedCount, factFactory, relativeMinsup);
+            var frequentItemSets = targetDatabase.FindFrequentOneItemSets(projectedCount, factFactory, relativeMinsup);
            
             
             while (frequentItemSets.Any())
@@ -31,13 +35,13 @@ namespace Week1
 
                 var candidateItemSets = candidateGenerator.GenerateCandidateItemSets(frequentItemSets);
 
-                frequentItemSets = findFrequentItemSets(projectedCount, candidateItemSets, database, relativeMinsup);
+                frequentItemSets = findFrequentItemSets(projectedCount, candidateItemSets, targetDatabase, relativeMinsup);
             }
 
             return result;
         }
 
-        private static List<ItemSet<IFact<ChessGame>>> findFrequentItemSets(int projectedCount, List<ItemSet<IFact<ChessGame>>> candidateItemSets, Database<ChessGame> database, Double relativeMinsup)
+        private static List<ItemSet<IFact<ChessGame>>> findFrequentItemSets(int databaseCount, List<ItemSet<IFact<ChessGame>>> candidateItemSets, Database<ChessGame> database, Double relativeMinsup)
         {
             database.Transactions.ForEach(transaction => candidateItemSets.ForEach(candidateItemSet =>
             {
@@ -49,7 +53,7 @@ namespace Week1
 
             return candidateItemSets.Where(itemSet =>
             {
-                itemSet.RelativeSupport = (Double)itemSet.AbsoluteSupport / projectedCount;
+                itemSet.RelativeSupport = (Double)itemSet.AbsoluteSupport / databaseCount;
                 return itemSet.RelativeSupport >= relativeMinsup;
             }).ToList();
         }

@@ -26,7 +26,7 @@ namespace Week1
             return factsFactory.Generate(givenFacts, transaction);
         }
 
-        public List<ItemSet<IFact<T>>> FindFrequentOneItemSets(int projectedCount, IFactsFactory<T> factsFactory, Double relativeMinsup)
+        public List<ItemSet<IFact<T>>> FindFrequentOneItemSets(int databaseCount, IFactsFactory<T> factsFactory, Double relativeMinsup)
         {
             Dictionary<IFact<T>, ItemSet<IFact<T>>> candidateItems = new Dictionary<IFact<T>, ItemSet<IFact<T>>>();
 
@@ -46,7 +46,7 @@ namespace Week1
 
             return candidateItems.Values.Where(itemSet =>
             {
-                itemSet.RelativeSupport = (Double) itemSet.AbsoluteSupport / projectedCount;
+                itemSet.RelativeSupport = (Double) itemSet.AbsoluteSupport / databaseCount;
                 return itemSet.RelativeSupport >= relativeMinsup;
             }).ToList();
         }

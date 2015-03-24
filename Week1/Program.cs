@@ -21,8 +21,8 @@ namespace Week1
 
             var database = new Database<ChessGame>(result);
 
-            var lukeProjectedFact = new SimpleFact("White", "tailuge");
-            var lukeWinsTargetFact = new SimpleFact("Result", "1-0");
+            var projectedFacts = new SimpleFact("White", "tailuge");
+            var targetFacts = new SimpleFact("Result", "1-0");
 
             var simpleFactFactory = new SimpleFactsFactory();
             var candidateGenerator = new SelfJoinAndPruneGenerator();
@@ -32,14 +32,14 @@ namespace Week1
 
             //When
             var minsup = 0.005;
-            var minconf = 0.2;
-            var rules = ruleGenerator.Generate(new List<IFact<ChessGame>>() { lukeProjectedFact }, new List<IFact<ChessGame>>() { lukeWinsTargetFact }, minsup, minconf);
+            var minconf = 0.5;
+            var rules = ruleGenerator.Generate(minsup, minconf, new List<IFact<ChessGame>>() { projectedFacts }, new List<IFact<ChessGame>>() { targetFacts });
 
             var i = 1;
             using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\tferguson\Documents\Visual Studio 2013\Projects\PatternDiscoveryInDataMining\Week1\chessAssociationRules.txt"))
             {
                 file.WriteLine("Minsup: " + minsup + ", " + "Minconf: " + minconf);
-                file.WriteLine("For games where " + lukeProjectedFact + ", ");
+                file.WriteLine("For games where " + projectedFacts + ", ");
                 file.WriteLine("there are " + rules.Count + " strong association rules \n");
 
                 foreach (var rule in rules)

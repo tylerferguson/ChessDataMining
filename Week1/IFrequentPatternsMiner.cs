@@ -7,6 +7,7 @@ namespace Week1
 {
     public interface IFrequentPatternsMiner<T>
     {
-        List<ItemSet<IFact<T>>> mine(Database<T> projectedDatabase, Database<T> database, Double minsup);
+        List<ItemSet<IFact<T>>> Mine(Database<T> database, Double minsup);
+        List<ItemSet<IFact<T>>> Mine(Database<T> projectedDatabase, Database<T> targetDatabase, Double minsup);
     }
 }

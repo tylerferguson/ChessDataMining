@@ -12,6 +12,7 @@ namespace Week1
         public int AbsoluteSupport { get; set; }
         public Double RelativeSupport { get; set; }
         public Double Confidence { get; set; }
+        public Double LiftCorrelation { get; set; }
 
         public AssociationRule(ItemSet<IFact<T>> left, ItemSet<IFact<T>> right)
         {
@@ -59,7 +60,9 @@ namespace Week1
 
         public override string ToString()
         {
-            return "Given " + Left + " then " + Right + "\n" + " ( " + "s: " + RelativeSupport + ", " + "c: " + Confidence + " )" + "\n";
+            return "Given " + Left + " then " + Right + "\n" + " ( " + "support: " + RelativeSupport + ")" + 
+                "\n" + "Probablity Before: " + Right.RelativeSupport + ", After: " + Confidence + ", " 
+                + "Lift correlation : " + LiftCorrelation + ")" + "\n";
         }
     }
 }
