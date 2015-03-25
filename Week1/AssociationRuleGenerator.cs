@@ -39,6 +39,7 @@ namespace Week1
             List<AssociationRule<T>> candidateRules = GenerateCandidateRules(targetFacts, frequentPatterns);
 
             candidateRules = FilterByMinThresholds(projectedDatabase, frequentPatterns, candidateRules, relativeMinsup, minconf);
+            candidateRules.Sort((x,y) => -x.LiftCorrelation.CompareTo(y.LiftCorrelation));
 
             return candidateRules;
         }

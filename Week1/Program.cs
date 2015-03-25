@@ -24,7 +24,6 @@ namespace Week1
             var projectedFacts = new SimpleFact("White", "tailuge");
             var targetFacts = new SimpleFact("Result", "1-0");
 
-            //var simpleFactGenerator = new SimpleFactsGenerator();
             var openingFactsGenerator = new OpeningsFactsGenerator();
             var simpleFactsGenerator = new SimpleFactsGenerator();
             var candidateGenerator = new SelfJoinAndPruneGenerator();
@@ -47,7 +46,7 @@ namespace Week1
 
                 foreach (var rule in rules)
                 {
-                    file.WriteLine(i + ".");
+                    file.Write(i + ". ");
                     file.WriteLine(rule);
                     i++;
                 }
