@@ -14,9 +14,13 @@ namespace Week1
             var value = index > -1 ? game.Opening.Remove(index) : game.Opening;
             var result = new List<IFact<ChessGame>>() 
             {
-                new OpeningFact(game.Opening),
-                new OpeningFact(value)
+                new OpeningFact(game.Opening)
             };
+
+            if (value != game.Opening)
+            {
+                result.Add(new OpeningFact(value));
+            }
 
             return result.Where(x => !excludedFacts.Contains(x)).ToList();
         }
