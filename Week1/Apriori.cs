@@ -9,12 +9,12 @@ namespace Week1
     public class Apriori : IFrequentPatternsMiner<ChessGame>
     {
         private ICandidateGenerator<ChessGame> candidateGenerator;
-        private IFactsFactory<ChessGame> factFactory;
+        private List<IFactsGenerator<ChessGame>> factsGenerators;
 
-        public Apriori(ICandidateGenerator<ChessGame> candidateGenerator, IFactsFactory<ChessGame> factFactory)
+        public Apriori(ICandidateGenerator<ChessGame> candidateGenerator, List<IFactsGenerator<ChessGame>> factsGenerators)
         {
             this.candidateGenerator = candidateGenerator;
-            this.factFactory = factFactory;
+            this.factsGenerators = factsGenerators;
         }
 
         public List<ItemSet<IFact<ChessGame>>> Mine(Database<ChessGame> database, Double relativeMinsup)
@@ -26,7 +26,7 @@ namespace Week1
             List<ItemSet<IFact<ChessGame>>> result = new List<ItemSet<IFact<ChessGame>>>();
             var projectedCount = projectedDatabase.Transactions.Count;
 
-            var frequentItemSets = targetDatabase.FindFrequentOneItemSets(projectedCount, factFactory, relativeMinsup);
+            var frequentItemSets = targetDatabase.FindFrequentOneItemSets(projectedCount, factsGenerators, relativeMinsup);
            
             
             while (frequentItemSets.Any())
@@ -45,7 +45,7 @@ namespace Week1
         {
             database.Transactions.ForEach(transaction => candidateItemSets.ForEach(candidateItemSet =>
             {
-                if (candidateItemSet.Items.All(fact => fact.isTrue(transaction)))
+                if (candidateItemSet.Items.All(fact => fact.IsTrue(transaction)))
                 {
                     candidateItemSet.AbsoluteSupport++;
                 }

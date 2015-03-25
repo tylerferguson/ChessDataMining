@@ -7,7 +7,9 @@ namespace Week1
 {
     public interface IFact<T>
     {
-        bool isTrue(T transaction);
+        bool IsTrue(T transaction);
         int CompareTo(IFact<T> that);
+
+        bool Implies(IFact<T> fact1);
     }
 }

@@ -60,7 +60,7 @@ namespace Week1
 
         public override string ToString()
         {
-            return "Given " + Left + " then " + Right + "\n" + " ( " + "support: " + RelativeSupport + ")" + 
+            return "Given " + Left + " then " + Right + "\n" + " ( " + "support: " + AbsoluteSupport + ")" + 
                 "\n" + "Probablity Before: " + Right.RelativeSupport + ", After: " + Confidence + ", " 
                 + "Lift correlation : " + LiftCorrelation + ")" + "\n";
         }

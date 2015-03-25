@@ -51,18 +51,20 @@
     <Compile Include="CandidateRuleGenerator.cs" />
     <Compile Include="ChessGame.cs" />
     <Compile Include="Database.cs" />
-    <Compile Include="IFact.cs" />
-    <Compile Include="SimpleFact.cs" />
+    <Compile Include="FactGenerators\OpeningsFactsGenerator.cs" />
+    <Compile Include="Facts\IFact.cs" />
+    <Compile Include="Facts\OpeningFact.cs" />
+    <Compile Include="Facts\SimpleFact.cs" />
     <Compile Include="ICandidateGenerator.cs" />
     <Compile Include="ICandidateRuleGenerator.cs" />
-    <Compile Include="IFactsFactory.cs" />
+    <Compile Include="FactGenerators\IFactsGenerator.cs" />
     <Compile Include="IFrequentPatternsMiner.cs" />
     <Compile Include="ItemSet.cs" />
     <Compile Include="PowerSetGenerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SelfJoinAndPruneGenerator.cs" />
-    <Compile Include="SimpleFactsFactory.cs" />
+    <Compile Include="FactGenerators\SimpleFactsGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

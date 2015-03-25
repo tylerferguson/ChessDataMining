@@ -16,10 +16,33 @@ namespace Week1
             this.Value = value;
         }
 
-        public bool isTrue(ChessGame game)
+        public bool IsTrue(ChessGame game)
         {
             string gameValue = game.GetType().GetProperty(this.PropertyName).GetValue(game).ToString();
             return Value.Equals(gameValue);
+        }
+
+        public bool Implies(IFact<ChessGame> that)
+        {
+            if (that == null)
+            {
+                return false;
+            }
+
+            SimpleFact fact = that as SimpleFact;
+            return Implies(fact);
+        }
+
+        public bool Implies(SimpleFact that)
+        {
+            if (that == null)
+            {
+                return false;
+            }
+
+            var index = this.Value.IndexOf(",");
+            var value = index > -1 ? this.Value.Remove(index) : this.Value;
+            return value.Equals(that.Value);
         }
 
         public bool Equals(SimpleFact that)

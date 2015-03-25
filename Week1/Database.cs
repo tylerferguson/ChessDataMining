@@ -21,16 +21,19 @@ namespace Week1
             this.givenFacts.AddRange(projectedFact);
         }
 
-        private List<IFact<T>> GenerateFacts(IFactsFactory<T> factsFactory, T transaction)
+        private List<IFact<T>> GenerateFacts(List<IFactsGenerator<T>> factsGenerators, T transaction)
         {
-            return factsFactory.Generate(givenFacts, transaction);
+            var generatedFacts = new List<IFact<T>>();
+
+            factsGenerators.ForEach(factGenerator => generatedFacts.AddRange(factGenerator.Generate(givenFacts, transaction)));
+            return generatedFacts;
         }
 
-        public List<ItemSet<IFact<T>>> FindFrequentOneItemSets(int databaseCount, IFactsFactory<T> factsFactory, Double relativeMinsup)
+        public List<ItemSet<IFact<T>>> FindFrequentOneItemSets(int databaseCount, List<IFactsGenerator<T>> factsGenerators, Double relativeMinsup)
         {
             Dictionary<IFact<T>, ItemSet<IFact<T>>> candidateItems = new Dictionary<IFact<T>, ItemSet<IFact<T>>>();
 
-            Transactions.ForEach(transaction => GenerateFacts(factsFactory, transaction).ForEach(fact =>
+            Transactions.ForEach(transaction => GenerateFacts(factsGenerators, transaction).ForEach(fact =>
             {
                 if (!candidateItems.ContainsKey(fact))
                 {
@@ -56,14 +59,14 @@ namespace Week1
             var newGivenFacts = new List<IFact<T>>(givenFacts); 
             newGivenFacts.Add(fact);
 
-            return new Database<T>(newGivenFacts, Transactions.Where(x => fact.isTrue(x)).ToList());
+            return new Database<T>(newGivenFacts, Transactions.Where(x => fact.IsTrue(x)).ToList());
         }
 
         public Double CalculateSupport(ItemSet<IFact<T>> itemset)
         {
             Transactions.ForEach(transaction => 
             {
-                if (itemset.Items.All(fact => fact.isTrue(transaction))) 
+                if (itemset.Items.All(fact => fact.IsTrue(transaction))) 
                 {
                     itemset.AbsoluteSupport++;
                 }

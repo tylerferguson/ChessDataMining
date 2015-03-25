@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Week1
 {
-    public interface IFactsFactory<T>
+    public interface IFactsGenerator<T>
     {
         List<IFact<T>> Generate(List<IFact<T>> excludedFacts, T transaction);
     }

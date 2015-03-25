@@ -49,6 +49,7 @@ namespace Week1
             {
                 var leftSet = frequentPatterns.Find(x => x.Equals(candidateRule.Left));
 
+                candidateRule.AbsoluteSupport = leftSet.AbsoluteSupport;
                 candidateRule.RelativeSupport = leftSet.RelativeSupport;
                 candidateRule.Left.RelativeSupport = projectedDatabase.CalculateSupport(candidateRule.Left);
                 candidateRule.Right.RelativeSupport = projectedDatabase.CalculateSupport(candidateRule.Right);
