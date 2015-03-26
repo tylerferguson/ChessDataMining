@@ -52,9 +52,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AprioriTest.cs" />
-    <Compile Include="AssociationRuleGeneratorTest.cs" />
+    <Compile Include="AssociationRuleGeneratorTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="CandidateGeneratorTest.cs" />
     <Compile Include="CandidateRuleGeneratorTest.cs" />
+    <Compile Include="Mocks\MockFact.cs" />
+    <Compile Include="Mocks\MockFactsGenerator.cs" />
     <Compile Include="PowerSetGeneratorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

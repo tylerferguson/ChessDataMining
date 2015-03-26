@@ -3,40 +3,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Week1.Mocks;
 using Xunit;
 
 namespace Week1
 {
     public class When_Generate_is_called
     {
-        IFrequentPatternsMiner apriori;
-        ICandidateRuleGenerator candidateRuleGenerator;
-        IFact factA;
-        IFact factB;
-        IFact factC;
+        IFrequentPatternsMiner<string> apriori;
+        ICandidateRuleGenerator<string> candidateRuleGenerator;
+        IFact<string> factA;
+        IFact<string> factB;
+        IFact<string> factC;
 
         public When_Generate_is_called()
         {
-            var candidateGenerator = new SelfJoinAndPruneGenerator();
-            apriori = new Apriori(candidateGenerator);
-            candidateRuleGenerator = new CandidateRuleGenerator();
-            factA = new SimpleFact("Name", "A");
-            factB = new SimpleFact("Name", "B");
-            factC = new SimpleFact("Name", "C");
+             var mockFactsGenerators = new List<IFactsGenerator<string>>()
+                {
+                    new MockFactsGenerator()
+                };
+            factA = new MockFact("A");
+            factB = new MockFact("B");
+            factC = new MockFact("C");
+            var candidateGenerator = new SelfJoinAndPruneGenerator<string>();
+            apriori = new Apriori<string>(candidateGenerator, mockFactsGenerators);
+            candidateRuleGenerator = new CandidateRuleGenerator<string>();
         }
 
         [Fact]
         public void If_no_rules_exist_then_an_empty_list_is_returned()
         {
             //Given
-            var singleItemSet = new ItemSet(factA);
+            var singleItemSet = new ItemSet<IFact<string>>(factA);
 
-            List<ItemSet> database = new List<ItemSet>()
-            {
-                singleItemSet
-            };
+            Database<string> database = new Database<string>(new List<string>() { "A" });
 
-            var ruleGenerator = new AssociationRuleGenerator(database, apriori, candidateRuleGenerator);
+            var ruleGenerator = new AssociationRuleGenerator<string>(database, apriori, candidateRuleGenerator);
 
             //When
             var rules = ruleGenerator.Generate(0, 0);
@@ -49,22 +51,19 @@ namespace Week1
         public void All_rules_are_returned_for_minsup_0_and_minconf_0()
         {
             //Given
-            var a = new ItemSet(factA);
-            var b = new ItemSet(factB);
+            var a = new ItemSet<IFact<string>>(factA);
+            var b = new ItemSet<IFact<string>>(factB);
 
-            List<ItemSet> database = new List<ItemSet>()
-            {
-                a, b
-            };
+            Database<string> database = new Database<string>(new List<string>() { "A", "B" });
 
-            var ruleGenerator = new AssociationRuleGenerator(database, apriori, candidateRuleGenerator);
+            var ruleGenerator = new AssociationRuleGenerator<string>(database, apriori, candidateRuleGenerator);
 
             //When
             var rules = ruleGenerator.Generate(0, 0);
 
             //Then
-            var aImpliesB = new AssociationRule(a, b);
-            var bImpliesA = new AssociationRule(b, a);
+            var aImpliesB = new AssociationRule<string>(a, b);
+            var bImpliesA = new AssociationRule<string>(b, a);
 
             Assert.Equal(2, rules.Count);
             Assert.Contains(aImpliesB, rules);
@@ -82,29 +81,27 @@ namespace Week1
         public void Only_rules_meeting_minsup_and_minconf_requirements_are_returned()
         {
             //Given
-            var ab = new ItemSet(new List<IFact>() { factA, factB });
-            var abc = new ItemSet(new List<IFact>() { factA, factB, factC });
-            var bc = new ItemSet(new List<IFact>() { factB, factC });
+            var ab = new ItemSet<IFact<string>>(new List<IFact<string>>() { factA, factB });
+            var abc = new ItemSet<IFact<string>>(new List<IFact<string>>() { factA, factB, factC });
+            var bc = new ItemSet<IFact<string>>(new List<IFact<string>>() { factB, factC });
 
-            List<ItemSet> database = new List<ItemSet>()
-            {
-                ab, abc, bc
-            };
+            Database<string> database = new Database<string>(new List<string>() { "AB", "ABC", "BC" });
 
-            var ruleGenerator = new AssociationRuleGenerator(database, apriori, candidateRuleGenerator);
+
+            var ruleGenerator = new AssociationRuleGenerator<string>(database, apriori, candidateRuleGenerator);
 
             //When
             var rules = ruleGenerator.Generate(0.5, 0.6);
 
             //Then
-            var a = new ItemSet(factA);
-            var b = new ItemSet(factB);
-            var c = new ItemSet(factC);
+            var a = new ItemSet<IFact<string>>(factA);
+            var b = new ItemSet<IFact<string>>(factB);
+            var c = new ItemSet<IFact<string>>(factC);
 
-            var aImpliesB = new AssociationRule(a, b);
-            var bImpliesA = new AssociationRule(b, a);
-            var cImpliesB = new AssociationRule(c, b);
-            var bImpliesC = new AssociationRule(b, c);
+            var aImpliesB = new AssociationRule<string>(a, b);
+            var bImpliesA = new AssociationRule<string>(b, a);
+            var cImpliesB = new AssociationRule<string>(c, b);
+            var bImpliesC = new AssociationRule<string>(b, c);
 
             Assert.Equal(4, rules.Count);
 

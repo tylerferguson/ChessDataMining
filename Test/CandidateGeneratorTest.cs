@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Week1.Mocks;
 using Xunit;
 
 namespace Week1
@@ -12,28 +13,28 @@ namespace Week1
         [Fact]
         public void Expect_non_frequent_candidates_to_be_pruned()
         {
-            IFact factA;
-            IFact factB;
-            IFact factC;
-            IFact factD;
-            IFact factE;
+            IFact<string> factA;
+            IFact<string> factB;
+            IFact<string> factC;
+            IFact<string> factD;
+            IFact<string> factE;
 
 
             //Given
-            var candidateGenerator = new SelfJoinAndPruneGenerator();
-            factA = new SimpleFact("Name", "A");
-            factB = new SimpleFact("Name", "B");
-            factC = new SimpleFact("Name", "C");
-            factD = new SimpleFact("Name", "D");
-            factE = new SimpleFact("Name", "E");
+            var candidateGenerator = new SelfJoinAndPruneGenerator<string>();
+            factA = new MockFact("A");
+            factB = new MockFact("B");
+            factC = new MockFact("C");
+            factD = new MockFact("D");
+            factE = new MockFact("E");
 
-            var abc = new ItemSet(new List<IFact>() { factA, factB, factC });
-            var abd = new ItemSet(new List<IFact>() { factA, factB, factD });
-            var acd = new ItemSet(new List<IFact>() { factA, factC, factD });
-            var ace = new ItemSet(new List<IFact>() { factA, factC, factE });
-            var bcd = new ItemSet(new List<IFact>() { factB, factC, factD });
+            var abc = new ItemSet<IFact<string>>(new List<IFact<string>>() { factA, factB, factC });
+            var abd = new ItemSet<IFact<string>>(new List<IFact<string>>() { factA, factB, factD });
+            var acd = new ItemSet<IFact<string>>(new List<IFact<string>>() { factA, factC, factD });
+            var ace = new ItemSet<IFact<string>>(new List<IFact<string>>() { factA, factC, factE });
+            var bcd = new ItemSet<IFact<string>>(new List<IFact<string>>() { factB, factC, factD });
 
-            List<ItemSet> frequentThreeItemSets = new List<ItemSet>() 
+            List<ItemSet<IFact<string>>> frequentThreeItemSets = new List<ItemSet<IFact<string>>>() 
             {
                 abc,
                 abd,
@@ -46,7 +47,7 @@ namespace Week1
             var result = candidateGenerator.GenerateCandidateItemSets(frequentThreeItemSets);
 
             //Then
-            var abcd = new ItemSet(new List<IFact>() { factA, factB, factC, factD });
+            var abcd = new ItemSet<IFact<string>>(new List<IFact<string>>() { factA, factB, factC, factD });
 
             Assert.Equal(1, result.Count);
             Assert.True(result.Any(itemSet => itemSet.Items.SequenceEqual(abcd.Items))); 
@@ -55,17 +56,17 @@ namespace Week1
         [Fact]
         public void Expect_correct_set_to_be_generated()
         {
-            IFact factA = new SimpleFact("Name", "A");
-            IFact factB = new SimpleFact("Name", "B");
+            IFact<string> factA = new MockFact("A");
+            IFact<string> factB = new MockFact("B");
 
             //Given
-            var candidateGenerator = new SelfJoinAndPruneGenerator();
+            var candidateGenerator = new SelfJoinAndPruneGenerator<string>();
 
-            var a = new ItemSet(factA);
-            var b = new ItemSet(factB);
+            var a = new ItemSet<IFact<string>>(factA);
+            var b = new ItemSet<IFact<string>>(factB);
 
             //When
-            var result = candidateGenerator.GenerateCandidateItemSets(new List<ItemSet>() {a,b});
+            var result = candidateGenerator.GenerateCandidateItemSets(new List<ItemSet<IFact<string>>>() {a,b});
 
             //Then
             Assert.Equal(1, result.Count);

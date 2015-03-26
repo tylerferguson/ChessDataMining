@@ -6,40 +6,40 @@ using System.Threading.Tasks;
 
 namespace Week1
 {
-    public class CandidateRuleGenerator : ICandidateRuleGenerator<ChessGame>
+    public class CandidateRuleGenerator<T> : ICandidateRuleGenerator<T>
     {
-        public List<AssociationRule<ChessGame>> GenerateCandidateRules(List<ItemSet<IFact<ChessGame>>> frequentPatterns)
+        public List<AssociationRule<T>> GenerateCandidateRules(List<ItemSet<IFact<T>>> frequentPatterns)
         {
-            var candidateRules = new List<AssociationRule<ChessGame>>();
+            var candidateRules = new List<AssociationRule<T>>();
             frequentPatterns.ForEach(x =>
             {
-                var powerSet = PowerSetGenerator<ChessGame>.GeneratePowerSet(x);
+                var powerSet = PowerSetGenerator<T>.GeneratePowerSet(x);
 
                 candidateRules.AddRange(powerSet.Where(set => !set.IsEmpty() && set.Items.Count < x.Items.Count).Select(set =>
                 {
-                    return new AssociationRule<ChessGame>(set, x.Not(set));
+                    return new AssociationRule<T>(set, x.Not(set));
                 }));
 
             });
             return candidateRules;
         }
 
-        public List<AssociationRule<ChessGame>> GenerateCandidateRules(List<IFact<ChessGame>> targetFacts, List<ItemSet<IFact<ChessGame>>> frequentPatterns)
+        public List<AssociationRule<T>> GenerateCandidateRules(List<IFact<T>> targetFacts, List<ItemSet<IFact<T>>> frequentPatterns)
         {
             if (targetFacts == null)
             {
                 return GenerateCandidateRules(frequentPatterns);
             }
 
-            var candidateRules = new List<AssociationRule<ChessGame>>();
+            var candidateRules = new List<AssociationRule<T>>();
             frequentPatterns.ForEach(x => 
                 {
-                    var powerSet = PowerSetGenerator<ChessGame>.GeneratePowerSet(x);
+                    var powerSet = PowerSetGenerator<T>.GeneratePowerSet(x);
 
                     candidateRules.AddRange(powerSet.Where(set => !set.IsEmpty() && !candidateRules.Any(rule => rule.Left.Equals(set))).Select(set => 
                     {
-                        var targetItemset = new ItemSet<IFact<ChessGame>>(targetFacts);
-                        return new AssociationRule<ChessGame>(set, targetItemset);
+                        var targetItemset = new ItemSet<IFact<T>>(targetFacts);
+                        return new AssociationRule<T>(set, targetItemset);
                         
                     }));
                     

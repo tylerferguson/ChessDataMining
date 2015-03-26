@@ -6,24 +6,24 @@ using System.Threading.Tasks;
 
 namespace Week1
 {
-    public class Apriori : IFrequentPatternsMiner<ChessGame>
+    public class Apriori<T> : IFrequentPatternsMiner<T>
     {
-        private ICandidateGenerator<ChessGame> candidateGenerator;
-        private List<IFactsGenerator<ChessGame>> factsGenerators;
+        private ICandidateGenerator<T> candidateGenerator;
+        private List<IFactsGenerator<T>> factsGenerators;
 
-        public Apriori(ICandidateGenerator<ChessGame> candidateGenerator, List<IFactsGenerator<ChessGame>> factsGenerators)
+        public Apriori(ICandidateGenerator<T> candidateGenerator, List<IFactsGenerator<T>> factsGenerators)
         {
             this.candidateGenerator = candidateGenerator;
             this.factsGenerators = factsGenerators;
         }
 
-        public List<ItemSet<IFact<ChessGame>>> Mine(Database<ChessGame> database, Double relativeMinsup)
+        public List<ItemSet<IFact<T>>> Mine(Database<T> database, Double relativeMinsup)
         {
             return Mine(database, database, relativeMinsup);
         }
-        public List<ItemSet<IFact<ChessGame>>> Mine(Database<ChessGame> projectedDatabase, Database<ChessGame> targetDatabase, Double relativeMinsup)
+        public List<ItemSet<IFact<T>>> Mine(Database<T> projectedDatabase, Database<T> targetDatabase, Double relativeMinsup)
         {
-            List<ItemSet<IFact<ChessGame>>> result = new List<ItemSet<IFact<ChessGame>>>();
+            List<ItemSet<IFact<T>>> result = new List<ItemSet<IFact<T>>>();
             var projectedCount = projectedDatabase.Transactions.Count;
 
             var frequentItemSets = targetDatabase.FindFrequentOneItemSets(projectedCount, factsGenerators, relativeMinsup);
@@ -41,7 +41,7 @@ namespace Week1
             return result;
         }
 
-        private static List<ItemSet<IFact<ChessGame>>> findFrequentItemSets(int databaseCount, List<ItemSet<IFact<ChessGame>>> candidateItemSets, Database<ChessGame> database, Double relativeMinsup)
+        private static List<ItemSet<IFact<T>>> findFrequentItemSets(int databaseCount, List<ItemSet<IFact<T>>> candidateItemSets, Database<T> database, Double relativeMinsup)
         {
             database.Transactions.ForEach(transaction => candidateItemSets.ForEach(candidateItemSet =>
             {

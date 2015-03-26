@@ -9,7 +9,6 @@ namespace Week1
     {
         bool IsTrue(T transaction);
         int CompareTo(IFact<T> that);
-
         bool Implies(IFact<T> fact1);
     }
 }

@@ -26,15 +26,15 @@ namespace Week1
 
             var openingFactsGenerator = new OpeningsFactsGenerator();
             var simpleFactsGenerator = new SimpleFactsGenerator();
-            var candidateGenerator = new SelfJoinAndPruneGenerator();
+            var candidateGenerator = new SelfJoinAndPruneGenerator<ChessGame>();
             var factGenerators = new List<IFactsGenerator<ChessGame>>() { simpleFactsGenerator, openingFactsGenerator };
-            var apriori = new Apriori(candidateGenerator, factGenerators);
-            var candidateRuleGenerator = new CandidateRuleGenerator();
+            var apriori = new Apriori<ChessGame>(candidateGenerator, factGenerators);
+            var candidateRuleGenerator = new CandidateRuleGenerator<ChessGame>();
             var ruleGenerator = new AssociationRuleGenerator<ChessGame>(database, apriori, candidateRuleGenerator);
 
             //When
             var minsup = 0.01;
-            var minconf = 0.4;
+            var minconf = 0.1;
             var rules = ruleGenerator.Generate(minsup, minconf, new List<IFact<ChessGame>>() { projectedFacts }, new List<IFact<ChessGame>>() { targetFacts });
 
             var i = 1;
