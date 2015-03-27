@@ -21,6 +21,7 @@ namespace Week1
         {
             return Mine(database, database, relativeMinsup);
         }
+
         public List<ItemSet<IFact<T>>> Mine(Database<T> projectedDatabase, Database<T> targetDatabase, Double relativeMinsup)
         {
             List<ItemSet<IFact<T>>> result = new List<ItemSet<IFact<T>>>();

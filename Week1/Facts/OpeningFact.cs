@@ -38,14 +38,14 @@ namespace Week1
             {
                 return false;
             }
-            return this.Value.StartsWith(that.Value);
+            return this.Value.Contains(that.Value);
         }
 
 
         public bool IsTrue(ChessGame game)
         {
             string gameValue = game.GetType().GetProperty(this.PropertyName).GetValue(game).ToString();
-            return gameValue.StartsWith(Value);
+            return gameValue.Contains(Value);
         }
 
         public bool Equals(OpeningFact that)

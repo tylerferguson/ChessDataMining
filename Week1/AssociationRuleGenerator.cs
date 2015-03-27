@@ -11,12 +11,14 @@ namespace Week1
         Database<T> database;
         IFrequentPatternsMiner<T> frequentPatternsMiner;
         ICandidateRuleGenerator<T> candidateRuleGenerator;
+        IThresholdFilterer<T> filterer;
 
-        public AssociationRuleGenerator(Database<T> database, IFrequentPatternsMiner<T> frequentPatternsMiner, ICandidateRuleGenerator<T> candidateRuleGenerator)
+        public AssociationRuleGenerator(Database<T> database, IFrequentPatternsMiner<T> frequentPatternsMiner, ICandidateRuleGenerator<T> candidateRuleGenerator, IThresholdFilterer<T> filterer)
         {
             this.database = database;
             this.frequentPatternsMiner = frequentPatternsMiner;
             this.candidateRuleGenerator = candidateRuleGenerator;
+            this.filterer = filterer;
         }
         
         public List<AssociationRule<T>> Generate(Double relativeMinsup, Double minconf, List<IFact<T>> projectionFacts = null, List<IFact<T>> targetFacts = null ) 
@@ -27,7 +29,7 @@ namespace Week1
             {
                 foreach (var fact in projectionFacts)
                 {
-                    projectedDatabase = database.Project(fact);
+                    projectedDatabase = projectedDatabase.Project(fact);
                 }
             }
 
@@ -50,35 +52,7 @@ namespace Week1
 
         private List<AssociationRule<T>> FilterByMinThresholds(List<IFact<T>> targetFacts, Database<T> projectedDatabase, List<ItemSet<IFact<T>>> frequentPatterns, List<AssociationRule<T>> candidateRules, Double relativeMinsup, Double minconf)
         {
-            candidateRules.ForEach(candidateRule =>
-            {
-                var leftSet = frequentPatterns.Find(x => x.Equals(candidateRule.Left));
-                ItemSet<IFact<T>> rightSet;
-                ItemSet<IFact<T>> unionSet;
-
-                if (targetFacts == null)
-                {
-                    rightSet = frequentPatterns.Find(x => x.Equals(candidateRule.Right));
-                    unionSet = frequentPatterns.Find(x => x.Equals(candidateRule.Union()));
-
-                    candidateRule.AbsoluteSupport = unionSet.AbsoluteSupport;
-                    candidateRule.RelativeSupport = unionSet.RelativeSupport;
-                    candidateRule.Left.RelativeSupport = leftSet.RelativeSupport;
-                    candidateRule.Right.RelativeSupport = rightSet.RelativeSupport;
-                }
-                else
-                {
-                    candidateRule.AbsoluteSupport = leftSet.AbsoluteSupport;
-                    candidateRule.RelativeSupport = leftSet.RelativeSupport;
-                    candidateRule.Left.RelativeSupport = projectedDatabase.CalculateSupport(candidateRule.Left);
-                    candidateRule.Right.RelativeSupport = projectedDatabase.CalculateSupport(candidateRule.Right);
-                }
-                candidateRule.Confidence = candidateRule.RelativeSupport / candidateRule.Left.RelativeSupport;
-                candidateRule.LiftCorrelation = candidateRule.Confidence / candidateRule.Right.RelativeSupport;
-                
-            });
-
-            return candidateRules.Where(rule => rule.RelativeSupport >= relativeMinsup && rule.Confidence >= minconf).ToList(); 
+            return filterer.FilterByMinThresholds(targetFacts, projectedDatabase, frequentPatterns, candidateRules, relativeMinsup, minconf);
         }
 
         private List<AssociationRule<T>> GenerateCandidateRules(List<IFact<T>> targetFacts, List<ItemSet<IFact<T>>> frequentPatterns)

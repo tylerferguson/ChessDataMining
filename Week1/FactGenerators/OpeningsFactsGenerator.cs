@@ -21,8 +21,12 @@ namespace Week1
             {
                 result.Add(new OpeningFact(value));
             }
+            if (game.Opening.ToLower().Contains("gambit"))
+            {
+                result.Add(new OpeningFact("Gambit"));
+            }
 
-            return result.Where(x => !excludedFacts.Contains(x)).ToList();
+            return result.Where(x => !excludedFacts.Any(y => y.Implies(x))).ToList();
         }
     }
 }

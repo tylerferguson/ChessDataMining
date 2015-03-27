@@ -60,11 +60,13 @@
     <Compile Include="FactGenerators\IFactsGenerator.cs" />
     <Compile Include="IFrequentPatternsMiner.cs" />
     <Compile Include="ItemSet.cs" />
+    <Compile Include="IThresholdFilterer.cs" />
     <Compile Include="PowerSetGenerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SelfJoinAndPruneGenerator.cs" />
     <Compile Include="FactGenerators\SimpleFactsGenerator.cs" />
+    <Compile Include="ThresholdFilterer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

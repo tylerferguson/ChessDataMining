@@ -21,27 +21,32 @@ namespace Week1
 
             var database = new Database<ChessGame>(result);
 
-            var projectedFacts = new SimpleFact("White", "tailuge");
-            var targetFacts = new SimpleFact("Result", "1-0");
+            var projectedFact1 = new OpeningFact("Gambit");
+            var projectedFact2 = new SimpleFact("White", "tailuge");
+            var projectedFacts = new List<IFact<ChessGame>>() { projectedFact1, projectedFact2 };
+
+            var targetFact = new SimpleFact("Result", "1-0");
+            var targetFacts = new List<IFact<ChessGame>>() { targetFact };
 
             var openingFactsGenerator = new OpeningsFactsGenerator();
             var simpleFactsGenerator = new SimpleFactsGenerator();
             var candidateGenerator = new SelfJoinAndPruneGenerator<ChessGame>();
             var factGenerators = new List<IFactsGenerator<ChessGame>>() { simpleFactsGenerator, openingFactsGenerator };
             var apriori = new Apriori<ChessGame>(candidateGenerator, factGenerators);
+            var filterer = new ThresholdFilterer<ChessGame>();
             var candidateRuleGenerator = new CandidateRuleGenerator<ChessGame>();
-            var ruleGenerator = new AssociationRuleGenerator<ChessGame>(database, apriori, candidateRuleGenerator);
+            var ruleGenerator = new AssociationRuleGenerator<ChessGame>(database, apriori, candidateRuleGenerator, filterer);
 
             //When
             var minsup = 0.01;
             var minconf = 0.1;
-            var rules = ruleGenerator.Generate(minsup, minconf, new List<IFact<ChessGame>>() { projectedFacts }, new List<IFact<ChessGame>>() { targetFacts });
+            var rules = ruleGenerator.Generate(minsup, minconf, projectedFacts, targetFacts);
 
             var i = 1;
             using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\tferguson\Documents\Visual Studio 2013\Projects\PatternDiscoveryInDataMining\Week1\chessAssociationRules.txt"))
             {
                 file.WriteLine("Minsup: " + minsup + ", " + "Minconf: " + minconf);
-                file.WriteLine("For games where " + projectedFacts + ", ");
+                file.WriteLine("For games where " + projectedFacts[0] + ", " + projectedFacts[1] + ", ");
                 file.WriteLine("there are " + rules.Count + " strong association rules \n");
 
                 foreach (var rule in rules)
