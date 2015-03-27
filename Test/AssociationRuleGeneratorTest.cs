@@ -211,8 +211,9 @@ namespace Week1
                 mockRuleGenerator = new MockRuleGenerator();
                 mockFilterer = new MockThresholdFilterer();
             }
+
             [Fact]
-            public void And_one_target_fact_then_rules_are_generated_from_target_db_with_respect_toOprojection_db()
+            public void And_at_least_one_target_fact_then_rules_are_generated_from_target_db_with_respect_to_projection_db()
             {
                 //Given
                 Database<string> database = new Database<string>(new List<string>() { "A", "B", "AB", "BC", "D" });
@@ -222,6 +223,23 @@ namespace Week1
 
                 //When
                 var result = associationRuleGenerator.Generate(0.0, 0.0, targetFacts: new List<IFact<string>>() { factA });
+
+                //Then
+                Assert.True(mockMiner.ReceivedCorrectProjectedDatabase);
+                Assert.True(mockMiner.ReceivedCorrectTargetDatabase);
+            }
+
+            [Fact]
+            public void And_two_target_facts_then_rules_are_generated_from_target_db_with_respect_to_projection_db()
+            {
+                //Given
+                Database<string> database = new Database<string>(new List<string>() { "A", "B", "AB", "BC", "D" });
+                var mockMiner = new MockMiner();
+                mockMiner.Setup(database.Transactions, new List<string>() { "AB" });
+                var associationRuleGenerator = new AssociationRuleGenerator<string>(database, mockMiner, mockRuleGenerator, mockFilterer);
+
+                //When
+                var result = associationRuleGenerator.Generate(0.0, 0.0, targetFacts: new List<IFact<string>>() { factA, factB });
 
                 //Then
                 Assert.True(mockMiner.ReceivedCorrectProjectedDatabase);

@@ -39,7 +39,7 @@ namespace Week1
             {
                 foreach (var fact in targetFacts)
                 {
-                    targetDatabase = projectedDatabase.Project(fact);
+                    targetDatabase = targetDatabase.Project(fact);
                 }
             }
  
