@@ -57,8 +57,13 @@
     </Compile>
     <Compile Include="CandidateGeneratorTest.cs" />
     <Compile Include="CandidateRuleGeneratorTest.cs" />
+    <Compile Include="DatabaseTest.cs" />
     <Compile Include="Mocks\MockFact.cs" />
     <Compile Include="Mocks\MockFactsGenerator.cs" />
+    <Compile Include="Mocks\MockMiner.cs" />
+    <Compile Include="Mocks\MockRuleGenerator.cs" />
+    <Compile Include="Mocks\MockThresholdFilterer.cs" />
+    <Compile Include="OpeningFactsGeneratorTest.cs" />
     <Compile Include="PowerSetGeneratorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
