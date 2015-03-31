@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Week1.FactGenerators;
+
 namespace Week1
 {
     class Program
@@ -28,10 +30,13 @@ namespace Week1
             var targetFact = new SimpleFact("Result", "1-0");
             var targetFacts = new List<IFact<ChessGame>>() { targetFact };
 
+            //Fact Generators 
             var openingFactsGenerator = new OpeningsFactsGenerator();
             var simpleFactsGenerator = new SimpleFactsGenerator();
+            var timeControlFactsGenerator = new TimeControlFactsGenerator(new TimeControlCategoriser());
+
             var candidateGenerator = new SelfJoinAndPruneGenerator<ChessGame>();
-            var factGenerators = new List<IFactsGenerator<ChessGame>>() { simpleFactsGenerator, openingFactsGenerator };
+            var factGenerators = new List<IFactsGenerator<ChessGame>>() { simpleFactsGenerator, openingFactsGenerator, timeControlFactsGenerator };
             var apriori = new Apriori<ChessGame>(candidateGenerator, factGenerators);
             var filterer = new ThresholdFilterer<ChessGame>();
             var candidateRuleGenerator = new CandidateRuleGenerator<ChessGame>();

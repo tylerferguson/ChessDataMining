@@ -52,9 +52,12 @@
     <Compile Include="ChessGame.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="FactGenerators\OpeningsFactsGenerator.cs" />
+    <Compile Include="FactGenerators\TimeControlFactsGenerator.cs" />
     <Compile Include="Facts\IFact.cs" />
+    <Compile Include="Facts\ITimeControlCategoriser.cs" />
     <Compile Include="Facts\OpeningFact.cs" />
     <Compile Include="Facts\SimpleFact.cs" />
+    <Compile Include="Facts\TimeControlFact.cs" />
     <Compile Include="ICandidateGenerator.cs" />
     <Compile Include="ICandidateRuleGenerator.cs" />
     <Compile Include="FactGenerators\IFactsGenerator.cs" />
@@ -67,6 +70,7 @@
     <Compile Include="SelfJoinAndPruneGenerator.cs" />
     <Compile Include="FactGenerators\SimpleFactsGenerator.cs" />
     <Compile Include="ThresholdFilterer.cs" />
+    <Compile Include="TimeControlCategoriser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

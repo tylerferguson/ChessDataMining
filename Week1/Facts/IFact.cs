@@ -9,6 +9,9 @@ namespace Week1
     {
         bool IsTrue(T transaction);
         int CompareTo(IFact<T> that);
-        bool Implies(IFact<T> fact1);
+        bool Implies(IFact<T> that);
+        bool Equals(Object that);
+        int GetHashCode();
+        string ToString();
     }
 }
