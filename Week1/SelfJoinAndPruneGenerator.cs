@@ -11,8 +11,9 @@ namespace Week1
         public List<ItemSet<IFact<T>>> GenerateCandidateItemSets(List<ItemSet<IFact<T>>> frequentItemSets)
         {
             var output = frequentItemSets.SelectMany(x => frequentItemSets, (x, y) => new { l = x.Items, r = y.Items })
-                .Where(x => (new ItemSet<IFact<T>>(x.l.Take(x.l.Count - 1)))
-                    .Equals(new ItemSet<IFact<T>>(x.r.Take(x.r.Count - 1))) && x.l.Last().CompareTo(x.r.Last()) < 0 && !HasImplication(x.l.Last(), x.r.Last()))
+                .Where(x => (new ItemSet<IFact<T>>(x.l.Take(x.l.Count - 1))).Equals(new ItemSet<IFact<T>>(x.r.Take(x.r.Count - 1))) 
+                    && x.l.Last().CompareTo(x.r.Last()) < 0 
+                    && !HasImplication(x.l.Last(), x.r.Last()))
                .Select((x) =>
                    {
                        var result = new List<IFact<T>>(x.l);
