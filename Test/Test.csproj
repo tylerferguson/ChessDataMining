@@ -66,7 +66,7 @@
     <Compile Include="OpeningFactsGeneratorTest.cs" />
     <Compile Include="PowerSetGeneratorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SimpleFactTest.cs" />
+    <Compile Include="IFactTest.cs" />
     <Compile Include="TimeControlCategoriserTest.cs" />
   </ItemGroup>
   <ItemGroup>
