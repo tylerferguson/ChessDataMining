@@ -21,5 +21,7 @@ namespace Week1
         public string TimeControl { get; set; }
         public string ECO { get; set; }
         public string Opening { get; set; }
+        public string Moves { get; set; }
+        public string End { get; set; }
     }
 }
