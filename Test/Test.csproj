@@ -9,7 +9,7 @@
     <ProjectGuid>{BA667A26-7426-4B60-A391-E2C6302169F3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Week1</RootNamespace>
+    <RootNamespace>DataMining</RootNamespace>
     <AssemblyName>Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -73,9 +73,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Week1\Week1.csproj">
+    <ProjectReference Include="..\Week1\DataMining.csproj">
       <Project>{ccc6f0ea-da68-45ae-abba-51c60ecbf4f4}</Project>
-      <Name>Week1</Name>
+      <Name>DataMining</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
