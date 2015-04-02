@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Week1
+namespace DataMining
 {
     public interface IThresholdFilterer<T>
     {

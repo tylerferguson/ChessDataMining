@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Week1.Facts;
+using DataMining.Facts;
 using Xunit;
 
-namespace Week1
+namespace DataMining
 {
     public class When_TimeControlCategoriser_Categorise_is_called
     {

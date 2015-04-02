@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Week1.FactGenerators;
+using DataMining.FactGenerators;
 
-namespace Week1
+namespace DataMining
 {
     class Program
     {

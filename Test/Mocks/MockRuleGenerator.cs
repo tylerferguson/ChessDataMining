@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Week1.Mocks
+namespace DataMining.Mocks
 {
     public class MockRuleGenerator : ICandidateRuleGenerator<string>
     {

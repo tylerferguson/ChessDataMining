@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Week1.Mocks;
+using DataMining.Mocks;
 using Xunit;
 
-namespace Week1
+namespace DataMining
 {
     namespace When_Generate_is_called
     {

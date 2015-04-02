@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Week1.Facts
+namespace DataMining.Facts
 {
     public class TakesFirstFact : IFact<ChessGame>
     {

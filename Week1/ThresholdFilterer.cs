@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Week1
+namespace DataMining
 {
     public class ThresholdFilterer<T> : IThresholdFilterer<T>
     {

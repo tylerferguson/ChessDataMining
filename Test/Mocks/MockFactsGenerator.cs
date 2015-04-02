@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Week1.Mocks;
+using DataMining.Mocks;
 
-namespace Week1
+namespace DataMining
 {
     class MockFactsGenerator : IFactsGenerator<string>
     {

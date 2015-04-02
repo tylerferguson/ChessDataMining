@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Week1
+namespace DataMining
 {
     public class IFactTest
     {
