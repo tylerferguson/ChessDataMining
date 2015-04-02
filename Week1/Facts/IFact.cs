@@ -5,13 +5,34 @@ using System.Text;
 
 namespace Week1
 {
-    public interface IFact<T>
+    public abstract class IFact<T>
     {
-        bool IsTrue(T transaction);
-        int CompareTo(IFact<T> that);
-        bool Implies(IFact<T> that);
-        bool Equals(Object that);
-        int GetHashCode();
-        string ToString();
+        public string Value { get; set; } 
+
+        public abstract bool IsTrue(T transaction);
+        public abstract bool Implies(IFact<T> that);
+        public override abstract bool Equals(Object that);
+        public override abstract string ToString();
+
+        public override int GetHashCode()
+        {
+            return this.GetType().GetHashCode() + Value.GetHashCode();
+        }
+
+        public int CompareTo(IFact<T> that)
+        {
+            if (that == null)
+                return -1;
+            
+            if (!Object.ReferenceEquals(this.GetType(), that.GetType()))
+                return this.GetType().ToString().CompareTo(that.GetType().ToString());
+            else
+                return CompareSameFact(that);
+        }
+
+        public virtual int CompareSameFact(IFact<T> that)
+        {
+            return this.Value.CompareTo(that.Value);
+        }
     }
 }

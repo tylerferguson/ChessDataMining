@@ -7,21 +7,12 @@ namespace Week1
 {
     public class OpeningFact : IFact<ChessGame>, IEquatable<OpeningFact>
     {
-        private string propertyName = "Opening";
-
-        public string PropertyName
-        {
-            get { return propertyName; }
-        }
-
-        public string Value { get; set; }
-
         public OpeningFact(string value)
         {
-            this.Value = value;
+            Value = value;
         }
 
-        public bool Implies(IFact<ChessGame> that)
+        public override bool Implies(IFact<ChessGame> that)
         {
             if (that == null)
             {
@@ -42,10 +33,9 @@ namespace Week1
         }
 
 
-        public bool IsTrue(ChessGame game)
+        public override bool IsTrue(ChessGame game)
         {
-            string gameValue = game.GetType().GetProperty(this.PropertyName).GetValue(game).ToString();
-            return gameValue.Contains(Value);
+            return game.Opening.Contains(Value);
         }
 
         public bool Equals(OpeningFact that)
@@ -54,14 +44,8 @@ namespace Week1
             {
                 return false;
             }
-            if (this.PropertyName.Equals(that.PropertyName))
-            {
-                return this.Value.Equals(that.Value);
-            }
-            else
-            {
-                return false;
-            }
+            
+            return this.Value.Equals(that.Value);
         }
 
         public override bool Equals(Object obj)
@@ -81,28 +65,9 @@ namespace Week1
             }
         }
 
-        public override int GetHashCode()
-        {
-            return PropertyName.GetHashCode() + Value.GetHashCode();
-        }
-
-        public int CompareTo(IFact<ChessGame> fact)
-        {
-            OpeningFact that = fact as OpeningFact;
-
-            if (that == null)
-                return -1;
-
-            if (this.PropertyName.Equals(that.PropertyName))
-            {
-                return this.Value.CompareTo(that.Value);
-            }
-            return this.PropertyName.CompareTo(that.PropertyName);
-        }
-
         public override string ToString()
         {
-            return PropertyName + " is " + Value;
+            return "Opening is " + Value;
         }
     }
 }

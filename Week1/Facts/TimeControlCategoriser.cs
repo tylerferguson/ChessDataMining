@@ -23,6 +23,10 @@ namespace Week1
 
         public string Categorise(string time)
         {
+            if (time == "-")
+            {
+                return "None";
+            }
             var times = time.Split('+');
             var sideTime = Convert.ToInt32(times[0]);
             var increment = Convert.ToInt32(times[1]);

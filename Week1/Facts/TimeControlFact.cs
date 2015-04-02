@@ -8,14 +8,6 @@ namespace Week1.Facts
 {
     public class TimeControlFact : IFact<ChessGame>
     {
-        private string propertyName = "TimeControl";
-
-        public string PropertyName
-        {
-            get { return propertyName; }
-        }
-
-        public string Value { get; set; }
         private ITimeControlCategoriser categoriser;
         
         public TimeControlFact(ITimeControlCategoriser categoriser, string time)
@@ -24,32 +16,12 @@ namespace Week1.Facts
             Value = categoriser.Categorise(time);
         }
 
-        public bool IsTrue(ChessGame transaction)
+        public override bool IsTrue(ChessGame transaction)
         {
             return categoriser.Categorise(transaction.TimeControl) == Value;
         }
 
-        public int CompareTo(IFact<ChessGame> that)
-        {
-            if (that == null)
-            {
-                return 1;
-            }
-            TimeControlFact fact = that as TimeControlFact;
-            return CompareTo(fact);
-        }
-
-        public int CompareTo(TimeControlFact that)
-        {
-            if (that == null)
-            {
-                return 1;
-            }
-            return Value.CompareTo(that.Value);
-
-        }
-
-        public bool Implies(IFact<ChessGame> that)
+        public override bool Implies(IFact<ChessGame> that)
         {
             return Equals(that);
         }
@@ -83,14 +55,9 @@ namespace Week1.Facts
             }
         }
 
-        public override int GetHashCode()
-        {
-            return PropertyName.GetHashCode() + Value.GetHashCode();
-        }
-
         public override string ToString()
         {
-            return PropertyName + " is " + Value;
+            return "Time control is " + Value;
         }
     }
 }

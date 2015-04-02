@@ -8,21 +8,20 @@ namespace Week1
     public class SimpleFact : IFact<ChessGame>, IEquatable<SimpleFact>
     {
         public string PropertyName { get; set; }
-        public string Value { get; set; }
 
         public SimpleFact(string propertyName, string value)
         {
-            this.PropertyName = propertyName;
+            PropertyName = propertyName;
             this.Value = value;
         }
 
-        public bool IsTrue(ChessGame game)
+        public override bool IsTrue(ChessGame game)
         {
             string gameValue = game.GetType().GetProperty(this.PropertyName).GetValue(game).ToString();
             return Value.Equals(gameValue);
         }
 
-        public bool Implies(IFact<ChessGame> that)
+        public override bool Implies(IFact<ChessGame> that)
         {
             if (that == null)
             {
@@ -51,6 +50,7 @@ namespace Week1
             {
                 return false;
             }
+
             if (this.PropertyName.Equals(that.PropertyName))
             {
                 return this.Value.Equals(that.Value);
@@ -63,38 +63,30 @@ namespace Week1
 
         public override bool Equals(Object obj)
         {
-            if (obj == null)
+            if (obj == null) 
             {
                 return false;
             }
+
             SimpleFact fact = obj as SimpleFact;
+
             if (fact == null)
             {
                 return false;
             }
-            else
-            {
-                return Equals(fact);
-            }
+
+            return Equals(fact);
         }
 
-        public override int GetHashCode()
+        public override int CompareSameFact(IFact<ChessGame> that)
         {
-            return PropertyName.GetHashCode() + Value.GetHashCode();
-        }
+            SimpleFact fact = that as SimpleFact;
 
-        public int CompareTo(IFact<ChessGame> fact)
-        {
-            SimpleFact that = fact as SimpleFact;
-
-            if (that == null)
-                return -1;
-
-            if (this.PropertyName.Equals(that.PropertyName))
+            if (PropertyName == fact.PropertyName)
             {
-                return this.Value.CompareTo(that.Value);
+                return this.Value.CompareTo(fact.Value);
             }
-            return this.PropertyName.CompareTo(that.PropertyName);
+            return PropertyName.CompareTo(fact.PropertyName);
         }
 
         public override string ToString()

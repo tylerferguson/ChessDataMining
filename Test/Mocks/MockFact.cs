@@ -8,39 +8,17 @@ namespace Week1.Mocks
 {
     public class MockFact : IFact<string>, IEquatable<MockFact>
     {
-        public string Value { get; set; } 
-
         public MockFact(string value)
         {
             this.Value = value;
         }
 
-        public bool IsTrue(string transaction)
+        public override bool IsTrue(string transaction)
         {
             return transaction.Contains(Value);
         }
 
-        public int CompareTo(IFact<string> that)
-        {
-            if (that == null)
-            {
-                return 1;
-            }
-            MockFact fact = that as MockFact;
-
-            return CompareTo(fact);
-        }
-
-        public int CompareTo(MockFact that)
-        {
-            if (that == null)
-            {
-                return 1;
-            }
-            return this.Value.CompareTo(that.Value);
-        }
-
-        public bool Implies(IFact<string> that)
+        public override bool Implies(IFact<string> that)
         {
             if (that == null)
             {
@@ -85,11 +63,6 @@ namespace Week1.Mocks
             {
                 return Equals(fact);
             }
-        }
-
-        public override int GetHashCode()
-        {
-            return Value.GetHashCode();
         }
 
         public override string ToString()
