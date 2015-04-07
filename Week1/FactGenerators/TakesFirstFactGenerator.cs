@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataMining.Facts;
+using ChessDataMining.Facts;
+using DataMining;
 
-namespace DataMining.FactGenerators
+namespace ChessDataMining.FactGenerators
 {
     public class TakesFirstFactGenerator : IFactsGenerator<ChessGame>
     {

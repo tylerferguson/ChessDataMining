@@ -1,11 +1,12 @@
-﻿using System;
+﻿using DataMining;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace DataMining
+namespace ChessDataMining
 {
     public class When_OpeningFactsGenerator_Generate_Is_Called
     {

@@ -10,9 +10,6 @@ namespace DataMining.Mocks
     {
         public List<AssociationRule<string>> GenerateCandidateRules(List<IFact<string>> targetFacts, List<ItemSet<IFact<string>>> frequentPatterns)
         {
-            //if (frequentPatterns.SequenceEqual(new List<ItemSet<IFact<string>>>() { new ItemSet<IFact<string>>(new MockFact("Correct!")) }))
-            //{
-            //}
             return new List<AssociationRule<string>>();
 
         }

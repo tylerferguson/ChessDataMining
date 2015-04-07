@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataMining.Facts;
+using ChessDataMining.Facts;
 
-namespace DataMining
+namespace ChessDataMining
 {
     public class TimeControlCategoriser : ITimeControlCategoriser
     {

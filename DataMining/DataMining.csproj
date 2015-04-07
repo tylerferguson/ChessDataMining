@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CCC6F0EA-DA68-45AE-ABBA-51C60ECBF4F4}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{8B76E6AB-5E49-4B43-8A2E-AC848019F57C}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DataMining</RootNamespace>
-    <AssemblyName>Week1</AssemblyName>
+    <AssemblyName>DataMining</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -49,40 +47,21 @@
     <Compile Include="AssociationRule.cs" />
     <Compile Include="AssociationRuleGenerator.cs" />
     <Compile Include="CandidateRuleGenerator.cs" />
-    <Compile Include="ChessGame.cs" />
     <Compile Include="Database.cs" />
-    <Compile Include="FactGenerators\OpeningsFactsGenerator.cs" />
-    <Compile Include="FactGenerators\TakesFirstFactGenerator.cs" />
-    <Compile Include="FactGenerators\TimeControlFactsGenerator.cs" />
-    <Compile Include="Facts\IFact.cs" />
-    <Compile Include="Facts\ITimeControlCategoriser.cs" />
-    <Compile Include="Facts\OpeningFact.cs" />
-    <Compile Include="Facts\SimpleFact.cs" />
-    <Compile Include="Facts\TakesFirstFact.cs" />
-    <Compile Include="Facts\TimeControlFact.cs" />
     <Compile Include="ICandidateGenerator.cs" />
     <Compile Include="ICandidateRuleGenerator.cs" />
-    <Compile Include="FactGenerators\IFactsGenerator.cs" />
+    <Compile Include="IFact.cs" />
+    <Compile Include="IFactsGenerator.cs" />
     <Compile Include="IFrequentPatternsMiner.cs" />
     <Compile Include="ItemSet.cs" />
     <Compile Include="IThresholdFilterer.cs" />
     <Compile Include="PowerSetGenerator.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SelfJoinAndPruneGenerator.cs" />
-    <Compile Include="FactGenerators\SimpleFactsGenerator.cs" />
     <Compile Include="ThresholdFilterer.cs" />
-    <Compile Include="Facts\TimeControlCategoriser.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="rated.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

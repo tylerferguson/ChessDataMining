@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataMining
+namespace ClassLibrary1
 {
-    class DatabaseTest
+    public class Class1
     {
     }
 }

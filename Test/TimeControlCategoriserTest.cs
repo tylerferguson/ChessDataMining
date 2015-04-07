@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataMining.Facts;
+using ChessDataMining.Facts;
 using Xunit;
 
-namespace DataMining
+namespace ChessDataMining
 {
     public class When_TimeControlCategoriser_Categorise_is_called
     {

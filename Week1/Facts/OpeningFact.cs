@@ -1,9 +1,10 @@
-﻿using System;
+﻿using DataMining;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DataMining
+namespace ChessDataMining
 {
     public class OpeningFact : IFact<ChessGame>, IEquatable<OpeningFact>
     {
