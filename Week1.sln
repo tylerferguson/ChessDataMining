@@ -16,7 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{356115
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessMiningApp", "ChessMiningApp\ChessMiningApp.csproj", "{CE8FE74C-2D1C-4C59-A0E1-7483FA209679}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessMiningApp", "ChessMiningApp\ChessMiningApp.csproj", "{17B472C3-B057-441F-897F-9A60AA72B5C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,10 +40,10 @@ Global
 		{F5269E21-89BC-4FFF-9D67-4A9A1675F6A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5269E21-89BC-4FFF-9D67-4A9A1675F6A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5269E21-89BC-4FFF-9D67-4A9A1675F6A9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CE8FE74C-2D1C-4C59-A0E1-7483FA209679}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CE8FE74C-2D1C-4C59-A0E1-7483FA209679}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CE8FE74C-2D1C-4C59-A0E1-7483FA209679}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CE8FE74C-2D1C-4C59-A0E1-7483FA209679}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17B472C3-B057-441F-897F-9A60AA72B5C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17B472C3-B057-441F-897F-9A60AA72B5C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17B472C3-B057-441F-897F-9A60AA72B5C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17B472C3-B057-441F-897F-9A60AA72B5C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

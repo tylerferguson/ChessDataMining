@@ -15,12 +15,14 @@ namespace ChessMiningApp.Controllers
 {
     public class AssociationRulesController : ApiController
     {
-        AssociationRuleGenerator<ChessGame> ruleGenerator;
-        List<IFact<ChessGame>> projectedFacts;
-        List<IFact<ChessGame>> targetFacts;
+        //refactor into separate class
+        private AssociationRuleGenerator<ChessGame> ruleGenerator;
+        private List<IFact<ChessGame>> projectedFacts;
+        private List<IFact<ChessGame>> targetFacts;
 
         public AssociationRulesController()
         {
+            //Refactor into separate class
             List<ChessGame> result;
             var serializer = new JsonSerializer();
             using (var re = File.OpenText("C:/tferguson/Documents/Visual Studio 2013/Projects/PatternDiscoveryInDataMining/Week1/Week1/rated.json"))
@@ -52,28 +54,24 @@ namespace ChessMiningApp.Controllers
             ruleGenerator = new AssociationRuleGenerator<ChessGame>(database, apriori, candidateRuleGenerator, filterer);
         }
 
-        public IEnumerable<AssociationRule> GetAllRules()
+        //GET api/AssociationRules
+        public IEnumerable<AssociationRuleDTO> GetAssociationRules()
         {
+            //Refactor into separate class
             var minsup = 0.01;
             var minconf = 0.1;
-            var result = ruleGenerator.Generate(minsup, minconf, projectedFacts, targetFacts);
-
-            var rules = new List<AssociationRule>();
-
-            result.ForEach(x =>
+            var rules = ruleGenerator.Generate(minsup, minconf, projectedFacts, targetFacts);
+            return rules.Select(x => 
             {
-                var rule = new AssociationRule();
-                rule.AbsoluteSupport = x.AbsoluteSupport;
-                rule.Confidence = x.Confidence;
-                rule.Left = x.Left.ToString();
-                rule.LiftCorrelation = x.LiftCorrelation;
-                rule.RelativeSupport = x.RelativeSupport;
-                rule.Right = x.Right.ToString();
-
-                rules.Add(rule);
+                return new AssociationRuleDTO() 
+                { 
+                    Value = x.ToString(), 
+                    AbsoluteSupport = x.AbsoluteSupport, 
+                    Confidence = x.Confidence, 
+                    LiftCorrelation = x.LiftCorrelation, 
+                    RelativeSupport = x.RelativeSupport 
+                };
             });
-
-            return rules;
         }
 
     }

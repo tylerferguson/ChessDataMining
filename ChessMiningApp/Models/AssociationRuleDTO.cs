@@ -5,10 +5,9 @@ using System.Web;
 
 namespace ChessMiningApp.Models
 {
-    public class AssociationRule
+    public class AssociationRuleDTO
     {
-        public string Left { get; set; }
-        public string Right { get; set; }
+        public string Value { get; set; }
         public int AbsoluteSupport { get; set; }
         public Double RelativeSupport { get; set; }
         public Double Confidence { get; set; }

@@ -1,9 +1,19 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
+    <title>Chess Mining App</title>
 </head>
-<body>
+<body ng-app="ChessMining">
+    <div ng-controller="MiningCtrl">
+        <button ng-click="getAssociationRules()">Click me to mine!</button>
+        <div ng-repeat="rule in rules">
+            {{rule.Value}}
+        </div>
+    </div>
 
+    <script src="Scripts/jquery-2.1.3.min.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="app/app.module.js"></script>
+    <script src="app/mining.controller.js"></script>
 </body>
 </html>
