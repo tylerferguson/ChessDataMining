@@ -5,12 +5,11 @@
 </head>
 <body ng-app="ChessMining">
     <div ng-controller="MiningCtrl">
-        <form id="myform" target="hidden-iframe" ng-submit="submitDataFile()">
+        <form id="myform" ng-submit="submitDataFile($event)">
             <input type="file" onchange="$('#myform').submit()" name="fileInput" id="fileInput" required />
-            <iframe name="hidden-iframe" style="display: none;"></iframe>
         </form>
         
-        <button ng-click="getAssociationRules()">Mine!</button>
+        <button ng-show="dataFile" ng-click="getAssociationRules()">Mine!</button>
         <div ng-repeat="rule in rules">
             {{rule.Value}}
         </div>

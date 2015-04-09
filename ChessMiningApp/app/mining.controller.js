@@ -4,28 +4,35 @@
 
         var self = this;
 
-        $scope.submitDataFile = function () {
+
+        $scope.submitDataFile = function (event) {
+            event.preventDefault();
             var file = $("#fileInput")[0].files[0];
-            console.log(file);
             var reader = new FileReader();
+
             reader.onload = function (event) {
-                console.log(event.target);
-               self.dataFile = event.target.result;
+                $scope.$apply(function () {
+                    $scope.dataFile = event.target.result;
+                });   
             }
 
             reader.onerror = function () {
                 console.log("here we are!");
-                self.dataFile = undefined;
+                //$scope.dataFile = undefined;       
             }
 
-            reader.readAsText(file);
+            if (file) {
+                reader.readAsText(file);
+            } else {
+                $scope.dataFile = undefined;
+            } 
         }
 
         $scope.getAssociationRules = function () {
-            console.log($.parseJSON(self.dataFile));
-            $http.post('/api/AssociationRules/Mine', JSON.parse(self.dataFile), { 'Content-Type': 'application / json' })
+            console.log($.parseJSON($scope.dataFile));
+            $http.post('/api/AssociationRules/Mine', JSON.parse($scope.dataFile), { 'Content-Type': 'application / json' })
                 .then(function (response) {
-                    console.log(self.dataFile);
+                    console.log($scope.dataFile);
                     $scope.rules = [];
                     response.data.forEach(function (rule) {
                         $scope.rules.push(rule);
