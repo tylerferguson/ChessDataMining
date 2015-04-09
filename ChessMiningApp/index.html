@@ -5,7 +5,12 @@
 </head>
 <body ng-app="ChessMining">
     <div ng-controller="MiningCtrl">
-        <button ng-click="getAssociationRules()">Click me to mine!</button>
+        <form ng-submit="submitDataFile()">
+            <input type="file" name="fileInput" id="fileInput" required/>
+            <input type="submit" />
+        </form>
+        
+        <button ng-click="getAssociationRules()">Mine!</button>
         <div ng-repeat="rule in rules">
             {{rule.Value}}
         </div>
