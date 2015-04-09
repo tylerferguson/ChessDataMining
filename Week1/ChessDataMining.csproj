@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChessDataMiner.cs" />
     <Compile Include="ChessGame.cs" />
     <Compile Include="FactGenerators\OpeningsFactsGenerator.cs" />
     <Compile Include="FactGenerators\TakesFirstFactGenerator.cs" />
