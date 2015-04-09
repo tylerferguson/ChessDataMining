@@ -5,9 +5,9 @@
 </head>
 <body ng-app="ChessMining">
     <div ng-controller="MiningCtrl">
-        <form ng-submit="submitDataFile()">
-            <input type="file" name="fileInput" id="fileInput" required/>
-            <input type="submit" />
+        <form id="myform" target="hidden-iframe" ng-submit="submitDataFile()">
+            <input type="file" onchange="$('#myform').submit()" name="fileInput" id="fileInput" required />
+            <iframe name="hidden-iframe" style="display: none;"></iframe>
         </form>
         
         <button ng-click="getAssociationRules()">Mine!</button>

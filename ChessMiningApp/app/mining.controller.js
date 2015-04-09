@@ -8,13 +8,14 @@
             var file = $("#fileInput")[0].files[0];
             console.log(file);
             var reader = new FileReader();
-            reader.onloadend = function (event) {
+            reader.onload = function (event) {
                 console.log(event.target);
                self.dataFile = event.target.result;
             }
 
-            reader.onabort = function (event) {
-                console.log("i am aborted!");
+            reader.onerror = function () {
+                console.log("here we are!");
+                self.dataFile = undefined;
             }
 
             reader.readAsText(file);
