@@ -21,8 +21,15 @@
         }
 
         $scope.toggleShowForm = function (index) {
+            for (i = 0; i < $scope.optionClicked.length; i++) {
+                if (i == index) {
+                    continue;
+                }
+                if ($scope.optionClicked[i]) {
+                    $scope.optionClicked[i] = false;
+                }
+            };
             $scope.optionClicked[index] = $scope.optionClicked[index] ? false : true;
-            console.log($scope.optionClicked);
             
         }
 
