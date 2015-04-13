@@ -93,6 +93,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AssociationRuleDTO.cs" />
+    <Compile Include="Models\FactDTO.cs" />
+    <Compile Include="Models\MiningDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

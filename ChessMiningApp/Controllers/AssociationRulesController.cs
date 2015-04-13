@@ -1,5 +1,6 @@
 ﻿using ChessDataMining;
 using ChessDataMining.FactGenerators;
+using ChessDataMining.Facts;
 using ChessMiningApp.Models;
 using DataMining;
 using Newtonsoft.Json;
@@ -9,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Reflection;
 using System.Web.Http;
 
 namespace ChessMiningApp.Controllers
@@ -18,22 +20,26 @@ namespace ChessMiningApp.Controllers
     {
         public AssociationRulesController() {}
 
+        //GET api/AssociationRules
+        public IEnumerable<string> GetFacts()
+        {
+            var type = typeof(IFact<ChessGame>);
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+            var types = assemblies.SelectMany(s => s.GetTypes())
+                .Where(p => type.IsAssignableFrom(p));
+
+            return types.Select(p => p.Name);
+        } 
+
         //POST api/AssociationRules/Mine
         [Route("Mine")]
-        public IEnumerable<AssociationRuleDTO> Mine(List<ChessGame> games)
+        public IEnumerable<AssociationRuleDTO> Mine(MiningDTO dto)
         {
-            var projectedFact1 = new OpeningFact("Gambit");
-            //var projectedFact2 = new SimpleFact("White", "tailuge");
-            var projectedFacts = new List<IFact<ChessGame>>() { projectedFact1 };
+            var projectionFacts = ParseFactDtoCollection(dto.projectionFacts);
+            var targetFacts = ParseFactDtoCollection(dto.targetFacts);
 
-            var targetFact = new SimpleFact("Result", "1-0");
-            var targetFacts = new List<IFact<ChessGame>>() { targetFact };
-
-            var minsup = 0.01;
-            var minconf = 0.1;
-
-            var chessDataMiner = new ChessDataMiner(games);
-            var rules = chessDataMiner.Mine(minsup, minconf, projectedFacts, targetFacts);
+            var chessDataMiner = new ChessDataMiner(dto.Games);
+            var rules = chessDataMiner.Mine(dto.Minsup, dto.Minconf, projectionFacts, targetFacts);
 
             return rules.Select(x =>
             {
@@ -48,11 +54,14 @@ namespace ChessMiningApp.Controllers
             });
         }
 
-        // POST api/AssociationRules/Mine
-        //[Route("Mine")]
-        //public string Mine(Byte[] games)
-        //{
-        //    return String.Empty;
-        //}
+        private IEnumerable<IFact<ChessGame>> ParseFactDtoCollection(IEnumerable<FactDTO> factDtos)
+        {
+            if (factDtos == null)
+            {
+               return null;
+            }
+
+            return factDtos.Select(factDto => factDto.Parse());
+        }
     }
 }
