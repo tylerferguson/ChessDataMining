@@ -5,10 +5,20 @@
 </head>
 <body ng-app="ChessMining">
     <div ng-controller="MiningCtrl">
-        <form id="myform" ng-submit="submitDataFile($event)">
-            <input type="file" onchange="$('#myform').submit()" name="fileInput" id="fileInput" required />
+        <form id="dataForm" ng-submit="submitDataFile($event)">
+            <input type="file" onchange="$('#dataForm').submit()" name="fileInput" id="fileInput" required />
         </form>
-        
+        <input type="number" ng-model="minsup"/>
+        <input type="number" ng-model="minconf" />
+        <div ng-repeat="factOption in factOptions" ng-click="toggleShowForm($index)">
+            <span>{{factOption}}</span>
+            <form name="{{factOption}}Form" id="{{factOption}}Form'" ng-show="optionClicked[$index]" ng-click="stopPropagation($event)">
+                <label>name</label>
+                <input type="text" ng-model="$parent.name" />
+                <label>value</label>
+                <input type="text" ng-model="$parent.value" ng-blur="submitProjectionFact(factOption)" />
+            </form>
+        </div>
         <button ng-show="dataFile" ng-click="getAssociationRules()">Mine!</button>
         <div ng-repeat="rule in rules">
             {{rule.Value}}
