@@ -1,4 +1,5 @@
 ﻿using ChessDataMining.FactGenerators;
+using ChessDataMining.Facts;
 using DataMining;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace ChessDataMining
             this.games = games;
         }
 
-        public IEnumerable<AssociationRule<ChessGame>> Mine(Double relativeMinsup, Double minconf, List<IFact<ChessGame>> projectionFacts = null, List<IFact<ChessGame>> targetFacts = null)
+        public IEnumerable<AssociationRule<ChessGame>> Mine(Double relativeMinsup, Double minconf, IEnumerable<IFact<ChessGame>> projectionFacts = null, IEnumerable<IFact<ChessGame>> targetFacts = null)
         {
             //Fact Generators 
             var openingFactsGenerator = new OpeningsFactsGenerator();

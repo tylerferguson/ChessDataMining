@@ -24,7 +24,7 @@ namespace DataMining
             return candidateRules;
         }
 
-        public List<AssociationRule<T>> GenerateCandidateRules(List<IFact<T>> targetFacts, List<ItemSet<IFact<T>>> frequentPatterns)
+        public List<AssociationRule<T>> GenerateCandidateRules(IEnumerable<IFact<T>> targetFacts, List<ItemSet<IFact<T>>> frequentPatterns)
         {
             if (targetFacts == null)
             {

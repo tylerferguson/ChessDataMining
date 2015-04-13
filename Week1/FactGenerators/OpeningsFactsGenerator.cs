@@ -1,4 +1,5 @@
-﻿using DataMining;
+﻿using ChessDataMining.Facts;
+using DataMining;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -21,7 +21,7 @@ namespace DataMining
             this.filterer = filterer;
         }
         
-        public List<AssociationRule<T>> Generate(Double relativeMinsup, Double minconf, List<IFact<T>> projectionFacts = null, List<IFact<T>> targetFacts = null ) 
+        public List<AssociationRule<T>> Generate(Double relativeMinsup, Double minconf, IEnumerable<IFact<T>> projectionFacts = null, IEnumerable<IFact<T>> targetFacts = null ) 
         {
             Database<T> projectedDatabase = database;
 
@@ -50,12 +50,12 @@ namespace DataMining
             return candidateRules.OrderByDescending(rule => rule.LiftCorrelation).ToList();
         }
 
-        private List<AssociationRule<T>> FilterByMinThresholds(List<IFact<T>> targetFacts, Database<T> projectedDatabase, List<ItemSet<IFact<T>>> frequentPatterns, List<AssociationRule<T>> candidateRules, Double relativeMinsup, Double minconf)
+        private List<AssociationRule<T>> FilterByMinThresholds(IEnumerable<IFact<T>> targetFacts, Database<T> projectedDatabase, List<ItemSet<IFact<T>>> frequentPatterns, List<AssociationRule<T>> candidateRules, Double relativeMinsup, Double minconf)
         {
             return filterer.FilterByMinThresholds(targetFacts, projectedDatabase, frequentPatterns, candidateRules, relativeMinsup, minconf);
         }
 
-        private List<AssociationRule<T>> GenerateCandidateRules(List<IFact<T>> targetFacts, List<ItemSet<IFact<T>>> frequentPatterns)
+        private List<AssociationRule<T>> GenerateCandidateRules(IEnumerable<IFact<T>> targetFacts, List<ItemSet<IFact<T>>> frequentPatterns)
         {
             return candidateRuleGenerator.GenerateCandidateRules(targetFacts, frequentPatterns);
         }

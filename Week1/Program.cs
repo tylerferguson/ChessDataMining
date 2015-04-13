@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using ChessDataMining.FactGenerators;
 using DataMining;
+using ChessDataMining.Facts;
 
 namespace ChessDataMining
 {

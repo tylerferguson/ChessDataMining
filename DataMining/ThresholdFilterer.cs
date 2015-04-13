@@ -8,7 +8,7 @@ namespace DataMining
 {
     public class ThresholdFilterer<T> : IThresholdFilterer<T>
     {
-        public List<AssociationRule<T>> FilterByMinThresholds(List<IFact<T>> targetFacts, Database<T> projectedDatabase, List<ItemSet<IFact<T>>> frequentPatterns, List<AssociationRule<T>> candidateRules, Double relativeMinsup, Double minconf)
+        public List<AssociationRule<T>> FilterByMinThresholds(IEnumerable<IFact<T>> targetFacts, Database<T> projectedDatabase, List<ItemSet<IFact<T>>> frequentPatterns, List<AssociationRule<T>> candidateRules, Double relativeMinsup, Double minconf)
         {
             candidateRules.ForEach(candidateRule =>
             {

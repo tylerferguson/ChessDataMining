@@ -8,7 +8,7 @@ namespace DataMining.Mocks
 {
     public class MockRuleGenerator : ICandidateRuleGenerator<string>
     {
-        public List<AssociationRule<string>> GenerateCandidateRules(List<IFact<string>> targetFacts, List<ItemSet<IFact<string>>> frequentPatterns)
+        public List<AssociationRule<string>> GenerateCandidateRules(IEnumerable<IFact<string>> targetFacts, List<ItemSet<IFact<string>>> frequentPatterns)
         {
             return new List<AssociationRule<string>>();
 
