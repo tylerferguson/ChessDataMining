@@ -1,0 +1,15 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <input type="number" ng-model="minsup" />
+    <input type="number" ng-model="minconf" />
+
+    <button ng-click="getAssociationRules()">Mine!</button>
+    <div ng-repeat="rule in rules">
+        {{rule.Value}}
+    </div>
+</body>
+</html>

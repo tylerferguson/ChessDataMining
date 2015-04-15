@@ -2,5 +2,5 @@
 
     'use strict';
 
-    angular.module('ChessMining', []);
+    angular.module('ChessMining', ['ngRoute']);
 })();
