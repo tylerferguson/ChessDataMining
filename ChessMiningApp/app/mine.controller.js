@@ -1,4 +1,4 @@
-﻿angular.module('ChessMining').controller('MineCtrl', ['$scope', 'appService', function ($scope, appService) {
+﻿angular.module('ChessMining').controller('MineCtrl', ['$scope', 'appService', '$http', function ($scope, appService, $http) {
 
     $scope.getAssociationRules = function () {
 
