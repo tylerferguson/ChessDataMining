@@ -84,6 +84,7 @@
     <Content Include="app\pages\filter.html" />
     <Content Include="app\pages\home.html" />
     <Content Include="app\pages\mine.html" />
+    <Content Include="app\pages\target.html" />
     <Content Include="app\style\style.css" />
     <Content Include="app\toolbar.controller.js" />
     <Content Include="Global.asax" />

@@ -33,7 +33,7 @@
     <div class="toolbar" ng-controller="ToolbarCtrl">
         <span style="width: 240px"></span>
         <span ng-repeat="stage in stages">
-            <a class="button" ng-href="#/{{stage}}" ng-click="selectStage($index)" ng-class="{'selected': stageSelected === $index}">{{stage}}</a>
+            <a class="button stage" ng-href="#/{{stage}}" ng-click="selectStage($index)" ng-class="{'selected': stageSelected === $index}">{{stage}}</a>
             <i ng-if="!$last" class="fa fa-angle-right"></i>
         </span>
     </div>

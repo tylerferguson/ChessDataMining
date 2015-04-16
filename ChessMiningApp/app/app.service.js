@@ -6,7 +6,7 @@
         return {
             updateData: updateData,
             updateFilters: updateFilters,
-            upateTargets: updateTargets,
+            updateTargets: updateTargets,
             getData: getData,
             getFilters: getFilters,
             getTargets: getTargets

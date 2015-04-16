@@ -13,6 +13,10 @@
             templateUrl: 'app/pages/filter.html',
             controller: 'FilterCtrl'  
         })
+        .when('/Target', {
+            templateUrl: 'app/pages/target.html',
+            controller: 'FilterCtrl'
+        })
         .when('/Mine', {
             templateUrl: 'app/pages/mine.html',
             controller: 'MineCtrl'

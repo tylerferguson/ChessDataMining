@@ -1,7 +1,8 @@
 ﻿angular.module('ChessMining').controller('FilterCtrl', ['$scope', '$http', 'appService', function ($scope, $http, appService) {
 
     var self = this;
-    var projectionFacts = [];
+    var facts = [];
+    $scope.actionButtonClicked;
     $scope.optionClicked = [];
 
     $(document).ready(function () {
@@ -13,6 +14,14 @@
                 console.log("get error!");
             });
     });
+
+    $scope.showActionMenu = function () {
+        $scope.actionButtonClicked = true;
+    }
+
+    $scope.closeActionMenu = function(){
+        $scope.actionButtonClicked = false;
+    }
 
     $scope.stopPropagation = function (event) {
         event.stopPropagation();
@@ -31,24 +40,24 @@
 
     }
 
-    $scope.submitProjectionFact = function (factOption) {
+    $scope.submitFact = function (factOption, factStage) {
         var fact = {
             type: factOption,
             name: $scope.name,
             value: $scope.value
         };
 
-        projectionFacts.push(fact);
-        appService.updateFilters(projectionFacts);
+        facts.push(fact);
+        appService['update' + factStage](facts);
         $scope.name = '';
         $scope.value = '';
 
-        //var indexOfFact = indexOf(fact, projectionFacts);
+        //var indexOfFact = indexOf(fact, facts);
 
         //if (indexOfFact > -1) {
-        //    projectionFacts.splice(indexOfFact, 1);
+        //    facts.splice(indexOfFact, 1);
         //} else {
-        //    projectionFacts.push(fact);
+        //    facts.push(fact);
         //}
 
         //function indexOf(fact, arr) {

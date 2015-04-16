@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div ng-repeat="factOption in factOptions" ng-click="toggleShowForm($index)">
+        <span>{{factOption}}</span>
+        <form name="{{factOption}}Form" id="{{factOption}}Form'" ng-show="optionClicked[$index]" ng-submit="submitFact(factOption, 'Targets')" ng-click="stopPropagation($event)">
+            <label>name</label>
+            <input type="text" ng-model="$parent.name" />
+            <label>value</label>
+            <input type="text" ng-model="$parent.value" />
+            <input type="submit" value="+" />
+        </form>
+    </div>
+</body>
+</html>
