@@ -17,7 +17,7 @@
 
     <div id="fab" class="button floating-action-button lift-shadow-soft" ng-class="{'floating-action-button-focus': actionButtonClicked}" ng-click="showActionMenu()" ng-blur="closeActionMenu()" tabindex="1">
         <span ng-if="!actionButtonClicked">+</span>
-        <form class="filter-inputs" ng-if="actionButtonClicked" name="form" id="form'" ng-submit="submitFact(type, 'Filters')" ng-click="stopPropagation($event)">
+        <form class="filter-inputs" ng-if="actionButtonClicked" name="form" id="form'" ng-submit="submitFact('Filters')" ng-click="stopPropagation($event)">
             <span class="filter-input">
                 <label>Fact type: </label>
                 <input type="text" ng-blur="closeActionMenu()" ng-model="$parent.type" />

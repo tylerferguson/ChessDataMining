@@ -23,7 +23,7 @@
     $scope.closeActionMenu = function () {
         setTimeout(function () {
             var focus = $(document.activeElement);
-            if (focus.is(".filter-input") || $('.filter-input').has(focus).length || focus.is("#fab")) {
+            if (focus.is(".filter-input") || $('.filter-input').has(focus).length || focus.is("#fab") || focus.is(".add-button")) {
                 console.log("still focused");
             } else {
                 $scope.$apply(function () {
@@ -54,9 +54,9 @@
 
     }
 
-    $scope.submitFact = function (factOption, factStage) {
+    $scope.submitFact = function (factStage) {
         var fact = {
-            type: factOption,
+            type: $scope.type,
             name: $scope.name,
             value: $scope.value
         };
