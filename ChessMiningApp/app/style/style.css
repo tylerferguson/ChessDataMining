@@ -94,7 +94,25 @@ body {
 .floating-action-button-focus {
     border-radius: 0;
     height: 400px;
-    width: 300px;
+    width: 400px;
     background-color: white;
     overflow: auto;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.filter-inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-input {
+    width: 100%;
+    margin: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.add-button{
+    align-self: flex-end;
 }

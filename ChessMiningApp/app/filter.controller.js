@@ -16,15 +16,29 @@
     });
 
     $scope.showActionMenu = function () {
+        console.log($(document.activeElement));
         $scope.actionButtonClicked = true;
     }
 
-    $scope.closeActionMenu = function(){
-        $scope.actionButtonClicked = false;
+    $scope.closeActionMenu = function () {
+        setTimeout(function () {
+            var focus = $(document.activeElement);
+            if (focus.is(".filter-input") || $('.filter-input').has(focus).length) {
+                console.log("still focused");
+            } else {
+                $scope.$apply(function () {
+                    $scope.actionButtonClicked = false;
+                })
+            }
+        }, 0);
     }
 
     $scope.stopPropagation = function (event) {
         event.stopPropagation();
+    }
+
+    $scope.preventDefault = function (event) {
+        event.preventDefault();
     }
 
     $scope.toggleShowForm = function (index) {
