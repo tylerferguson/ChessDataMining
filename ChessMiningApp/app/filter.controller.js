@@ -23,7 +23,7 @@
     $scope.closeActionMenu = function () {
         setTimeout(function () {
             var focus = $(document.activeElement);
-            if (focus.is(".filter-input") || $('.filter-input').has(focus).length) {
+            if (focus.is(".filter-input") || $('.filter-input').has(focus).length || focus.is("#fab")) {
                 console.log("still focused");
             } else {
                 $scope.$apply(function () {

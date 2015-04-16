@@ -15,7 +15,7 @@
         </form>
     </div>
 
-    <div class="button floating-action-button lift-shadow-soft" ng-class="{'floating-action-button-focus': actionButtonClicked}" ng-click="showActionMenu()" ng-blur="closeActionMenu()" tabindex="1">
+    <div id="fab" class="button floating-action-button lift-shadow-soft" ng-class="{'floating-action-button-focus': actionButtonClicked}" ng-click="showActionMenu()" ng-blur="closeActionMenu()" tabindex="1">
         <span ng-if="!actionButtonClicked">+</span>
         <form class="filter-inputs" ng-if="actionButtonClicked" name="form" id="form'" ng-submit="submitFact(type, 'Filters')" ng-click="stopPropagation($event)">
             <span class="filter-input">
@@ -24,11 +24,11 @@
             </span>
             <span class="filter-input">
                 <label>Name: </label>
-                <input type="text" ng-model="$parent.name" />
+                <input type="text" ng-blur="closeActionMenu()" ng-model="$parent.name" />
             </span>
             <span class="filter-input">
                 <label>Value: </label>
-                <input type="text" ng-model="$parent.value" />
+                <input type="text" ng-blur="closeActionMenu()" ng-model="$parent.value" />
             </span>
 
             <input class="add-button" type="submit" value="+" />
