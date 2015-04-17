@@ -15,6 +15,15 @@
             });
     });
 
+    $scope.selectFromSuggestedList = function (type) {
+        $scope.type = type;
+        $scope.factOptionsShown = false;
+    }
+
+    $scope.showFactOptions = function () {
+        $scope.factOptionsShown = true;
+    }
+
     $scope.showActionMenu = function () {
         console.log($(document.activeElement));
         $scope.actionButtonClicked = true;
@@ -23,7 +32,7 @@
     $scope.closeActionMenu = function () {
         setTimeout(function () {
             var focus = $(document.activeElement);
-            if (focus.is(".filter-input") || $('.filter-input').has(focus).length || focus.is("#fab") || focus.is(".add-button")) {
+            if (focus.is("#fab") || $('#fab').has(focus).length) {
                 console.log("still focused");
             } else {
                 $scope.$apply(function () {
