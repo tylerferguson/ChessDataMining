@@ -4,7 +4,7 @@
     <title></title>
 </head>
 <body>
-    <div ng-repeat="factOption in factOptions" ng-click="toggleShowForm($index)">
+    <div ng-repeat="factOption in factOptions.facts" ng-click="toggleShowForm($index)">
         <span>{{factOption}}</span>
         <form name="{{factOption}}Form" id="{{factOption}}Form'" ng-show="optionClicked[$index]" ng-submit="submitFact(factOption, 'Filters')" ng-click="stopPropagation($event)">
             <label>name</label>
@@ -21,21 +21,21 @@
             <div class="filter-input">
                 <label>Fact type: </label>
                 <div>
-                    <input type="text" placeholder="Search" ng-focus="showFactOptions()" ng-blur="closeActionMenu()" ng-model="$parent.type" />
+                    <input type="text" placeholder="Search" ng-focus="showFactOptions()" ng-blur="closeActionMenu()" ng-model="$parent.fact" />
                     <div class="suggestion-box">
-                        <div class="suggestion" ng-if="factOptionsShown" ng-repeat="factOption in $parent.factOptions | filter:$parent.type" ng-click="selectFromSuggestedList(factOption)">
+                        <div class="suggestion" ng-if="factOptionsShown" ng-repeat="factOption in $parent.factOptions.facts | filter:$parent.fact" ng-click="selectFromSuggestedList(factOption, 'fact')">
                             {{factOption}}
                         </div>
                     </div>
                 </div>
             </div>
-            <div ng-if="$parent.type">
-                <div ng-if="$parent.type === 'SimpleFact'" class="filter-input">
+            <div ng-if="$parent.fact">
+                <div ng-if="$parent.fact === 'SimpleFact'" class="filter-input">
                     <label>Name: </label>
                     <div>
                         <input type="text" ng-focus="showNameOptions()" ng-blur="closeActionMenu()" ng-model="$parent.name" />
                         <div class="suggestion-box">
-                            <div class="suggestion" ng-if="nameOptionsShown" ng-repeat="nameOption in $parent.nameOptions | filter:$parent.name" ng-click="selectFromSuggestedList(nameOption)">
+                            <div class="suggestion" ng-if="nameOptionsShown" ng-repeat="nameOption in $parent.factOptions[$parent.fact] | filter:$parent.name" ng-click="selectFromSuggestedList(nameOption, 'name')">
                                 {{nameOption}}
                             </div>
                         </div>
@@ -44,9 +44,9 @@
                 <div class="filter-input">
                     <label>Value: </label>
                     <div>
-                        <input type="text" ng-focus="showValueOptions()" ng-blur="closeActionMenu()" ng-model="$parent.value" />
+                        <input type="text" ng-focus="showValueOptions()" ng-blur="closeActionMenu()" ng-model="$parent.$parent.value" />
                         <div class="suggestion-box">
-                            <div class="suggestion" ng-if="valueOptionsShown" ng-repeat="valueOption in $parent.valueOptions | filter:$parent.value" ng-click="selectFromSuggestedList(valueOption)">
+                            <div class="suggestion" ng-if="$parent.valueOptionsShown" ng-repeat="valueOption in $parent.factOptions[$parent.fact] | filter:$parent.value" ng-click="selectFromSuggestedList(valueOption, 'value')">
                                 {{valueOption}}
                             </div>
                         </div>

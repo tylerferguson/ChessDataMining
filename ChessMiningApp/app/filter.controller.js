@@ -4,24 +4,47 @@
     var facts = [];
     $scope.actionButtonClicked;
     $scope.optionClicked = [];
+    $scope.valueOptions = ['']
+    $scope.factOptions = {
+        facts: []
+        //key value paris of individual facts
+    };
 
     $(document).ready(function () {
         $http.get('/api/AssociationRules', { 'Content-Type': 'application / json' })
             .then(function (response) {
-                $scope.factOptions = response.data;
+                //var index = response.data.indexOf("SimpleFact");
+                //response.data.splice(index, 0, "WhiteFact", "BlackFact", "ResultFact");
+                response.data.forEach(function (elem) {
+                    $scope.factOptions.facts.push(elem.FactType);
+                    $scope.factOptions[elem.FactType] = elem.ValidParams;
+                })
             },
             function (error) {
                 console.log("get error!");
             });
     });
 
-    $scope.selectFromSuggestedList = function (type) {
-        $scope.type = type;
-        $scope.factOptionsShown = false;
+    $scope.selectFromSuggestedList = function (selection, optionType) {
+        //var simpleFacts = ['WhiteFact', 'BlackFact', 'ResultFact'];
+        //if (simpleFacts.indexOf(type) > -1) {
+        //    $scope.name = type.slice(0, type.length - 4)
+        //    type = 'SimpleFact';
+        //}
+        $scope[optionType] = selection;
+        $scope[optionType + 'OptionsShown'] = false;
     }
 
     $scope.showFactOptions = function () {
         $scope.factOptionsShown = true;
+    }
+
+    $scope.showNameOptions = function () {
+        $scope.nameOptionsShown = true;
+    }
+
+    $scope.showValueOptions = function () {
+        $scope.valueOptionsShown = true;
     }
 
     $scope.showActionMenu = function () {
@@ -65,7 +88,7 @@
 
     $scope.submitFact = function (factStage) {
         var fact = {
-            type: $scope.type,
+            type: $scope.fact,
             name: $scope.name,
             value: $scope.value
         };

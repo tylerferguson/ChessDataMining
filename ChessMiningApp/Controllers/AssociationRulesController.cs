@@ -21,14 +21,21 @@ namespace ChessMiningApp.Controllers
         public AssociationRulesController() {}
 
         //GET api/AssociationRules
-        public IEnumerable<string> GetFacts()
+        public IEnumerable<dynamic> GetFacts()
         {
             var type = typeof(IFact<ChessGame>);
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
-            var types = assemblies.SelectMany(s => s.GetTypes())
-                .Where(p => type.IsAssignableFrom(p));
-
-            return types.Select(p => p.Name);
+            return assemblies.SelectMany(s => s.GetTypes())
+                .Where(p => type.IsAssignableFrom(p))
+                .Select(t =>
+                    {
+                        var enumType = t.GetNestedType("validParam");
+                        if (enumType != null)
+                        {
+                            return new { FactType = t.Name, ValidParams = Enum.GetNames(enumType) };
+                        }
+                        return new { FactType = t.Name, ValidParams = new string[0] };
+                    });
         } 
 
         //POST api/AssociationRules/Mine
