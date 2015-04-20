@@ -9,6 +9,8 @@ namespace ChessDataMining.Facts
 {
     public class TakesFirstFact : IFact<ChessGame>
     {
+        public enum validParam { White, Black, Neither};
+
         public TakesFirstFact(string moves)
         {
             if (moves == null || !moves.Contains("x"))

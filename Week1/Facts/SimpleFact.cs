@@ -9,11 +9,23 @@ namespace ChessDataMining.Facts
     public class SimpleFact : IFact<ChessGame>, IEquatable<SimpleFact>
     {
         public string PropertyName { get; set; }
+        public enum validParam { White, Black, Result};
 
         public SimpleFact(string propertyName, string value)
         {
-            PropertyName = propertyName;
-            this.Value = value;
+            validParam enumPropertyName;
+            var parseResult = Enum.TryParse(propertyName, out enumPropertyName);
+
+            if (parseResult)
+            {
+                PropertyName = propertyName;
+                this.Value = value;
+            }
+            else
+            {
+                throw new ArgumentException();
+            }
+            
         }
 
         public override bool IsTrue(ChessGame game)
