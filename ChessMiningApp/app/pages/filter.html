@@ -32,11 +32,11 @@
                     </div>
                 </div>
             </div>
-            <div ng-if="!factOptionsShown">
+            <div ng-if="!($parent.fact && factOptionsShown)">
                 <div ng-if="$parent.fact === 'SimpleFact'" class="filter-input">
                     <label>Name: </label>
                     <div>
-                        <input type="text" placeholder="Search" ng-focus="showOptions('name')" ng-blur="closeActionMenu()" ng-model="$parent.$parent.$parent.name" />
+                        <input type="text" placeholder="Example: {{$parent.factOptions.SimpleFact.validNameParams[0]}}" ng-focus="showOptions('name')" ng-blur="closeActionMenu()" ng-model="$parent.$parent.$parent.name" />
                         <div class="suggestion-box">
                             <div class="suggestion" ng-if="$parent.$parent.$parent.name && nameOptionsShown" ng-repeat="nameOption in $parent.factOptions.SimpleFact.validNameParams | filter:$parent.name" ng-click="selectFromSuggestedList(nameOption, 'name')">
                                 {{nameOption}}
@@ -44,7 +44,7 @@
                         </div>
                     </div>
                 </div>
-                <div ng-if="!nameOptionsShown" class="filter-input">
+                <div ng-if="!($parent.$parent.name && nameOptionsShown)" class="filter-input">
                     <label>Value: </label>
                     <div>
                         <input type="text" placeholder="Search" ng-focus="showOptions('value')" ng-blur="closeActionMenu()" ng-model="$parent.$parent.$parent.value" />
