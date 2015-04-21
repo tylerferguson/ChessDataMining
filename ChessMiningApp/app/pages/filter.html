@@ -36,7 +36,7 @@
                 <div ng-if="$parent.fact === 'SimpleFact'" class="filter-input">
                     <label>Name: </label>
                     <div>
-                        <input type="text" ng-focus="showOptions('name')" ng-blur="closeActionMenu()" ng-model="$parent.name" />
+                        <input type="text" ng-focus="showOptions('name')" ng-blur="closeActionMenu()" ng-model="$parent.$parent.$parent.name" />
                         <div class="suggestion-box">
                             <div class="suggestion" ng-if="nameOptionsShown" ng-repeat="nameOption in $parent.factOptions.SimpleFact.validNameParams | filter:$parent.name" ng-click="selectFromSuggestedList(nameOption, 'name')">
                                 {{nameOption}}
