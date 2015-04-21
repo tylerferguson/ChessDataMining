@@ -202,7 +202,10 @@ input {
     border-top: none;
     border-left: none;
     border-right: none;
-    /*padding-left: 15px;*/
+}
+
+::-webkit-input-placeholder {
+    font-style: italic;
 }
 
 input:focus {
