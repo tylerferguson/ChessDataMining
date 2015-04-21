@@ -35,16 +35,8 @@
         $scope[optionType + 'OptionsShown'] = false;
     }
 
-    $scope.showFactOptions = function () {
-        $scope.factOptionsShown = true;
-    }
-
-    $scope.showNameOptions = function () {
-        $scope.nameOptionsShown = true;
-    }
-
-    $scope.showValueOptions = function () {
-        $scope.valueOptionsShown = true;
+    $scope.showOptions = function (optionType) {
+        $scope[optionType + 'OptionsShown'] = true;
     }
 
     $scope.showActionMenu = function () {
