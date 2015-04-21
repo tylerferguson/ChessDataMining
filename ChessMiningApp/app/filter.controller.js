@@ -17,7 +17,12 @@
                 //response.data.splice(index, 0, "WhiteFact", "BlackFact", "ResultFact");
                 response.data.forEach(function (elem) {
                     $scope.factOptions.facts.push(elem.FactType);
-                    $scope.factOptions[elem.FactType] = elem.ValidParams;
+                    $scope.factOptions[elem.FactType] = {};
+                    if (elem.FactType === "SimpleFact") {
+                        $scope.factOptions.SimpleFact.validNameParams = elem.ValidParams;
+                    } else {
+                        $scope.factOptions[elem.FactType].validValueParams = elem.ValidParams;
+                    }
                 })
             },
             function (error) {
@@ -26,11 +31,6 @@
     });
 
     $scope.selectFromSuggestedList = function (selection, optionType) {
-        //var simpleFacts = ['WhiteFact', 'BlackFact', 'ResultFact'];
-        //if (simpleFacts.indexOf(type) > -1) {
-        //    $scope.name = type.slice(0, type.length - 4)
-        //    type = 'SimpleFact';
-        //}
         $scope[optionType] = selection;
         $scope[optionType + 'OptionsShown'] = false;
     }
@@ -48,7 +48,6 @@
     }
 
     $scope.showActionMenu = function () {
-        console.log($(document.activeElement));
         $scope.actionButtonClicked = true;
     }
 
@@ -97,24 +96,5 @@
         appService['update' + factStage](facts);
         $scope.name = '';
         $scope.value = '';
-
-        //var indexOfFact = indexOf(fact, facts);
-
-        //if (indexOfFact > -1) {
-        //    facts.splice(indexOfFact, 1);
-        //} else {
-        //    facts.push(fact);
-        //}
-
-        //function indexOf(fact, arr) {
-        //    for (var index = 0; index < arr.length; index++) {
-        //        var candidateFact = arr[index];
-
-        //        if (candidateFact.type === fact.type && candidateFact.name === fact.name && candidateFact.value === fact.value) {
-        //            return index;
-        //        }
-        //        return -1;
-        //    }
-        //}
     }
 }]);
