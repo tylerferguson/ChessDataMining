@@ -14,7 +14,7 @@
             controller: 'FilterCtrl'  
         })
         .when('/Target', {
-            templateUrl: 'app/pages/target.html',
+            templateUrl: 'app/pages/filter.html',
             controller: 'FilterCtrl'
         })
         .when('/Mine', {

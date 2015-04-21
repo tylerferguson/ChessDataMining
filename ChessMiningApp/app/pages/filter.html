@@ -4,9 +4,20 @@
     <title></title>
 </head>
 <body>
+    <div class="filters-container">
+        <div class="filter" ng-repeat="fact in facts">
+            <div class="filter-type">{{fact.type}}</div>
+            <div class="filter-content">
+                <span ng-if="fact.name" class="filter-value">{{fact.name}} - </span>
+                <span class="filter-value">{{fact.value}}</span>
+                <button class="button remove-button" ng-click="removeFact($index)"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+    </div>
+    
     <div id="fab" class="button floating-action-button lift-shadow-soft" ng-class="{'floating-action-button-focus': actionButtonClicked}" ng-click="showActionMenu()" ng-blur="closeActionMenu()" tabindex="1">
         <span ng-if="!actionButtonClicked">+</span>
-        <form class="filter-inputs" ng-if="actionButtonClicked" name="form" id="form'" ng-submit="submitFact('Filters')" ng-click="stopPropagation($event)">
+        <form class="filter-inputs" ng-if="actionButtonClicked" name="form" id="form'" ng-submit="submitFact()" ng-click="stopPropagation($event)">
             <div class="fab-header">
                 <span>Add Filter</span>
             </div>
@@ -46,7 +57,7 @@
                 </div>
             </div>
 
-            <input class="button add-button" type="submit" value="Add" />
+            <input class="button add-button" type="submit" value="Add" ng-blur="closeActionMenu()" />
         </form>
     </div>
 </body>

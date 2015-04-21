@@ -1,7 +1,9 @@
-﻿angular.module('ChessMining').controller('FilterCtrl', ['$scope', '$http', 'appService', function ($scope, $http, appService) {
+﻿angular.module('ChessMining').controller('FilterCtrl', ['$scope', '$http', '$location', 'appService', function ($scope, $http, $location, appService) {
 
     var self = this;
-    var facts = [];
+    var factStage = $location.path().replace("/", "") + 's';
+
+    $scope.facts = appService['get' + factStage]() || [];
     $scope.actionButtonClicked;
     $scope.optionClicked = [];
     $scope.valueOptions = ['']
@@ -77,16 +79,21 @@
 
     }
 
-    $scope.submitFact = function (factStage) {
+    $scope.submitFact = function () {
         var fact = {
             type: $scope.fact,
             name: $scope.name,
             value: $scope.value
         };
 
-        facts.push(fact);
-        appService['update' + factStage](facts);
+        $scope.facts.push(fact);
+        appService['update' + factStage]($scope.facts);
+        $scope.fact = '';
         $scope.name = '';
         $scope.value = '';
+    }
+
+    $scope.removeFact = function (index) {
+        $scope.facts.splice(index, 1);
     }
 }]);
