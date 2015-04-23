@@ -3,20 +3,21 @@
     var self = this;
     var factStage = $location.path().replace("/", "") + 's';
 
+    $scope.fact = '';
+    $scope.name = '';
+    $scope.value = '';
     $scope.facts = appService['get' + factStage]() || [];
     $scope.actionButtonClicked;
     $scope.optionClicked = [];
     $scope.valueOptions = ['']
     $scope.factOptions = {
         facts: []
-        //key value paris of individual facts
+        //key value pairs of individual facts
     };
 
     $(document).ready(function () {
         $http.get('/api/AssociationRules', { 'Content-Type': 'application / json' })
             .then(function (response) {
-                //var index = response.data.indexOf("SimpleFact");
-                //response.data.splice(index, 0, "WhiteFact", "BlackFact", "ResultFact");
                 response.data.forEach(function (elem) {
                     $scope.factOptions.facts.push(elem.FactType);
                     $scope.factOptions[elem.FactType] = {};
