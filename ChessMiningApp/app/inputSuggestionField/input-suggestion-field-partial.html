@@ -1,9 +1,9 @@
-﻿<label>Fact type: </label>
+﻿<label>{{label}}: </label>
 <div>
-    <input type="text" placeholder="Example: OpeningFact" ng-focus="showOptions('fact')" ng-blur="closeActionMenu()" ng-model="fact" />
-    <div class="suggestion-box">
-        <div class="suggestion" ng-show="fact && factOptionsShown" ng-repeat="factOption in factOptions.facts | filter:optionType" ng-click="selectFromSuggestedList(factOption, 'fact')">
-            {{factOption}}
+    <input type="text" placeholder="Search" ng-focus="showOptions()" ng-blur="closeActionMenu()" ng-model="optionType" />
+    <div class="suggestion-box lift-shadow-soft">
+        <div class="suggestion" ng-show="optionType && optionsShown" ng-repeat="option in options | filter:optionType" ng-click="selectFromSuggestedList(option)">
+            {{option}}
         </div>
     </div>
 </div>

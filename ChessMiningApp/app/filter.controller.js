@@ -33,14 +33,14 @@
             });
     });
 
-    $scope.selectFromSuggestedList = function (selection, optionType) {
-        $scope[optionType] = selection;
-        $scope[optionType + 'OptionsShown'] = false;
-    }
+    //$scope.selectFromSuggestedList = function (selection, optionType) {
+    //    $scope[optionType] = selection;
+    //    $scope[optionType + 'OptionsShown'] = false;
+    //}
 
-    $scope.showOptions = function (optionType) {
-        $scope[optionType + 'OptionsShown'] = true;
-    }
+    //$scope.showOptions = function (optionType) {
+    //    $scope[optionType + 'OptionsShown'] = true;
+    //}
 
     $scope.showActionMenu = function () {
         $scope.actionButtonClicked = true;

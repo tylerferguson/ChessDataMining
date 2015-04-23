@@ -23,9 +23,9 @@
             </div>
             
             <!--this is where the directive comes in-->
-            <input-suggestion-field class="filter-input" input-type="fact"></input-suggestion-field>
+            <input-suggestion-field class="filter-input" input-label="Fact" input-type="fact" close-action-menu="closeActionMenu()" options="factOptions.facts"></input-suggestion-field>
             
-            <div ng-show="!(fact && factOptionsShown)">
+            <div>
                 <div ng-show="fact === 'SimpleFact'" class="filter-input">
                     <label>Name: </label>
                     <div>

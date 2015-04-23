@@ -186,7 +186,7 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
     z-index: 2;
-    color: rgba(0, 0, 0, 0.26);
+    color: rgba(0, 0, 0, 0.5);
     background-color: white;
     position: absolute;
     margin-top: 3px;

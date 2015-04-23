@@ -1,19 +1,23 @@
 ﻿angular.module('ChessMining').directive("inputSuggestionField", function () {
     return {
         restrict: 'E',
-        templateUrl: 'app/inputSuggestionfield/input-suggestion-field-partial.html'
-        //link: function($scope, $element, $attrs)  {
+        templateUrl: 'app/inputSuggestionfield/input-suggestion-field-partial.html',
+        scope: {
+            label: '@inputLabel',
+            optionType: '=inputType',
+            options: '=options',
+            closeActionMenu: '&'
+        },
+        controller: ['$scope', function($scope)  {
 
-        //    //$scope.optionType = $attrs.inputType;
+            $scope.selectFromSuggestedList = function (selection) {
+                $scope.optionType = selection;
+                $scope.optionsShown = false;
+            }
 
-        //    //$scope.selectFromSuggestedList = function (selection) {
-        //    //    $scope.$parent[$scope.optionType] = selection;
-        //    //    $scope.$parent[$scope.optionType + 'OptionsShown'] = false;
-        //    //}
-
-        //    //$scope.showOptions = function () {
-        //    //    $scope.$parent[$scope.optionType + 'OptionsShown'] = true;
-        //    //}
-        //}
+            $scope.showOptions = function () {
+                $scope.optionsShown = true;
+            }
+        }]
     }
 })
