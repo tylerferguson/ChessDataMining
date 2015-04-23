@@ -72,6 +72,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\addFilterActionButton\add-filter-action-button-partial.html" />
+    <Content Include="app\addFilterActionButton\addFilterActionButton.directive.js" />
     <Content Include="app\app.module.js" />
     <Content Include="app\app.routes.js" />
     <Content Include="app\app.service.js" />

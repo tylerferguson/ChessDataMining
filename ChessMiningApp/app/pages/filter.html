@@ -14,8 +14,10 @@
             </div>
         </div>
     </div>
+
+    <add-filter-action-button></add-filter-action-button>
     
-    <div id="fab" class="button floating-action-button lift-shadow-soft" ng-class="{'floating-action-button-focus': actionButtonClicked}" ng-click="showActionMenu()" ng-blur="closeActionMenu()" tabindex="1000">
+    <!--<div id="fab" class="button floating-action-button lift-shadow-soft" ng-class="{'floating-action-button-focus': actionButtonClicked}" ng-click="showActionMenu()" ng-blur="closeActionMenu()" tabindex="1000">
         <span ng-show="!actionButtonClicked">+</span> 
         <form class="filter-inputs" ng-show="actionButtonClicked" name="form" id="form'" ng-submit="submitFact()" ng-click="stopPropagation($event)">
             <div class="fab-header">
@@ -49,6 +51,6 @@
 
             <input class="button add-button" type="submit" value="Add" ng-blur="closeActionMenu()" />
         </form>
-    </div>
+    </div>-->
 </body>
 </html>
