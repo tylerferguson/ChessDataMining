@@ -18,6 +18,6 @@
             $scope.showOptions = function () {
                 $scope.optionsShown = true;
             }
-        }]
+        }] 
     }
 })

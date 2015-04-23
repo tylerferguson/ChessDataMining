@@ -78,6 +78,8 @@
     <Content Include="app\app.routes.js" />
     <Content Include="app\app.service.js" />
     <Content Include="app\data.controller.js" />
+    <Content Include="app\filterPane\filter-pane.html" />
+    <Content Include="app\filterPane\filterPane.directive.js" />
     <Content Include="app\filter.controller.js" />
     <Content Include="app\home.controller.js" />
     <Content Include="app\inputSuggestionField\input-suggestion-field-partial.html" />

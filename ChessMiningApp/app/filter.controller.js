@@ -69,8 +69,4 @@
         $scope.name = '';
         $scope.value = '';
     }
-
-    $scope.removeFact = function (index) {
-        $scope.facts.splice(index, 1);
-    }
 }]);
