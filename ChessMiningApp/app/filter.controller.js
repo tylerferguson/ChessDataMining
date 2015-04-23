@@ -8,8 +8,6 @@
     $scope.value = '';
     $scope.facts = appService['get' + factStage]() || [];
     $scope.actionButtonClicked;
-    $scope.optionClicked = [];
-    $scope.valueOptions = ['']
     $scope.factOptions = {
         facts: []
         //key value pairs of individual facts
@@ -32,15 +30,6 @@
                 console.log("get error!");
             });
     });
-
-    //$scope.selectFromSuggestedList = function (selection, optionType) {
-    //    $scope[optionType] = selection;
-    //    $scope[optionType + 'OptionsShown'] = false;
-    //}
-
-    //$scope.showOptions = function (optionType) {
-    //    $scope[optionType + 'OptionsShown'] = true;
-    //}
 
     $scope.showActionMenu = function () {
         $scope.actionButtonClicked = true;
@@ -65,19 +54,6 @@
 
     $scope.preventDefault = function (event) {
         event.preventDefault();
-    }
-
-    $scope.toggleShowForm = function (index) {
-        for (i = 0; i < $scope.optionClicked.length; i++) {
-            if (i == index) {
-                continue;
-            }
-            if ($scope.optionClicked[i]) {
-                $scope.optionClicked[i] = false;
-            }
-        };
-        $scope.optionClicked[index] = $scope.optionClicked[index] ? false : true;
-
     }
 
     $scope.submitFact = function () {

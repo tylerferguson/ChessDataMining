@@ -16,40 +16,36 @@
     </div>
     
     <div id="fab" class="button floating-action-button lift-shadow-soft" ng-class="{'floating-action-button-focus': actionButtonClicked}" ng-click="showActionMenu()" ng-blur="closeActionMenu()" tabindex="1000">
-        <span ng-show="!actionButtonClicked">+</span>
+        <span ng-show="!actionButtonClicked">+</span> 
         <form class="filter-inputs" ng-show="actionButtonClicked" name="form" id="form'" ng-submit="submitFact()" ng-click="stopPropagation($event)">
             <div class="fab-header">
                 <span>Add Filter</span>
             </div>
             
-            <!--this is where the directive comes in-->
-            <input-suggestion-field class="filter-input" input-label="Fact" input-type="fact" close-action-menu="closeActionMenu()" options="factOptions.facts"></input-suggestion-field>
-            
-            <div>
-                <div ng-show="fact === 'SimpleFact'" class="filter-input">
-                    <label>Name: </label>
-                    <div>
-                        <input type="text" placeholder="Example: {{factOptions.SimpleFact.validNameParams[0]}}" ng-focus="showOptions('name')" ng-blur="closeActionMenu()" ng-model="name" />
-                        <div class="suggestion-box">
-                            <div class="suggestion" ng-show="name && nameOptionsShown" ng-repeat="nameOption in factOptions.SimpleFact.validNameParams | filter: name" ng-click="selectFromSuggestedList(nameOption, 'name')">
-                                {{nameOption}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div ng-show="!(name && nameOptionsShown)" class="filter-input">
-                    <label>Value: </label>
-                    <div>
-                        <input type="text" placeholder="Search" ng-focus="showOptions('value')" ng-blur="closeActionMenu()" ng-model="value" />
-                        <div class="suggestion-box">
-                            <div class="suggestion" 
-                                 ng-show="value && valueOptionsShown" ng-repeat="valueOption in factOptions[fact].validValueParams | filter:value" ng-click="selectFromSuggestedList(valueOption, 'value')">
-                                {{valueOption}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <input-suggestion-field 
+                class="filter-input" 
+                input-label="Fact" 
+                input-type="fact" 
+                close-action-menu="closeActionMenu()" 
+                options="factOptions.facts">
+            </input-suggestion-field>
+
+            <input-suggestion-field 
+                ng-show="fact === 'SimpleFact'"
+                class="filter-input"
+                input-label="Name" 
+                input-type="name" 
+                close-action-menu="closeActionMenu()" 
+                options="factOptions.SimpleFact.validNameParams">
+            </input-suggestion-field>
+
+            <input-suggestion-field 
+                class="filter-input" 
+                input-label="Value" 
+                input-type="value" 
+                close-action-menu="closeActionMenu()" 
+                options="factOptions[fact].validValueParams">
+            </input-suggestion-field>
 
             <input class="button add-button" type="submit" value="Add" ng-blur="closeActionMenu()" />
         </form>
