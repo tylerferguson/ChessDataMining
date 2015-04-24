@@ -5,14 +5,6 @@
 
     $scope.facts = appService['get' + factStage]() || [];
 
-    $scope.stopPropagation = function (event) {
-        event.stopPropagation();
-    }
-
-    $scope.preventDefault = function (event) {
-        event.preventDefault();
-    }
-
     $scope.updateFilters = function () {
         appService['update' + factStage]($scope.facts);
     }

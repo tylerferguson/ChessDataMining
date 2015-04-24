@@ -1,7 +1,6 @@
 ﻿angular.module('ChessMining').controller('DataCtrl', ['$scope', 'appService', function ($scope, appService) {
 
     $scope.submitDataFile = function (event) {
-        event.preventDefault();
         var file = $("#fileInput")[0].files[0];
         var reader = new FileReader();
 
