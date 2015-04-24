@@ -84,6 +84,7 @@
     <Content Include="app\home.controller.js" />
     <Content Include="app\inputSuggestionField\input-suggestion-field-partial.html" />
     <Content Include="app\inputSuggestionField\inputSuggestionField.directive.js" />
+    <Content Include="app\keyThroughOptions\keyThroughOptions.directive.js" />
     <Content Include="app\mine.controller.js" />
     <Content Include="app\mining.controller.js" />
     <Content Include="app\pages\data.html" />

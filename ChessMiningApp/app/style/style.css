@@ -197,6 +197,10 @@ body {
     line-height: 1.25em;
 }
 
+.suggestion-focus {
+    background-color: #FFF8E1;
+}
+
 input {
     line-height: 1.75em;
     border-top: none;
