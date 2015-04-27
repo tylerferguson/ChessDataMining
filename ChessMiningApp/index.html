@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700,100' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="app/style/style.css" />
+    <link rel="stylesheet" href="app//assets/css/style.css" />
     <title>Chess Mining App</title>
 </head>
 <body ng-app="ChessMining">
@@ -13,28 +13,29 @@
         <span ng-repeat="stage in stages">
             <a class="button stage" ng-href="#/{{stage}}" ng-click="selectStage($index)" ng-class="{'selected': stageSelected === $index}">{{stage}}</a>
             <i ng-if="!$last" class="fa fa-angle-right"></i>
-        </span>
+        </span> 
     </div>
     <div class="side-nav"></div>
     <div class="content-container">
         <div ng-view class="content"></div>
     </div>
     
+    <!-- app dependencies -->
     <script src="Scripts/jquery-2.1.3.min.js"></script>
     <script src="Scripts/angular.min.js"></script>
     <script src="Scripts/angular-route.min.js"></script>
+
     <script src="app/app.module.js"></script>
     <script src="app/app.service.js"></script>
     <script src="app/app.routes.js"></script>
-    <script src="app/inputSuggestionField/inputSuggestionField.directive.js"></script>
-    <script src="app/addFilterActionButton/addFilterActionButton.directive.js"></script>
-    <script src="app/filterPane/filterPane.directive.js"></script>
-    <script src="app/keyThroughOptions/keyThroughOptions.directive.js"></script>
-    <script src="app/home.controller.js"></script>
-    <script src="app/data.controller.js"></script>
-    <script src="app/filter.controller.js"></script>
-    <script src="app/mine.controller.js"></script>
-    <script src="app/mining.controller.js"></script>
-    <script src="app/toolbar.controller.js"></script>
+    <script src="app/shared/inputSuggestionField/inputSuggestionField.directive.js"></script>
+    <script src="app/shared/addFilterActionButton/addFilterActionButton.directive.js"></script>
+    <script src="app/shared/filterPane/filterPane.directive.js"></script>
+    <script src="app/shared/keyThroughOptions/keyThroughOptions.directive.js"></script>
+    <script src="app/components/home/home.controller.js"></script>
+    <script src="app/components/data/data.controller.js"></script>
+    <script src="app/components/filter/filter.controller.js"></script>
+    <script src="app/components/mine/mine.controller.js"></script>
+    <script src="app/components/toolbar/toolbar.controller.js"></script>
 </body>
 </html>

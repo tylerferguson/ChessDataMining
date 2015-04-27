@@ -2,23 +2,23 @@
 
     $routeProvider
         .when('/', {
-            templateUrl: 'app/pages/home.html',
+            templateUrl: 'app/components/home/home.html',
             controller: 'HomeCtrl'
         })
         .when('/Data', {
-            templateUrl: 'app/pages/data.html',
+            templateUrl: 'app/components/data/data.html',
             controller: 'DataCtrl'
         })
         .when('/Filter', {
-            templateUrl: 'app/pages/filter.html',
+            templateUrl: 'app/components/filter/filter.html',
             controller: 'FilterCtrl'  
         })
         .when('/Target', {
-            templateUrl: 'app/pages/filter.html',
+            templateUrl: 'app/components/filter/filter.html',
             controller: 'FilterCtrl'
         })
         .when('/Mine', {
-            templateUrl: 'app/pages/mine.html',
+            templateUrl: 'app/components/mine/mine.html',
             controller: 'MineCtrl'
         })
         .otherwise('/');

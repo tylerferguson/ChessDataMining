@@ -72,27 +72,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\addFilterActionButton\add-filter-action-button-partial.html" />
-    <Content Include="app\addFilterActionButton\addFilterActionButton.directive.js" />
+    <Content Include="app\shared\addFilterActionButton\add-filter-action-button-partial.html" />
+    <Content Include="app\shared\addFilterActionButton\addFilterActionButton.directive.js" />
     <Content Include="app\app.module.js" />
     <Content Include="app\app.routes.js" />
     <Content Include="app\app.service.js" />
-    <Content Include="app\data.controller.js" />
-    <Content Include="app\filterPane\filter-pane.html" />
-    <Content Include="app\filterPane\filterPane.directive.js" />
-    <Content Include="app\filter.controller.js" />
-    <Content Include="app\home.controller.js" />
-    <Content Include="app\inputSuggestionField\input-suggestion-field-partial.html" />
-    <Content Include="app\inputSuggestionField\inputSuggestionField.directive.js" />
-    <Content Include="app\keyThroughOptions\keyThroughOptions.directive.js" />
-    <Content Include="app\mine.controller.js" />
-    <Content Include="app\mining.controller.js" />
-    <Content Include="app\pages\data.html" />
-    <Content Include="app\pages\filter.html" />
-    <Content Include="app\pages\home.html" />
-    <Content Include="app\pages\mine.html" />
-    <Content Include="app\style\style.css" />
-    <Content Include="app\toolbar.controller.js" />
+    <Content Include="app\components\data\data.controller.js" />
+    <Content Include="app\shared\filterPane\filter-pane.html" />
+    <Content Include="app\shared\filterPane\filterPane.directive.js" />
+    <Content Include="app\components\filter\filter.controller.js" />
+    <Content Include="app\components\home\home.controller.js" />
+    <Content Include="app\shared\inputSuggestionField\input-suggestion-field-partial.html" />
+    <Content Include="app\shared\inputSuggestionField\inputSuggestionField.directive.js" />
+    <Content Include="app\shared\keyThroughOptions\keyThroughOptions.directive.js" />
+    <Content Include="app\components\mine\mine.controller.js" />
+    <Content Include="app\components\data\data.html" />
+    <Content Include="app\components\filter\filter.html" />
+    <Content Include="app\components\home\home.html" />
+    <Content Include="app\components\mine\mine.html" />
+    <Content Include="app\assets\css\style.css" />
+    <Content Include="app\components\toolbar\toolbar.controller.js" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
     <Content Include="Scripts\angular-route.js" />

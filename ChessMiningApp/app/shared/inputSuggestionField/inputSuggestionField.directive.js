@@ -1,7 +1,7 @@
 ﻿angular.module('ChessMining').directive("inputSuggestionField", function () {
     return {
         restrict: 'E',
-        templateUrl: 'app/inputSuggestionfield/input-suggestion-field-partial.html',
+        templateUrl: 'app/shared/inputSuggestionfield/input-suggestion-field-partial.html',
         scope: {
             label: '@inputLabel',
             optionType: '=inputType',

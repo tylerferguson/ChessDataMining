@@ -1,7 +1,7 @@
 ﻿angular.module('ChessMining').directive('filterPane', function () {
     return {
         restrict: 'E',
-        templateUrl: 'app/filterPane/filter-pane.html',
+        templateUrl: 'app/shared/filterPane/filter-pane.html',
         scope: {
             fact: '=fact',
             facts: '=facts'

@@ -1,7 +1,7 @@
 ﻿angular.module('ChessMining').directive("addFilterActionButton", function () {
     return {
         restrict: 'E',
-        templateUrl: 'app/addFilterActionButton/add-filter-action-button-partial.html',
+        templateUrl: 'app/shared/addFilterActionButton/add-filter-action-button-partial.html',
         scope: {
             facts: '=filters',
             updateFilters: '&'
