@@ -5,9 +5,9 @@
             
             var current = -1;
             $elem.on('keydown', function (event) {
-                if (event.which === 40) {
+                if (event.which === 40 && current < $scope.filtered.length -1) {
                     current++;
-                } else if (event.which === 38) {
+                } else if (event.which === 38 && current > 0) {
                     current--;
                 } else if (event.which === 13) {
                     if ($scope.label !== 'Value') {

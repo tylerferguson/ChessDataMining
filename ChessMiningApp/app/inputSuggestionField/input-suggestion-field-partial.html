@@ -2,7 +2,7 @@
 <div>
     <input class="suggestion-field-input" type="text" placeholder="Search" ng-focus="showOptions()" ng-blur="closeActionMenu()" ng-model="optionType" key-through-options>
     <div class="suggestion-box lift-shadow-soft">
-        <div class="suggestion" ng-show="optionType && optionsShown" ng-repeat="option in options | filter:optionType" ng-click="selectFromSuggestedList(option)" tabindex="-2">
+        <div class="suggestion" ng-show="optionType && optionsShown" ng-repeat="option in filtered = (options | filter:optionType)" ng-click="selectFromSuggestedList(option)" tabindex="-2">
             {{option}}
         </div>
     </div>
