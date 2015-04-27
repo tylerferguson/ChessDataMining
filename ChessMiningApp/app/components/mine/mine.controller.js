@@ -12,7 +12,6 @@
 
         $http.post('/api/AssociationRules/Mine', dataTransferObject, { 'Content-Type': 'application / json' })
             .then(function (response) {
-                console.log($scope.dataFile);
                 $scope.rules = [];
                 response.data.forEach(function (rule) {
                     $scope.rules.push(rule);

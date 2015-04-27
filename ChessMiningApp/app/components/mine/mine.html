@@ -8,8 +8,26 @@
     <input type="number" ng-model="minconf" />
 
     <button ng-click="getAssociationRules()">Mine!</button>
-    <div ng-repeat="rule in rules">
-        {{rule.Value}}
-    </div>
+
+    <table id="results-table">
+        <thead>
+            <tr>
+                <th>Rule</th>
+                <th>Confidence</th>
+                <th>AbsoluteSupport</th>
+                <th>RelativeSupport</th>
+                <th>LiftCorrelation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="rule in rules">
+                <td>{{rule.Value}}</td>
+                <td>{{rule.Confidence | number}}</td>
+                <td>{{rule.AbsoluteSupport | number}}</td>
+                <td>{{rule.RelativeSupport | number}}</td>
+                <td>{{rule.LiftCorrelation | number}}</td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
