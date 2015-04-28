@@ -56,7 +56,8 @@ namespace ChessMiningApp.Controllers
                     AbsoluteSupport = x.AbsoluteSupport,
                     Confidence = x.Confidence,
                     LiftCorrelation = x.LiftCorrelation,
-                    RelativeSupport = x.RelativeSupport
+                    RelativeSupport = x.RelativeSupport,
+                    ProbabilityBefore = x.Right.RelativeSupport
                 };
             });
         }

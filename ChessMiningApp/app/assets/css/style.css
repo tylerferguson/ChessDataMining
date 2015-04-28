@@ -30,10 +30,14 @@ body {
     padding: 64px 0 0 240px;
     background-color: #FAFAFA;
     overflow: auto;
-max-height: 100vh;
+    max-height: 100vh;
+    display: flex;
 }
 
 .content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
 }
 
 .button.selected {
@@ -227,9 +231,34 @@ input:focus {
     width: 75%;
     border-collapse: separate;
     border-spacing: 20px;
-    margin: auto;
+    margin-left: 40px;
 }
 
-td {
-    border-spacing: 20px;
+td.number {
+    text-align: center;
+}
+
+.mine-input {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.mining-param-fields {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mining-param-fields > input{
+    margin-left: 20px;
+}
+
+img {
+    height: 100px;
+    width: auto;
+}
+
+.mine-button {
+    width: 100px;
 }

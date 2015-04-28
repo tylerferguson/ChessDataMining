@@ -12,5 +12,6 @@ namespace ChessMiningApp.Models
         public Double RelativeSupport { get; set; }
         public Double Confidence { get; set; }
         public Double LiftCorrelation { get; set; }
+        public Double ProbabilityBefore { get; set; }
     }
 }

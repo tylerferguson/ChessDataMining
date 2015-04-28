@@ -72,6 +72,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\assets\img\pickaxe-512.png" />
     <Content Include="app\shared\addFilterActionButton\add-filter-action-button-partial.html" />
     <Content Include="app\shared\addFilterActionButton\addFilterActionButton.directive.js" />
     <Content Include="app\app.module.js" />

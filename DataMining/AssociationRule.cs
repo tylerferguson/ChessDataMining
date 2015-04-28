@@ -60,9 +60,7 @@ namespace DataMining
 
         public override string ToString()
         {
-            return "Given " + Left + " then " + Right + "\n" + " ( " + "support: " + AbsoluteSupport + ")" + 
-                "\n" + "Probablity Before: " + Right.RelativeSupport + ", After: " + Confidence + ", " 
-                + "Lift correlation : " + LiftCorrelation + ")" + "\n";
+            return "Given " + Left + " then " + Right;
         }
     }
 }

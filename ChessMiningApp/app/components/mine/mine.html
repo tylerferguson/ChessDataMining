@@ -4,12 +4,20 @@
     <title></title>
 </head>
 <body>
-    <input type="number" ng-model="minsup" />
-    <input type="number" ng-model="minconf" />
+    <div class="mine-input" ng-hide="rules[0]">
+        <div class="mining-param-fields">
+            <label>Minimum Support</label>
+            <input type="number" ng-model="minsup" />
+        </div>
+        <div class="mining-param-fields">
+            <label>Minimum Confidence</label>
+            <input type="number" ng-model="minconf" />
+        </div>
 
-    <button ng-click="getAssociationRules()">Mine!</button>
+        <button class="button mine-button" ng-click="getAssociationRules()"><img src="/app/assets/img/pickaxe-512.png" /></button>
+    </div>
 
-    <table id="results-table">
+    <table id="results-table" ng-show="rules[0]">
         <thead>
             <tr>
                 <th>Rule</th>
@@ -17,15 +25,17 @@
                 <th>AbsoluteSupport</th>
                 <th>RelativeSupport</th>
                 <th>LiftCorrelation</th>
+                <th>ProbabilityBefore</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="rule in rules">
                 <td>{{rule.Value}}</td>
-                <td>{{rule.Confidence | number}}</td>
-                <td>{{rule.AbsoluteSupport | number}}</td>
-                <td>{{rule.RelativeSupport | number}}</td>
-                <td>{{rule.LiftCorrelation | number}}</td>
+                <td class="number">{{rule.Confidence | number}}</td>
+                <td class="number">{{rule.AbsoluteSupport | number}}</td>
+                <td class="number">{{rule.RelativeSupport | number}}</td>
+                <td class="number">{{rule.LiftCorrelation | number}}</td>
+                <td class="number">{{rule.ProbabilityBefore | number}}</td>
             </tr>
         </tbody>
     </table>

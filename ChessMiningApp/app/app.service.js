@@ -7,14 +7,17 @@
             updateData: updateData,
             updateFilters: updateFilters,
             updateTargets: updateTargets,
+            updateResults: updateResults,
             getData: getData,
             getFilters: getFilters,
-            getTargets: getTargets
+            getTargets: getTargets,
+            getResults: getResults
         }
 
         var data;
         var filters;
         var targets;
+        var results;
 
         function updateData(newData) {
             data = newData;
@@ -28,6 +31,10 @@
             targets = newTargets;
         }
 
+        function updateResults(newResults) {
+            results = newResults;
+        }
+        
         function getData() {
             return data;
         }
@@ -38,6 +45,10 @@
 
         function getTargets() {
             return targets;
+        }
+
+        function getResults() {
+            return results;
         }
 
 
