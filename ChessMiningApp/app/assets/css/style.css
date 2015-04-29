@@ -38,6 +38,7 @@ body {
     flex-grow: 1;
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 .button.selected {
@@ -83,16 +84,14 @@ body {
     height: 80px;
     width: 80px;
     background-color: #FFC400;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-size: 30px;
     font-weight: 400;
     color: white;
     position: absolute;
-    margin: 50px;
-    right: 0;
-    bottom: 0;
+    margin-top: 100px;
+    left: 0;
+    top: 0;
+    transform: translateX(-40px);
 
     transition-duration: .2s;
     transition-property: all;
@@ -121,6 +120,11 @@ body {
 
 .filters-container {
     margin: 40px;
+}
+
+.filters {
+    height: inherit;
+    width: inherit;
 }
 
 .filter {
@@ -242,6 +246,9 @@ td.number {
     align-self: center;
     display: flex;
     flex-direction: column;
+    background-color: white;
+    padding: 30px;
+    border-radius: 5px;
 }
 
 .mining-param-fields {
@@ -252,6 +259,8 @@ td.number {
 
 .mining-param-fields > input{
     margin-left: 20px;
+    background-color: transparent;
+
 }
 
 img {
@@ -261,4 +270,13 @@ img {
 
 .mine-button {
     width: 100px;
+    align-self: center;
+}
+
+add-filters{
+    position: relative;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

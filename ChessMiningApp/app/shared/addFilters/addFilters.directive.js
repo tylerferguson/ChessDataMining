@@ -1,38 +1,17 @@
-﻿angular.module('ChessMining').directive("addFilterActionButton", function () {
+﻿angular.module('ChessMining').directive("addFilters", function () {
     return {
         restrict: 'E',
-        templateUrl: 'app/shared/addFilterActionButton/add-filter-action-button-partial.html',
-        scope: {
-            facts: '=filters',
-            updateFilters: '&'
-        },
+        templateUrl: 'app/shared/addFilters/add-filters.html',
         controller: ['$scope', '$http', function ($scope, $http) {
 
             $scope.fact = '';
             $scope.name = '';
             $scope.value = '';
-            $scope.actionButtonClicked;
             $scope.factOptions = {
                 facts: []
                 //key value pairs of individual facts
             };
 
-            $scope.showActionMenu = function () {
-                $scope.actionButtonClicked = true;
-            }
-
-            $scope.closeActionMenu = function () {
-                setTimeout(function () {
-                    var focus = $(document.activeElement);
-                    if (focus.is("#fab") || $('#fab').has(focus).length) {
-                        console.log("still focused");
-                    } else {
-                        $scope.$apply(function () {
-                            $scope.actionButtonClicked = false;
-                        })
-                    }
-                }, 0);
-            }
 
             $scope.submitFact = function () {
                 var fact = {
