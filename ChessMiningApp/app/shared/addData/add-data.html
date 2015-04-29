@@ -1,0 +1,12 @@
+﻿<i class="fa fa-folder-open" ng-show="!$parent.actionButtonClicked"></i>
+<form id="data-form" ng-submit="submitDataFile($event)" ng-show="$parent.actionButtonClicked">
+    <div class="fab-header">
+        <span>Add Data</span>
+    </div>
+    <input type="file" name="fileInput" id="fileInput" required />
+    <input class="button add-button" type="submit" value="Upload" ng-blur="$parent.closeActionMenu()" />
+</form>
+
+<!--<form id="data-form" ng-submit="submitDataFile($event)">
+    <input type="file" onchange="$('#data-form').submit()" name="fileInput" id="fileInput" required />
+</form>-->

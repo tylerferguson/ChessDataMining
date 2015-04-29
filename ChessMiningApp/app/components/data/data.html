@@ -4,9 +4,10 @@
     <title></title>
 </head>
 <body>
-    <div class="floating-action-button"></div>
-    <form id="data-form" ng-submit="submitDataFile($event)">
-        <input type="file" onchange="$('#data-form').submit()" name="fileInput" id="fileInput" required />
-    </form>
+    <floating-action-button>
+        <add-data></add-data>
+    </floating-action-button>
+
+    <pre>{{dataFile.displayData}}</pre>
 </body>
 </html>
