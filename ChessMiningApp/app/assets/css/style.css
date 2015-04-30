@@ -11,7 +11,7 @@ body {
 .toolbar {
     position: absolute;
     z-index: 1;
-    background-color: #4CAF50;
+    background-color: #9E9E9E;
     height: 64px;
     width: 100vw;
     display: flex;
@@ -84,7 +84,7 @@ body {
     border-radius: 50%;
     height: 80px;
     width: 80px;
-    background-color: #FFC400;
+    background-color: #2979FF;
     font-size: 30px;
     font-weight: 400;
     color: white;
@@ -110,7 +110,7 @@ body {
 .fab-header {
     height: 40px;
     width: 100%;
-    background-color: #4CAF50;
+    background-color: #2979FF;
     color: white;
     display: flex;
     align-items: center;
@@ -132,7 +132,7 @@ body {
     width: 50vw;
     margin: 10px;
     font-size: 20px;
-    border: 1px solid black;
+    border: none;
     background-color: white;
     min-height: 80px;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 2px;
@@ -148,10 +148,10 @@ body {
 
 .filter-type {
     padding: 5px;
-    border-bottom: 2px solid #FFC400;
+    border-bottom: 2px solid #2962FF;
 }
 
-.filter-inputs {
+.filter-inputs, .mine-inputs {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -178,7 +178,7 @@ body {
    display: flex;
    justify-content: center;
    align-content: center;
-   color: #FFAB00;
+   color: #2962FF;
 }
 
 .remove-button {
@@ -208,7 +208,7 @@ body {
 }
 
 .suggestion-focus {
-    background-color: #FFF8E1;
+    background-color: #BBDEFB;
 }
 
 input {
@@ -224,7 +224,7 @@ input {
 
 input:focus {
     outline: 0;
-    border-bottom-color: #FFAB00;
+    border-bottom-color: #2962FF;
 }
 
 #data-form {
@@ -244,9 +244,6 @@ td.number {
 }
 
 .mine-input {
-    align-self: center;
-    display: flex;
-    flex-direction: column;
     background-color: white;
     padding: 30px;
     border-radius: 5px;
@@ -274,7 +271,7 @@ img {
     align-self: center;
 }
 
-add-filters, add-data{
+add-filters, add-data, add-mining{
     position: relative;
     height: inherit;
     display: flex;
@@ -285,4 +282,10 @@ add-filters, add-data{
 pre {
     white-space: pre-wrap;
     margin: 0;
+}
+
+svg { 
+    fill: white;
+    height: 35px;
+    width: auto;
 }

@@ -4,18 +4,9 @@
     <title></title>
 </head>
 <body>
-    <div class="mine-input lift-shadow-soft" ng-hide="rules[0]">
-        <div class="mining-param-fields">
-            <label>Minimum Support</label>
-            <input type="text" ng-model="minsup" />
-        </div>
-        <div class="mining-param-fields">
-            <label>Minimum Confidence</label>
-            <input type="text" ng-model="minconf" />
-        </div>
-
-        <button class="button mine-button" ng-click="getAssociationRules()"><img src="/app/assets/img/pickaxe-512.png" /></button>
-    </div>
+    <floating-action-button>
+        <add-mining></add-mining>
+    </floating-action-button>
 
     <table id="results-table" ng-show="rules[0]">
         <thead>
