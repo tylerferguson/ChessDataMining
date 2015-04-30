@@ -5,7 +5,7 @@
     $scope.getAssociationRules = function () {
 
         var dataTransferObject = {
-            games: JSON.parse(appService.getData()),
+            games: appService.getData(),
             minsup: $scope.minsup,
             minconf: $scope.minconf,
             projectionFacts: appService.getFilters(),

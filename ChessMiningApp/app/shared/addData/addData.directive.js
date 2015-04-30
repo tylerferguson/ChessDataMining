@@ -11,7 +11,7 @@
                 reader.onload = function (event) {
                     $scope.$apply(function () {
                         $scope.dataFile.data = JSON.parse(event.target.result);
-                        $appService.updateData($scope.dataFile);
+                        $appService.updateData($scope.dataFile.data);
                     });
                 }
 

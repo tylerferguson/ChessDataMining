@@ -284,4 +284,5 @@ add-filters, add-data{
 
 pre {
     white-space: pre-wrap;
+    margin: 0;
 }
