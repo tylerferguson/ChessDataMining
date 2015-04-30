@@ -2,10 +2,10 @@
     return {
         restrict: 'E',
         templateUrl: 'app/shared/addData/add-data.html',
-        controller: ['$scope', 'appService', function ($scope, $appService) {
+        controller: ['$scope', '$timeout', 'appService', function ($scope, $timeout, $appService) {
 
             $scope.submitDataFile = function (event) {
-                var file = $("#fileInput")[0].files[0];
+                var file = $("#file-input")[0].files[0];
                 var reader = new FileReader();
 
                 reader.onload = function (event) {
@@ -26,6 +26,12 @@
                 } else {
                     $scope.dataFile = undefined;
                 }
+            }
+
+            $scope.triggerFileInput = function () {
+                $timeout(function () {
+                    $('#file-input').trigger('click');
+                }, 0, false)
             }
         }]
     }

@@ -72,7 +72,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\assets\img\pickaxe-512.png" />
+    <Content Include="app\components\sidebar\sidebar.controller.js" />
+    <Content Include="app\components\sidebar\sidebar.html" />
     <Content Include="app\shared\addData\add-data.html" />
     <Content Include="app\shared\addData\addData.directive.js" />
     <Content Include="app\shared\addFilters\add-filters.html" />
@@ -107,8 +108,7 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-route.min.js.map" />
-    <Content Include="app\assets\img\working9.svg" />
-    <Content Include="app\assets\img\worker33.svg" />
+    <Content Include="app\assets\img\dig.svg" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\jquery-2.1.3.js" />

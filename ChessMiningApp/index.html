@@ -15,7 +15,10 @@
             <i ng-if="!$last" class="fa fa-angle-right"></i>
         </span> 
     </div>
-    <div class="side-nav"></div>
+    <div class="side-nav">
+        <ng-include ng-controller="SidebarCtrl" src="app/components/sidebar/sidebar.html"></ng-include>
+    </div>
+    
     <div class="content-container">
         <div ng-view class="content"></div>
     </div>
@@ -40,5 +43,6 @@
     <script src="app/components/filter/filter.controller.js"></script>
     <script src="app/components/mine/mine.controller.js"></script>
     <script src="app/components/toolbar/toolbar.controller.js"></script>
+    <script src="app/components/sidebar/sidebar.controller.js"></script>
 </body>
 </html>

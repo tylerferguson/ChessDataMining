@@ -105,6 +105,7 @@ body {
     background-color: white;
     font-size: 20px;
     color: rgba(0, 0, 0, 0.87);
+    cursor: default;
 }
 
 .fab-header {
@@ -284,8 +285,20 @@ pre {
     margin: 0;
 }
 
-svg { 
-    fill: white;
+img { 
     height: 35px;
     width: auto;
 }
+
+#file-input {
+    display: none;
+}
+
+.data-icons {
+    font-size: 50px;
+    margin-top: 50px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
+

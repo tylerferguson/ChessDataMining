@@ -3,7 +3,10 @@
     <div class="fab-header">
         <span>Add Data</span>
     </div>
-    <input type="file" name="fileInput" id="fileInput" required />
+    <div class="data-icons">
+        <i class="fa fa-upload data-icons" ng-click="triggerFileInput()"></i> 
+    </div>
+    <input type="file" name="fileInput" id="file-input" />
     <input class="button add-button" type="submit" value="Upload" ng-blur="$parent.closeActionMenu()" />
 </form>
 
