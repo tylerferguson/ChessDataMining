@@ -3,6 +3,8 @@
     var self = this;
     var factStage = $location.path().replace("/", "") + 's';
 
+    $scope.factStage = factStage.toLowerCase();
+
     $scope.facts = appService['get' + factStage]() || [];
 
     $scope.updateFilters = function () {

@@ -4,23 +4,23 @@
 
     function appService() {
         return {
-            updateData: updateData,
+            updateDataFile: updateDataFile,
             updateFilters: updateFilters,
             updateTargets: updateTargets,
             updateResults: updateResults,
-            getData: getData,
+            getDataFile: getDataFile,
             getFilters: getFilters,
             getTargets: getTargets,
             getResults: getResults
         }
 
-        var data;
+        var dataFile;
         var filters;
         var targets;
         var results;
 
-        function updateData(newData) {
-            data = newData;
+        function updateDataFile(newDataFile) {
+            dataFile = newDataFile;
         }
 
         function updateFilters(newFilters) {
@@ -35,8 +35,8 @@
             results = newResults;
         }
         
-        function getData() {
-            return data;
+        function getDataFile() {
+            return dataFile;
         }
         
         function getFilters() {

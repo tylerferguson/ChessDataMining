@@ -52,6 +52,7 @@ body {
     height: 100vh;
     background-color: white;
     border-right: 1px solid rgba(0,0,0,0.14);
+    padding-top: 64px;
 }
 
 .stage {
@@ -88,10 +89,6 @@ body {
     font-size: 30px;
     font-weight: 400;
     color: white;
-    position: absolute;
-    margin-top: 100px;
-    left: 0;
-    top: 0;
     transform: translateX(-40px);
 
     transition-duration: .2s;
@@ -302,3 +299,38 @@ img {
     justify-content: center;
 }
 
+.data-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    height: 80px;
+    padding: 0 50px 0 30px;
+    font-size: 20px;
+    padding-right: 50px;
+    flex-direction: column;
+}
+
+.data-info-title {
+    border-bottom: 2px solid #9E9E9E;
+    width: 100%;
+}
+
+#filters-fab {
+    margin-top: 200px;
+}
+
+#targets-fab {
+    margin-top: 300px;
+}
+
+#mine-fab {
+    margin-top: 400px;
+}
+
+floating-action-button {
+    position: absolute;
+    margin-top: 100px;
+    left: 0;
+    top: 0;
+}

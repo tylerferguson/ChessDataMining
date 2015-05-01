@@ -1,3 +1,4 @@
-﻿angular.module('ChessMining').controller('SidebarCtrl', ['$scope', function($scope) {
+﻿angular.module('ChessMining').controller('SidebarCtrl', ['$scope', 'appService', function($scope, appService) {
 
+    $scope.service = appService;
 }])

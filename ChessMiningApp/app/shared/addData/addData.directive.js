@@ -10,8 +10,9 @@
 
                 reader.onload = function (event) {
                     $scope.$apply(function () {
+                        $scope.dataFile.name = file.name;
                         $scope.dataFile.data = JSON.parse(event.target.result);
-                        $appService.updateData($scope.dataFile.data);
+                        $appService.updateDataFile($scope.dataFile);
                     });
                 }
 
@@ -24,7 +25,7 @@
                 if (file) {
                     reader.readAsText(file);
                 } else {
-                    $scope.dataFile = undefined;
+                    $scope.dataFile = {};
                 }
             }
 
