@@ -167,15 +167,8 @@ body {
 }
 
 .add-button{
-   position: absolute;
-   right: 0;
-   bottom: 0;
-   margin: 40px;
    height: 1.75em;
    font-size: 20px;
-   display: flex;
-   justify-content: center;
-   align-content: center;
    color: #2962FF;
 }
 
@@ -292,28 +285,32 @@ img {
 }
 
 .data-icons {
-    font-size: 50px;
-    margin-top: 50px;
+    font-size: 30px;
     cursor: pointer;
     display: flex;
     justify-content: center;
 }
 
+.add {
+    margin: 0 20px;
+}
+
 .info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-top: 100px;
     height: 80px;
-    padding: 0 50px 0 30px;
+    padding-left: 30px;
     font-size: 20px;
-    padding-right: 50px;
     flex-direction: column;
 }
 
-.info-title {
-    border-bottom: 2px solid #9E9E9E;
+.info > div {
     width: 100%;
+    display: flex;
+}
+
+.info-title {
+    width: 100%;
+    border-bottom: 2px solid #9E9E9E;
 }
 
 #filters-fab {

@@ -1,8 +1,10 @@
 ﻿<div ng-controller="SidebarCtrl">
     <div class="info">
-        <div class="info-title">
-            Data
+        <div>
+            <div class="info-title">Data</div>
+            <span class="add">+</span>
         </div>
+        <add-data></add-data>
         {{service.getDataFile().name}}
     </div>
     <div class="info">
