@@ -3,6 +3,7 @@
         restrict: 'E',
         templateUrl: 'app/shared/addMining/add-mining.html',
         controller: ['$scope', '$http', 'appService', function ($scope, $http, $appService) {
+            var rules = [];
 
             $scope.getAssociationRules = function () {
 
@@ -16,11 +17,11 @@
 
                 $http.post('/api/AssociationRules/Mine', dataTransferObject, { 'Content-Type': 'application / json' })
                     .then(function (response) {
-                        $scope.rules.length = 0;
+                        rules.length = 0;
                         response.data.forEach(function (rule) {
-                            $scope.rules.push(rule);
+                           rules.push(rule);
                         })
-                        $appService.updateResults($scope.rules);
+                        $appService.updateResults(rules);
                     },
                     function (error) {
                         console.log('error!');
