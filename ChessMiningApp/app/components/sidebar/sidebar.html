@@ -1,8 +1,35 @@
 ﻿<div ng-controller="SidebarCtrl">
-    <div class="data-info">
-        <div class="data-info-title">
+    <div class="info">
+        <div class="info-title">
             Data
         </div>
         {{service.getDataFile().name}}
     </div>
+    <div class="info">
+        <div class="info-title">
+            Filters
+        </div>
+        <div ng-repeat="filter in service.getFilters()">
+            {{filter.type}}
+            {{filter.name}}
+            {{filter.value}}
+        </div>
+    </div>
+    <div class="info">
+        <div class="info-title">
+            Targets
+        </div>
+        <div ng-repeat="target in service.getTargets()">
+            {{target.type}}
+            {{target.name}}
+            {{target.value}}
+        </div>
+    </div>
+
+    <div class="info">
+        <div class="info-title">
+            Mine
+        </div>
+    </div>
+    <add-mining></add-mining>
 </div>

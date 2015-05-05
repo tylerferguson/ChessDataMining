@@ -299,7 +299,7 @@ img {
     justify-content: center;
 }
 
-.data-info {
+.info {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -311,21 +311,21 @@ img {
     flex-direction: column;
 }
 
-.data-info-title {
+.info-title {
     border-bottom: 2px solid #9E9E9E;
     width: 100%;
 }
 
 #filters-fab {
-    margin-top: 200px;
+    margin-top: 280px;
 }
 
 #targets-fab {
-    margin-top: 300px;
+    margin-top: 460px;
 }
 
 #mine-fab {
-    margin-top: 400px;
+    margin-top: 640px;
 }
 
 floating-action-button {
