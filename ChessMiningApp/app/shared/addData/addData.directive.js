@@ -5,6 +5,7 @@
         controller: ['$scope', '$timeout', 'appService', function ($scope, $timeout, $appService) {
             var dataFile = {};
             $scope.submitDataFile = function (event) {
+                event.preventDefault();
                 var file = $("#file-input")[0].files[0];
                 var reader = new FileReader();
 

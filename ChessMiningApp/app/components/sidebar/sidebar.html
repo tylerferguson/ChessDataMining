@@ -2,7 +2,6 @@
     <div class="info">
         <div>
             <div class="info-title">Data</div>
-            <span class="add">+</span>
         </div>
         <add-data></add-data>
         {{service.getDataFile().name}}
@@ -12,10 +11,8 @@
             Filters
         </div>
         <add-filters fact-stage="Filters"></add-filters>
-        <div ng-repeat="filter in service.getFilters()">
-            {{filter.type}}
-            {{filter.name}}
-            {{filter.value}}
+        <div ng-repeat="filter in filters = service.getFilters()">
+            <filter-pane fact="filter" facts="filters" fact-stage="Filters"></filter-pane>
         </div>
     </div>
     <div class="info">
@@ -23,17 +20,19 @@
             Targets
         </div>
         <add-filters fact-stage="Targets"></add-filters>
-        <div ng-repeat="target in service.getTargets()">
-            {{target.type}}
-            {{target.name}}
-            {{target.value}}
+        <div ng-repeat="target in targets = service.getTargets()">
+            <filter-pane fact="target" facts="targets" fact-stage="Targets"></filter-pane>
         </div>
     </div>
 
     <div class="info">
-        <div class="info-title">
-            Mine
+        <div>
+            <div class="info-title">Mine</div>
         </div>
         <add-mining></add-mining>
+        <floating-action-button id="mine-fab">
+            <img src="app/assets/img/dig.svg" />
+        </floating-action-button>
     </div>
+    
 </div>
