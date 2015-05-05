@@ -2,8 +2,12 @@
     return {
         restrict: 'E',
         templateUrl: 'app/shared/addFilters/add-filters.html',
-        controller: ['$scope', '$http', function ($scope, $http) {
+        scope: {
+            factStage: '@'
+        },
+        controller: ['$scope', '$http', 'appService', function ($scope, $http, $appService) {
 
+            var facts = [];
             $scope.fact = '';
             $scope.name = '';
             $scope.value = '';
@@ -20,11 +24,15 @@
                     value: $scope.value
                 };
 
-                $scope.facts.push(fact);
+                facts.push(fact);
                 $scope.fact = '';
                 $scope.name = '';
                 $scope.value = '';
-                $scope.updateFilters();
+                updateFilters();
+
+                function updateFilters() {
+                    $appService['update' + $scope.factStage](facts);
+                }
             }
 
             function getFactOptions() {
