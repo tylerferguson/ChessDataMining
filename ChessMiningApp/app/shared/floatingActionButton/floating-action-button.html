@@ -1,6 +1,6 @@
 ﻿<div id="fab"
      class="button floating-action-button lift-shadow-soft"
-     ng-class="{'floating-action-button-focus': actionButtonClicked}"
+     ng-class="{'disabled' : !service.getDataFile()}"
      tabindex="1000"
      ng-click="getAssociationRules()"
      ng-transclude>

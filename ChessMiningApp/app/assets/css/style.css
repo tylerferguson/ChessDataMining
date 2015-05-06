@@ -297,10 +297,18 @@ img {
     display: flex;
 }
 
+.info-header {
+    display: flex;
+}
+
 .info-title {
     width: 100%;
     border-bottom: 2px solid #9E9E9E;
     font-size: 20px;
+}
+
+.info-plus {
+    margin: 0 0 0 20px;
 }
 
 #filters-fab {
@@ -320,4 +328,9 @@ floating-action-button {
     z-index: 3;
     right: -40px;
     top: 60px;
+}
+
+.disabled {
+    pointer-events: none;
+    background-color: #BDBDBD;
 }
