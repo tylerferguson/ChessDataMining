@@ -270,15 +270,18 @@ img {
 }
 
 .data-icons {
-    font-size: 30px;
-    cursor: pointer;
+    font-size: 40px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     padding: 10px;
 }
 
+.data-icon {
+    cursor: pointer;
+}
+
 #data-info {
-    height: 100px;
+    height: 150px;
 }
 
 #mine-info {
