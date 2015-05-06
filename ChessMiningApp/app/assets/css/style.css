@@ -39,7 +39,6 @@ body {
     display: flex;
     justify-content: center;
     position: relative;
-    padding-left: 100px;
 }
 
 .button.selected {
@@ -231,7 +230,6 @@ input:focus {
     width: 75%;
     border-collapse: separate;
     border-spacing: 20px;
-    margin-left: 40px;
 }
 
 td.number {
@@ -299,7 +297,6 @@ img {
     height: 80px;
     padding: 0 30px;
     font-size: 18px;
-    flex-direction: column;
 }
 
 .info > div {
