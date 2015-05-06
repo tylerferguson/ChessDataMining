@@ -226,16 +226,10 @@ td.number {
 .mine-input {
     background-color: white;
     border-radius: 5px;
+    margin: 5px 0;
 }
 
-.mining-param-fields {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.mining-param-fields > input{
-    margin-left: 20px;
+.mine-input > input{
     background-color: transparent;
 
 }
@@ -255,6 +249,7 @@ add-filters, add-data, add-mining{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 10px;
 }
 
 pre {
@@ -323,5 +318,6 @@ img {
 floating-action-button {
     position: absolute;
     z-index: 3;
-    right: -40px
+    right: -40px;
+    top: 60px;
 }

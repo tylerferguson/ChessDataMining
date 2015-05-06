@@ -1,11 +1,11 @@
 ﻿<form class="mine-inputs" id="mine-form'" ng-submit="getAssociationRules()">
     <div class="mine-input mining-param-fields">
         <label>Minimum Support</label>
-        <input type="text" ng-model="minsup" />
+        <input type="text" placeholder="Value from 0 to 1" ng-model="minsup" />
     </div>
     <div class="mine-input mining-param-fields">
         <label>Minimum Confidence</label>
-        <input type="text" ng-model="minconf" />
+        <input type="text" placeholder="Value from 0 to 1" ng-model="minconf" />
     </div>
 
     <input class="button add-button" type="submit" value="Mine" />
