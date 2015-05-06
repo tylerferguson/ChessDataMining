@@ -106,8 +106,9 @@ body {
 }
 
 .filters {
-    height: inherit;
-    width: inherit;
+    overflow: auto;
+    max-height: 200px;
+    padding: 10px;
 }
 
 .filter {
@@ -291,7 +292,7 @@ img {
     position: relative;
 }
 
-.info > div {
+.filters > div {
     width: 100%;
     display: flex;
 }

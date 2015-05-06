@@ -11,8 +11,10 @@
             Filters
         </div>
         <add-filters fact-stage="Filters"></add-filters>
-        <div ng-repeat="filter in filters = service.getFilters()">
-            <filter-pane fact="filter" facts="filters" fact-stage="Filters"></filter-pane>
+        <div class="filters">
+            <div ng-repeat="filter in filters = service.getFilters()">
+                <filter-pane fact="filter" facts="filters" fact-stage="Filters"></filter-pane>
+            </div>
         </div>
     </div>
     <div class="info">
@@ -20,8 +22,10 @@
             Targets
         </div>
         <add-filters fact-stage="Targets"></add-filters>
-        <div ng-repeat="target in targets = service.getTargets()">
-            <filter-pane fact="target" facts="targets" fact-stage="Targets"></filter-pane>
+        <div class="filters">
+            <div ng-repeat="target in targets = service.getTargets()">
+                <filter-pane fact="target" facts="targets" fact-stage="Targets"></filter-pane>
+            </div>
         </div>
     </div>
 
