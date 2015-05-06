@@ -42,8 +42,8 @@
                         var file = files[0];
                         $scope.$apply(function () {
                             dataFile.name = file.name;
-                            $http.get(file.link).then(function (data) {
-                                dataFile.data = data;
+                            $http.get(file.link).then(function (response) {
+                                dataFile.data = response.data;
                                 $appService.updateDataFile(dataFile);
                             })
                         });
