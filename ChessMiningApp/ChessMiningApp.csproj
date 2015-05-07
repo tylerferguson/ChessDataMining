@@ -76,8 +76,6 @@
     <Content Include="app\components\sidebar\sidebar.html" />
     <Content Include="app\shared\addData\add-data.html" />
     <Content Include="app\shared\addData\addData.directive.js" />
-    <Content Include="app\shared\addFilterButton\add-filter-button.html" />
-    <Content Include="app\shared\addFilterButton\addFilterButton.directive.js" />
     <Content Include="app\shared\addFilters\add-filters.html" />
     <Content Include="app\shared\addFilters\addFilters.directive.js" />
     <Content Include="app\app.module.js" />
@@ -86,10 +84,10 @@
     <Content Include="app\components\data\data.controller.js" />
     <Content Include="app\shared\addMining\add-mining.html" />
     <Content Include="app\shared\addMining\addMining.directive.js" />
-    <Content Include="app\shared\filterPane\filter-pane.html" />
-    <Content Include="app\shared\filterPane\filterPane.directive.js" />
     <Content Include="app\components\filter\filter.controller.js" />
     <Content Include="app\components\home\home.controller.js" />
+    <Content Include="app\shared\filterDisplay\filter-display.html" />
+    <Content Include="app\shared\filterDisplay\filterDisplay.directive.js" />
     <Content Include="app\shared\floatingActionButton\floating-action-button.html" />
     <Content Include="app\shared\floatingActionButton\floatingActionButton.directive.js" />
     <Content Include="app\shared\inputSuggestionField\input-suggestion-field-partial.html" />

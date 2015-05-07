@@ -6,25 +6,17 @@
         <add-data></add-data>
         <span>{{service.getDataFile().name}}</span>
     </div>
+    
+    <filter-display fact-stage="Filters"></filter-display>
+
     <div class="info">
         <div class="info-header">
             <div class="info-title">
-                Filters
+                Targets
             </div>
-            <i class="fa fa-plus info-plus" ng-click="showInputForm()"></i>
+            <i class="fa fa-plus info-plus" ng-click="showInputForm('Target')" tabindex="8000" ng-blur="closeInputForm()"></i>
         </div>
-        <add-filters fact-stage="Filters" button-clicked="addFilterButtonClicked"></add-filters>
-        <div class="filters">
-            <div ng-repeat="filter in filters = service.getFilters()">
-                <filter-pane fact="filter" facts="filters" fact-stage="Filters"></filter-pane>
-            </div>
-        </div>
-    </div>
-    <div class="info">
-        <div class="info-title">
-            Targets
-        </div>
-        <add-filters fact-stage="Targets"></add-filters>
+        <add-filters fact-stage="Targets" button-clicked="addTargetButtonClicked" close-input-form="closeInputForm()"></add-filters>
         <div class="filters">
             <div ng-repeat="target in targets = service.getTargets()">
                 <filter-pane fact="target" facts="targets" fact-stage="Targets"></filter-pane>

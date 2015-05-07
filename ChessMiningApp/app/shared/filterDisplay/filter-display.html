@@ -1,0 +1,14 @@
+﻿<div class="info">
+    <div class="info-header">
+        <div class="info-title">
+            {{factStage}}
+        </div>
+        <i class="fa fa-plus info-plus" ng-click="showInputForm()" tabindex="7000" ng-blur="closeInputForm()"></i>
+    </div>
+    <add-filters fact-stage="{{factStage}}" button-clicked="buttonClicked" close-input-form="closeInputForm()"></add-filters>
+    <div class="filters">
+        <div ng-repeat="fact in facts = service['get' + factStage]()">
+            <filter-pane fact="fact" facts="facts" fact-stage="{{factStage}}"></filter-pane>
+        </div>
+    </div>
+</div> 

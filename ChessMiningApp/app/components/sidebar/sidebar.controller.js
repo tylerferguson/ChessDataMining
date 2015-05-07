@@ -27,7 +27,4 @@
             });
     }
 
-    $scope.showInputForm = function () {
-        $scope.addFilterButtonClicked = true;
-    }
 }])
