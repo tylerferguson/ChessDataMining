@@ -88,6 +88,8 @@
     <Content Include="app\components\home\home.controller.js" />
     <Content Include="app\shared\filterDisplay\filter-display.html" />
     <Content Include="app\shared\filterDisplay\filterDisplay.directive.js" />
+    <Content Include="app\shared\filterPane\filter-pane.html" />
+    <Content Include="app\shared\filterPane\filterPane.directive.js" />
     <Content Include="app\shared\floatingActionButton\floating-action-button.html" />
     <Content Include="app\shared\floatingActionButton\floatingActionButton.directive.js" />
     <Content Include="app\shared\inputSuggestionField\input-suggestion-field-partial.html" />

@@ -8,21 +8,7 @@
     </div>
     
     <filter-display fact-stage="Filters"></filter-display>
-
-    <div class="info">
-        <div class="info-header">
-            <div class="info-title">
-                Targets
-            </div>
-            <i class="fa fa-plus info-plus" ng-click="showInputForm('Target')" tabindex="8000" ng-blur="closeInputForm()"></i>
-        </div>
-        <add-filters fact-stage="Targets" button-clicked="addTargetButtonClicked" close-input-form="closeInputForm()"></add-filters>
-        <div class="filters">
-            <div ng-repeat="target in targets = service.getTargets()">
-                <filter-pane fact="target" facts="targets" fact-stage="Targets"></filter-pane>
-            </div>
-        </div>
-    </div>
+    <filter-display fact-stage="Targets"></filter-display>
 
     <div class="info" id="mine-info">
         <div>

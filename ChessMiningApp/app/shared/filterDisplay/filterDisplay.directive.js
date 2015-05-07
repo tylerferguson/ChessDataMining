@@ -5,7 +5,9 @@
         scope: {
             factStage: '@'
         },
-        controller: ['$scope', function ($scope) {
+        controller: ['$scope', 'appService', function ($scope, $service) {
+
+            $scope.service = $service;
 
             $scope.closeInputForm = function () {
                 setTimeout(function () {
