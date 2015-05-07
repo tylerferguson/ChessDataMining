@@ -234,7 +234,21 @@ td.number {
 
 }
 
-img {
+.add-filter-form {
+    width: 100%;
+    transition: all linear 0.2s;
+    opacity: 1;
+    padding: 10px;
+    z-index: 2;
+    position: absolute;
+    background-color: white;
+}
+
+.add-filter-form.ng-hide {
+    opacity: 0;
+}
+
+img { 
     height: 100px;
     width: auto;
 }
@@ -250,6 +264,7 @@ add-filters, add-data, add-mining{
     justify-content: center;
     align-items: center;
     margin-top: 10px;
+    display: block;
 }
 
 pre {

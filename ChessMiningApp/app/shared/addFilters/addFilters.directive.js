@@ -3,7 +3,8 @@
         restrict: 'E',
         templateUrl: 'app/shared/addFilters/add-filters.html',
         scope: {
-            factStage: '@'
+            factStage: '@',
+            buttonClicked: '='
         },
         controller: ['$scope', '$http', 'appService', function ($scope, $http, $appService) {
 
@@ -16,6 +17,18 @@
                 //key value pairs of individual facts
             };
 
+            $scope.closeInputForm = function () {
+                setTimeout(function () {
+                    var focus = $(document.activeElement);
+                    if (focus.is(".add-filter-form") || $('.add-filter-form').has(focus).length) {
+                        console.log("still focused");
+                    } else {
+                        $scope.$apply(function () {
+                            $scope.buttonClicked = false;
+                        })
+                    }
+                }, 0);
+            }
 
             $scope.submitFact = function () {
                 var fact = {

@@ -11,9 +11,9 @@
             <div class="info-title">
                 Filters
             </div>
-            <i class="fa fa-plus info-plus"></i>
+            <i class="fa fa-plus info-plus" ng-click="showInputForm()"></i>
         </div>
-        <add-filters fact-stage="Filters"></add-filters>
+        <add-filters fact-stage="Filters" button-clicked="addFilterButtonClicked"></add-filters>
         <div class="filters">
             <div ng-repeat="filter in filters = service.getFilters()">
                 <filter-pane fact="filter" facts="filters" fact-stage="Filters"></filter-pane>

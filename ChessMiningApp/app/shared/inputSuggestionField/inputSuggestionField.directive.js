@@ -5,7 +5,8 @@
         scope: {
             label: '@inputLabel',
             optionType: '=inputType',
-            options: '=options'
+            options: '=options',
+            closeInputForm: '&'
         },
         controller: ['$scope', function($scope)  {
 
