@@ -119,7 +119,6 @@ body {
     background-color: white;
     min-height: 80px;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 2px;
-
 }
 
 .filter-content {
@@ -186,6 +185,7 @@ filter-pane {
 .suggestion {
     width: 100%;
     line-height: 1.25em;
+    cursor: pointer;
 }
 
 .suggestion-focus {
@@ -236,7 +236,7 @@ td.number {
 
 .add-filter-form {
     width: 100%;
-    transition: all linear 0.2s;
+    transition: all linear 0.1s;
     opacity: 1;
     padding: 10px;
     z-index: 2;

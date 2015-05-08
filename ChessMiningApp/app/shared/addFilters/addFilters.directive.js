@@ -30,6 +30,7 @@
                 $scope.name = '';
                 $scope.value = '';
                 updateFilters();
+                $scope.buttonClicked = false;
 
                 function updateFilters() {
                     $appService['update' + $scope.factStage](facts);
