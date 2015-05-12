@@ -21,7 +21,7 @@
                     if ($scope.filtered.length) {
                         $scope.$apply($scope.selectFromSuggestedList($scope.filtered[current]));
                     }
-                    current = -1;
+                    current = 0;
                     $('.suggestion-focus').removeClass('suggestion-focus');
 
                     function nextSuggestion() {
@@ -32,6 +32,7 @@
                         return $($elem.next()[0].children[--current]);
                     }
                 } else {
+                    $('.suggestion-focus').removeClass('suggestion-focus');
                     $($elem.next()[0].children[current]).addClass('suggestion-focus');
                 }
             })

@@ -1,6 +1,6 @@
 ﻿<label>{{label}}: </label>
 <div>
-    <input class="suggestion-field-input" type="text" placeholder="Search" ng-focus="showOptions()" ng-blur="closeInputForm()" ng-model="optionType" key-through-options>
+    <input class="suggestion-field-input" type="text" placeholder="Search" ng-focus="showOptions()" ng-keydown="showOptions()" ng-blur="closeInputForm()" ng-model="optionType" key-through-options>
     <div class="suggestion-box lift-shadow-soft">
         <div class="suggestion" ng-show="optionsShown" ng-repeat="option in filtered = (options | filter:optionType) || []" ng-click="selectFromSuggestedList(option)" tabindex="-2">
             {{option}}
