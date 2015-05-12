@@ -4,6 +4,20 @@
     <title></title>
 </head>
 <body>
+    <div class="welcome-screen" ng-hide="rules[0]">
+        <h3>Welcome to Mining.CHESS!</h3>
+
+        <h4>Getting Started</h4>
+        <p>You will first need to provide a dataset from lichess.org in JSON format.</p>
+        <p>Filter your data to only consider games where the given filters are true and target the mining to look for rules which result in the given targets.</p>
+        <p>Providing a minimum support returns only the rules that occur at least that often as a ratio of the filtered data.</p>
+        <p>Providing a minimum confidence returns only the rules where the result occurs at least that often given the premise.</p>
+
+        <h4>Fact Types For Filters And Targets</h4>
+        <p>A SimpleFact is any fact that can be determined directly from a field in the data e.g. White is user1, Black is user2, Result is 1-0. </p>
+        <p>If you have a certain fact in mind, start typing to filter the list of options to match your query.</p>
+    </div>
+
     <p class="results-tag-line" ng-show="rules[0]">Given the selected filters the following rules were found for the selected target...</p>
     <table id="results-table" ng-show="rules[0]">
         <thead>
