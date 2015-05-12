@@ -3,7 +3,7 @@
     $scope.$appService = appService;
 
     $scope.predicate = 'LiftCorrelation';
-    $scope.reverse = false;
+    $scope.reverse = true;
 
     $scope.setPredicateAndReverse = function (predicate) {
         $scope.predicate = predicate;
