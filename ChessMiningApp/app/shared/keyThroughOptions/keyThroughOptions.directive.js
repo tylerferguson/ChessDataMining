@@ -3,7 +3,7 @@
         restrict: 'A',
         link: function ($scope, $elem, $attrs) {
             
-            var current = -1;
+            var current = 0;
             var currentSuggestion;
             $elem.on('keydown', function (event) {
                 if (event.which === 40 && current < $scope.filtered.length -1) {
@@ -14,7 +14,7 @@
                     $('.suggestion-focus').removeClass('suggestion-focus');
                     currentSuggestion = previousSuggestion();
                     currentSuggestion.addClass('suggestion-focus');
-                } else if (event.which === 13) {
+                } else if (event.which === 13 || event.which === 9) {
                     if ($scope.label !== 'Value') {
                         event.preventDefault();
                     }
@@ -31,6 +31,8 @@
                     function previousSuggestion() {
                         return $($elem.next()[0].children[--current]);
                     }
+                } else {
+                    $($elem.next()[0].children[current]).addClass('suggestion-focus');
                 }
             })
         }

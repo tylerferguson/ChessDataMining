@@ -159,7 +159,8 @@ filter-pane {
    height: 1.75em;
    font-size: 20px;
    color: #2962FF;
-   display: none;
+   align-self: flex-end;
+   margin-top: 5px;
 }
 
 .remove-button {
