@@ -18,7 +18,7 @@
                     if ($scope.label !== 'Value') {
                         event.preventDefault();
                     }
-                    if (current !== -1) {
+                    if ($scope.filtered.length) {
                         $scope.$apply($scope.selectFromSuggestedList($scope.filtered[current]));
                     }
                     current = -1;
