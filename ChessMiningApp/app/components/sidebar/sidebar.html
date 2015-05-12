@@ -4,8 +4,8 @@
             <div class="info-title">Data</div>
         </div>
         <add-data></add-data>
-        <span class="file-upload-notifier" ng-hide="service.getDataFile().name">No data file selected</span>
-        <span class="file-upload-notifier" ng-show="service.getDataFile().name">Added {{service.getDataFile().name}} <i class="fa fa-check file-upload-check"></i></span>
+        <span class="selection-notifier" ng-hide="service.getDataFile().name">No data file selected</span>
+        <span class="selection-notifier" ng-show="service.getDataFile().name">Added {{service.getDataFile().name}} <i class="fa fa-check file-upload-check"></i></span>
     </div>
     
     <filter-display fact-stage="Filters"></filter-display>
