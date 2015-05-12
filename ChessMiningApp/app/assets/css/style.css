@@ -128,11 +128,12 @@ body {
     background-color: #E3F2FD;
     padding: 5px;
     border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
 }
 
 filter-pane {
     width: 100%;
-    padding: 2px 0;
+    padding: 3px 0;
 }
 
 .filter-type {
@@ -319,6 +320,18 @@ img {
 
 #data-info {
     height: 150px;
+    display: flex;
+    flex-direction: column;
+}
+
+.file-upload-notifier {
+    align-self: center;
+    margin-top: 10px;
+    color: #2979FF;
+}
+
+.file-upload-check {
+    color: green;
 }
 
 #mine-info {
@@ -359,10 +372,6 @@ img {
     margin-top: 460px;
 }
 
-#mine-fab {
-  
-}
-
 floating-action-button {
     position: absolute;
     z-index: 3;
@@ -374,3 +383,4 @@ floating-action-button {
     pointer-events: none;
     background-color: #BDBDBD;
 }
+
