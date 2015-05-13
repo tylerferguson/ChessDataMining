@@ -10,10 +10,13 @@
         },
         controller: ['$scope', 'appService', function ($scope, $appService) {
 
-
+            var remainingList;
             $scope.removeFact = function () {
                 $scope.facts.splice($scope.index, 1);
-                $appService['update' + $scope.factStage]($scope.facts);
+                if ($scope.facts.length) {
+                    remainingList = $scope.facts;
+                }
+                $appService['update' + $scope.factStage](remainingList);
             }
         }]
     }
