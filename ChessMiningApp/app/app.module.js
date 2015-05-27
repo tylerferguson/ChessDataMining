@@ -2,5 +2,5 @@
 
     'use strict';
 
-    angular.module('ChessMining', ['ngRoute', 'ngAnimate']);
+    angular.module('ChessMining', ['ngRoute', 'ngAnimate', 'angularSpinner']);
 })();
