@@ -127,7 +127,7 @@ body {
     font-size: 18px;
     font-weight: 300; 
     background-color: #E3F2FD;
-    padding: 5px;
+    padding: 5px 20px 5px 5px;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
 }
@@ -135,10 +135,6 @@ body {
 filter-pane {
     width: 100%;
     padding: 3px 0;
-}
-
-.filter-type {
-    /*padding: 5px;*/
 }
 
 .filter-inputs, .mine-inputs {
