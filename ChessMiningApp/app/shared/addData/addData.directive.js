@@ -17,17 +17,9 @@
                     });
                 }
 
-                //reader.onerror = function () {
-                //    $scope.$apply(function () {
-                //        $scope.dataFile = undefined;
-                //    });
-                //}
-
                 if (file) {
                     reader.readAsText(file);
-                } else {
-                    //$scope.dataFile = {};
-                }
+                } 
             }
 
             $scope.triggerFileInput = function () {

@@ -9,10 +9,10 @@
             $scope.$watch($scope.isLoading, function (v) {
                 if (v) {
                     $spinnerService.spin('spinner-1');
-                    $(".content").addClass('waiting');
+                    $(".content-container").addClass('waiting');
                 } else {
                     $spinnerService.stop('spinner-1');
-                    $(".content").removeClass('waiting');
+                    $(".content-container").removeClass('waiting');
 
                 }
             });
