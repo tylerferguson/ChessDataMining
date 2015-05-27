@@ -19,10 +19,10 @@ namespace DataMining
             IFact<string> factC;
             IFact<string> factD;
 
-            factA = new MockFact("A");
-            factB = new MockFact("B");
-            factC = new MockFact("C");
-            factD = new MockFact("D");
+            factA = new MockSimpleFact("A");
+            factB = new MockSimpleFact("B");
+            factC = new MockSimpleFact("C");
+            factD = new MockSimpleFact("D");
 
             var candidateRuleGenerator = new CandidateRuleGenerator<string>();
 

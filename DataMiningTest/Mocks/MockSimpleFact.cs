@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DataMining.Mocks
 {
-    public class MockFact : IFact<string>, IEquatable<MockFact>
+    public class MockSimpleFact : IFact<string>, IEquatable<MockSimpleFact>
     {
-        public MockFact(string value)
+        public MockSimpleFact(string value)
         {
             this.Value = value;
         }
@@ -25,11 +25,11 @@ namespace DataMining.Mocks
                 return false;
             }
 
-            MockFact fact = that as MockFact;
+            MockSimpleFact fact = that as MockSimpleFact;
             return Implies(fact);
         }
 
-        public bool Implies(MockFact that)
+        public bool Implies(MockSimpleFact that)
         {
             if (that == null)
             {
@@ -39,7 +39,7 @@ namespace DataMining.Mocks
             return this.Value.Equals(that.Value);
         }
 
-        public bool Equals(MockFact that)
+        public bool Equals(MockSimpleFact that)
         {
             if (that == null)
             {
@@ -54,7 +54,7 @@ namespace DataMining.Mocks
             {
                 return false;
             }
-            MockFact fact = obj as MockFact;
+            MockSimpleFact fact = obj as MockSimpleFact;
             if (fact == null)
             {
                 return false;

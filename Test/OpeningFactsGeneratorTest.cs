@@ -36,6 +36,62 @@ namespace ChessDataMining
             Assert.Contains(gambit, result);
         }
 
+        [Fact]
+        public void Without_any_excluded_facts_and_two_variants_then_all_possible_opening_facts_are_generated()
+        {
+            //Given
+            var openingsFactsGenerator = new OpeningsFactsGenerator();
+            var chessGame = new ChessGame();
+            chessGame.White = "tailuge";
+            chessGame.Black = "sydeman";
+            chessGame.Result = "1-0";
+            chessGame.Opening = "King's Gambit, Polerio Gambit, Accepted";
+
+            //When
+            var result = openingsFactsGenerator.Generate(new List<IFact<ChessGame>>(), chessGame);
+
+            //Then
+            var kingsGambitFact = new OpeningFact("King's Gambit");
+            var kingsGambitPolerioGambitFact = new OpeningFact("King's Gambit, Polerio Gambit");
+            var kingsGambitPolerioGambitAcceptedFact = new OpeningFact("King's Gambit, Polerio Gambit, Accepted");
+            var gambit = new OpeningFact("Gambit");
+
+            Assert.Equal(4, result.Count);
+            Assert.Contains(kingsGambitFact, result);
+            Assert.Contains(kingsGambitPolerioGambitFact, result);
+            Assert.Contains(kingsGambitPolerioGambitAcceptedFact, result);
+            Assert.Contains(gambit, result);
+        }
+
+        [Fact]
+        public void Without_any_excluded_facts_and_multiple_variants_then_all_possible_opening_facts_are_generated()
+        {
+            //Given
+            var openingsFactsGenerator = new OpeningsFactsGenerator();
+            var chessGame = new ChessGame();
+            chessGame.White = "tailuge";
+            chessGame.Black = "sydeman";
+            chessGame.Result = "1-0";
+            chessGame.Opening = "King's Gambit, Polerio Gambit, something here, Accepted";
+
+            //When
+            var result = openingsFactsGenerator.Generate(new List<IFact<ChessGame>>(), chessGame);
+
+            //Then
+            var kingsGambitFact = new OpeningFact("King's Gambit");
+            var kingsGambitPolerioGambitFact = new OpeningFact("King's Gambit, Polerio Gambit");
+            var kingsGambitPolerioGambitSomethingHereFact = new OpeningFact("King's Gambit, Polerio Gambit, something here");
+            var kingsGambitPolerioGambitAcceptedFact = new OpeningFact("King's Gambit, Polerio Gambit, something here, Accepted");
+            var gambit = new OpeningFact("Gambit");
+
+            Assert.Equal(5, result.Count);
+            Assert.Contains(kingsGambitFact, result);
+            Assert.Contains(kingsGambitPolerioGambitFact, result);
+            Assert.Contains(kingsGambitPolerioGambitAcceptedFact, result);
+            Assert.Contains(kingsGambitPolerioGambitSomethingHereFact, result);
+            Assert.Contains(gambit, result);
+        }
+
         [Theory]
         [InlineData("King's Pawn Opening")]
         [InlineData("?")]

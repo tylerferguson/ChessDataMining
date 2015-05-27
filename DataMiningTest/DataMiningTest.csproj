@@ -58,9 +58,12 @@
     <Compile Include="AssociationRuleGeneratorTest.cs" />
     <Compile Include="CandidateGeneratorTest.cs" />
     <Compile Include="CandidateRuleGeneratorTest.cs" />
+    <Compile Include="DatabaseTest.cs" />
     <Compile Include="IFactTest.cs" />
+    <Compile Include="Mocks\MockFactsGenerator2.cs" />
+    <Compile Include="Mocks\MockSimpleFact.cs" />
     <Compile Include="Mocks\OtherMockFact.cs" />
-    <Compile Include="Mocks\MockFact.cs" />
+    <Compile Include="Mocks\MockOpeningFact.cs" />
     <Compile Include="Mocks\MockFactsGenerator.cs" />
     <Compile Include="Mocks\MockMiner.cs" />
     <Compile Include="Mocks\MockRuleGenerator.cs" />

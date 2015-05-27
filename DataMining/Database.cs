@@ -35,6 +35,14 @@ namespace DataMining
 
             Transactions.ForEach(transaction => GenerateFacts(factsGenerators, transaction).ForEach(fact =>
             {
+                //foreach (var key in candidateItems.Keys)
+                //{
+                //    if (fact.Implies(key))
+                //    {
+                //        candidateItems[key].AbsoluteSupport++;
+                //    }
+                //}
+
                 if (!candidateItems.ContainsKey(fact))
                 {
                     var itemSet = new ItemSet<IFact<T>>(fact);

@@ -22,11 +22,11 @@ namespace DataMining
 
             //Given
             var candidateGenerator = new SelfJoinAndPruneGenerator<string>();
-            factA = new MockFact("A");
-            factB = new MockFact("B");
-            factC = new MockFact("C");
-            factD = new MockFact("D");
-            factE = new MockFact("E");
+            factA = new MockSimpleFact("A");
+            factB = new MockSimpleFact("B");
+            factC = new MockSimpleFact("C");
+            factD = new MockSimpleFact("D");
+            factE = new MockSimpleFact("E");
 
             var abc = new ItemSet<IFact<string>>(new List<IFact<string>>() { factA, factB, factC });
             var abd = new ItemSet<IFact<string>>(new List<IFact<string>>() { factA, factB, factD });
@@ -56,8 +56,8 @@ namespace DataMining
         [Fact]
         public void Expect_correct_set_to_be_generated()
         {
-            IFact<string> factA = new MockFact("A");
-            IFact<string> factB = new MockFact("B");
+            IFact<string> factA = new MockSimpleFact("A");
+            IFact<string> factB = new MockSimpleFact("B");
 
             //Given
             var candidateGenerator = new SelfJoinAndPruneGenerator<string>();

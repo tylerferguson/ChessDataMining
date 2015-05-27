@@ -12,23 +12,31 @@ namespace ChessDataMining
     {
         public List<IFact<ChessGame>> Generate(List<IFact<ChessGame>> excludedFacts, ChessGame game)
         {
-            var index = game.Opening.IndexOf(",");
-            var value = index > -1 ? game.Opening.Remove(index) : game.Opening;
-            var result = new List<IFact<ChessGame>>() 
-            {
-                new OpeningFact(game.Opening)
-            };
+            var result = GenerateAllOpenings(game.Opening).ToList();
 
-            if (value != game.Opening)
-            {
-                result.Add(new OpeningFact(value));
-            }
             if (game.Opening.ToLower().Contains("gambit"))
             {
                 result.Add(new OpeningFact("Gambit"));
             }
-
             return result.Where(x => !excludedFacts.Any(y => y.Implies(x))).ToList();
+        }
+
+        private IEnumerable<IFact<ChessGame>> GenerateAllOpenings(string opening)
+        {
+            var result = new List<IFact<ChessGame>>();
+            result.Add(new OpeningFact(opening));
+
+            var index = opening.LastIndexOf(",");
+            
+            if (index < 0)
+            {
+                return result;
+            }
+            else
+            {
+                var parentVariation = opening.Remove(index);
+                return result.Concat(GenerateAllOpenings(parentVariation));
+            }
         }
     }
 }

@@ -23,9 +23,9 @@ namespace DataMining
                 };
 
             apriori = new Apriori<string>(new SelfJoinAndPruneGenerator<string>(), mockFactsGenerators);
-            factA = new MockFact("A");
-            factB = new MockFact("B");
-            factC = new MockFact("C");
+            factA = new MockSimpleFact("A");
+            factB = new MockSimpleFact("B");
+            factC = new MockSimpleFact("C");
         }
 
         [Fact]
@@ -55,7 +55,7 @@ namespace DataMining
         }
 
         [Theory]
-        [InlineData(1)]
+        [InlineData(1)] 
         [InlineData(0.5)]
         [InlineData(0.25)]
         public void Should_return_the_correct_1_itemset_for_a_multiple_transaction_single_item_database_and_small_enough_minsup(Double minsup)

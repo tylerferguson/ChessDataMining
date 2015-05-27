@@ -25,9 +25,9 @@ namespace DataMining
                 {
                     new MockFactsGenerator()
                 };
-                factA = new MockFact("A");
-                factB = new MockFact("B");
-                factC = new MockFact("C");
+                factA = new MockSimpleFact("A");
+                factB = new MockSimpleFact("B");
+                factC = new MockSimpleFact("C");
                 var candidateGenerator = new SelfJoinAndPruneGenerator<string>();
                 apriori = new Apriori<string>(candidateGenerator, mockFactsGenerators);
                 candidateRuleGenerator = new CandidateRuleGenerator<string>();
@@ -144,11 +144,11 @@ namespace DataMining
 
             public With_no_target_facts()
             {
-                correctFact = new MockFact("Correct!");
-                factA = new MockFact("A");
-                factB = new MockFact("B");
-                factAB = new MockFact("AB");
-                factC = new MockFact("C");
+                correctFact = new MockSimpleFact("Correct!");
+                factA = new MockSimpleFact("A");
+                factB = new MockSimpleFact("B");
+                factAB = new MockSimpleFact("AB");
+                factC = new MockSimpleFact("C");
 
                 mockRuleGenerator = new MockRuleGenerator();
                 mockFilterer = new MockThresholdFilterer();
@@ -202,11 +202,11 @@ namespace DataMining
 
             public With_no_projection_facts() 
             {
-                correctFact = new MockFact("Correct!");
-                factA = new MockFact("A");
-                factB = new MockFact("B");
-                factAB = new MockFact("AB");
-                factC = new MockFact("C");
+                correctFact = new MockSimpleFact("Correct!");
+                factA = new MockSimpleFact("A");
+                factB = new MockSimpleFact("B");
+                factAB = new MockSimpleFact("AB");
+                factC = new MockSimpleFact("C");
 
                 mockRuleGenerator = new MockRuleGenerator();
                 mockFilterer = new MockThresholdFilterer();

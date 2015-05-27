@@ -16,9 +16,9 @@ namespace DataMining
 
         public When_GeneratePowerSet_is_called()
         {
-            factA = new MockFact("A");
-            factB = new MockFact("B");
-            factC = new MockFact("C");
+            factA = new MockSimpleFact("A");
+            factB = new MockSimpleFact("B");
+            factC = new MockSimpleFact("C");
 
         }
         [Fact]

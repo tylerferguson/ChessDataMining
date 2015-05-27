@@ -1,56 +1,50 @@
-﻿using DataMining;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace ChessDataMining.Facts
+namespace DataMining.Mocks
 {
-    public class OpeningFact : IFact<ChessGame>, IEquatable<OpeningFact>
+    public class MockOpeningFact : IFact<string>, IEquatable<MockOpeningFact>
     {
-        public OpeningFact(string value)
+        public MockOpeningFact(string value)
         {
-            Value = value;
+            this.Value = value;
         }
 
-        public override bool Implies(IFact<ChessGame> that)
+        public override bool IsTrue(string transaction)
+        {
+            return transaction.Contains(Value);
+        }
+
+        public override bool Implies(IFact<string> that)
         {
             if (that == null)
             {
                 return false;
             }
 
-            OpeningFact fact = that as OpeningFact;
+            MockOpeningFact fact = that as MockOpeningFact;
             return Implies(fact);
         }
 
-        public bool Implies(OpeningFact that)
+        public bool Implies(MockOpeningFact that)
         {
             if (that == null)
             {
                 return false;
             }
-            if (that.Value == "Gambit")
-            {
-                return this.Value.Contains(that.Value);
-            }
-            return this.Value.StartsWith(that.Value);
+
+            return this.Value.Contains(that.Value);
         }
 
-
-        public override bool IsTrue(ChessGame game)
-        {
-            var gameOpeningFact = new OpeningFact(game.Opening);
-            return gameOpeningFact.Implies(this);
-        }
-
-        public bool Equals(OpeningFact that)
+        public bool Equals(MockOpeningFact that)
         {
             if (that == null)
             {
                 return false;
             }
-            
             return this.Value.Equals(that.Value);
         }
 
@@ -60,7 +54,7 @@ namespace ChessDataMining.Facts
             {
                 return false;
             }
-            OpeningFact fact = obj as OpeningFact;
+            MockOpeningFact fact = obj as MockOpeningFact;
             if (fact == null)
             {
                 return false;
@@ -73,7 +67,7 @@ namespace ChessDataMining.Facts
 
         public override string ToString()
         {
-            return "Opening is " + Value;
+            return Value;
         }
     }
 }

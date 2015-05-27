@@ -15,7 +15,7 @@ namespace DataMining
             var arr = transaction.ToCharArray();
             foreach (var item in arr)
             {
-                result.Add(new MockFact(item.ToString()));
+                result.Add(new MockSimpleFact(item.ToString()));
             }
             return result;
         }
