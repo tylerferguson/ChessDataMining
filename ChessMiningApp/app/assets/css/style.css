@@ -314,10 +314,6 @@ img {
     cursor: pointer;
 }
 
-#data-info {
-    height: 150px;
-}
-
 .selection-notifier {
     align-self: center;
     margin-top: 10px;
@@ -333,7 +329,6 @@ img {
 }
 
 .info {
-    height: 300px;
     padding: 0 30px;
     font-size: 18px;
     position: relative;
@@ -383,4 +378,18 @@ floating-action-button {
 .waiting {
     pointer-events: none;
     opacity: 0.5;
+}
+
+.other-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      padding: 20px 0;
+}
+
+.sidebar-container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
 }

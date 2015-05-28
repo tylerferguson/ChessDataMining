@@ -1,4 +1,4 @@
-﻿<div ng-controller="SidebarCtrl">
+﻿<div ng-controller="SidebarCtrl" class="sidebar-container">
     <div class="info" id="data-info">
         <div>
             <div class="info-title">Data</div>
@@ -7,18 +7,20 @@
         <span class="selection-notifier" ng-hide="service.getDataFile().name">No data file selected</span>
         <span class="selection-notifier" ng-show="service.getDataFile().name">Added {{service.getDataFile().name}} <i class="fa fa-check file-upload-check"></i></span>
     </div>
-    
-    <filter-display fact-stage="Filters"></filter-display>
-    <filter-display fact-stage="Targets"></filter-display>
 
-    <div class="info" id="mine-info">
-        <div>
-            <div class="info-title">Mine</div>
+    <div class="other-info">
+        <filter-display fact-stage="Filters"></filter-display>
+        <filter-display fact-stage="Targets"></filter-display>
+
+        <div class="info" id="mine-info">
+            <div>
+                <div class="info-title">Mine</div>
+            </div>
+            <add-mining></add-mining>
+            <floating-action-button id="mine-fab">
+                <img src="app/assets/img/dig.svg" />
+            </floating-action-button>
         </div>
-        <add-mining></add-mining>
-        <floating-action-button id="mine-fab">
-            <img src="app/assets/img/dig.svg" />
-        </floating-action-button>
     </div>
     
 </div>
