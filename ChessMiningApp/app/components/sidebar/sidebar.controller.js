@@ -1,4 +1,4 @@
-﻿angular.module('ChessMining').controller('SidebarCtrl', ['$scope', 'appService', '$http', function($scope, $appService, $http) {
+﻿angular.module('ChessMining').controller('SidebarCtrl', ['$scope', '$location', 'appService', '$http', function($scope, $location, $appService, $http) {
 
     $scope.service = $appService;
 
@@ -14,7 +14,7 @@
             targetFacts: $appService.getTargets()
         };
 
-        $http.post('/api/AssociationRules/Mine', dataTransferObject, { 'Content-Type': 'application / json' })
+        $http.post($location.$$absUrl.replace('#/', 'api/AssociationRules/Mine'), dataTransferObject, { 'Content-Type': 'application / json' })
             .then(function (response) {
                 rules.length = 0;
                 response.data.forEach(function (rule) {

@@ -7,7 +7,7 @@
             buttonClicked: '=',
             closeInputForm: '&'
         },
-        controller: ['$scope', '$http', 'appService', function ($scope, $http, $appService) {
+        controller: ['$scope', '$http', '$location', 'appService', function ($scope, $http, $location, $appService) {
 
             var facts = [];
             $scope.fact = '';
@@ -38,8 +38,7 @@
             }
 
             function getFactOptions() {
-                
-                $http.get('/api/AssociationRules', { 'Content-Type': 'application / json' })
+                $http.get($location.$$absUrl.replace('#/', 'api/AssociationRules'), { 'Content-Type': 'application / json' })
                     .then(function (response) {
                         response.data.forEach(function (elem) {
                             $scope.factOptions.facts.push(elem.FactType);
