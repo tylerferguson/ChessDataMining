@@ -8,7 +8,7 @@
     <add-filters fact-stage="{{factStage}}" button-clicked="buttonClicked" close-input-form="closeInputForm()"></add-filters>
     <span class="selection-notifier" ng-hide="facts[0]">No {{factStage.toLowerCase()}} selected</span>
     <div class="filters">
-        <div ng-repeat="fact in facts = service['get' + factStage]()">
+        <div ng-repeat="fact in facts = $service['get' + factStage]()">
             <filter-pane index='{{$index}}' fact="fact" facts="facts" fact-stage="{{factStage}}"></filter-pane>
         </div>
     </div>

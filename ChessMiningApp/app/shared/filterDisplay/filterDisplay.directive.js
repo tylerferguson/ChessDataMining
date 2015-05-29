@@ -7,7 +7,7 @@
         },
         controller: ['$scope', 'appService', function ($scope, $service) {
 
-            $scope.service = $service;
+            $scope.$service = $service;
 
             $scope.closeInputForm = function () {
                 setTimeout(function () {
