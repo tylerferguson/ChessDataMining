@@ -20,14 +20,6 @@ body {
     display: flex;
 }
 
-.content {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-}
-
 .button.selected {
     color: rgba(255, 255, 255, 1);
 }
@@ -446,4 +438,9 @@ floating-action-button {
     padding: 60px 0 0 0;
     height: 100vh;
     width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
 }
