@@ -1,6 +1,7 @@
-﻿angular.module('ChessMining').controller('MineCtrl', ['$scope', 'appService', '$http', function ($scope, appService, $http) {
+﻿angular.module('ChessMining').controller('MineCtrl', ['$scope', '$http', 'appService', 'closeMenuService', function ($scope, $http, $appService, $closeMenuService) {
 
-    $scope.$appService = appService;
+    $scope.$appService = $appService;
+    $scope.$closeMenuService = $closeMenuService;
 
     $scope.predicate = 'LiftCorrelation';
     $scope.reverse = true;

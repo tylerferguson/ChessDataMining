@@ -1,6 +1,9 @@
-﻿angular.module('ChessMining').controller('SidebarCtrl', ['$scope', '$location', 'appService', '$http', function($scope, $location, $appService, $http) {
+﻿angular.module('ChessMining').controller('SidebarCtrl', ['$scope', '$location', '$http', 'appService', 'closeMenuService', function ($scope, $location, $http, $appService, $closeMenuService) {
 
-    $scope.service = $appService;
+    $scope.$service = $appService;
+    $scope.$closeMenuService = $closeMenuService;
+    //$scope.sideNavShown = true;
+    
 
     var rules = [];
 
@@ -26,5 +29,4 @@
                 console.log('error!');
             });
     }
-
 }])

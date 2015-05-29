@@ -1,11 +1,11 @@
-﻿<div ng-controller="SidebarCtrl" class="sidebar-container">
+﻿<div class="sidebar-container" ng-class="{'mobile-sidebar-container': $closeMenuService.getSideNavShownStatus()}">
     <div class="info" id="data-info">
         <div>
             <div class="info-title">Data</div>
         </div>
         <add-data></add-data>
-        <span class="selection-notifier" ng-hide="service.getDataFile().name">No data file selected</span>
-        <span class="selection-notifier" ng-show="service.getDataFile().name">Added {{service.getDataFile().name}} <i class="fa fa-check file-upload-check"></i></span>
+        <span class="selection-notifier" ng-hide="$service.getDataFile().name">No data file selected</span>
+        <span class="selection-notifier" ng-show="$service.getDataFile().name">Added {{$service.getDataFile().name}} <i class="fa fa-check file-upload-check"></i></span>
     </div>
 
     <div class="other-info">
@@ -22,5 +22,5 @@
             </floating-action-button>
         </div>
     </div>
-    
+
 </div>

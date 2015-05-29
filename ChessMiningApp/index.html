@@ -8,7 +8,10 @@
     <title>Chess Mining App</title>
 </head>
 <body ng-app="ChessMining">
-    <div class="side-nav">
+    <div class="side-nav" ng-controller="SidebarCtrl">
+        <div ng-click="$closeMenuService.showSideNav()">
+            <i class="fa fa-bars side-nav-show-button"></i>
+        </div>
         <ng-include src="'app/components/sidebar/sidebar.html'"></ng-include>
     </div>
     <div class="content-container">
@@ -27,6 +30,7 @@
     <script src="app/app.module.js"></script>
     <script src="app/app.service.js"></script>
     <script src="app/app.routes.js"></script>
+    <script src="app/closeMenu.service.js"></script>
     <script src="app/shared/filterDisplay/filterDisplay.directive.js"></script>
     <script src="app/shared/inputSuggestionField/inputSuggestionField.directive.js"></script>
     <script src="app/shared/floatingActionButton/floatingActionButton.directive.js"></script>
