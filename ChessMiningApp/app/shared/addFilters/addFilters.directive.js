@@ -13,7 +13,6 @@
             var simpleFacts;
 
             $scope.fact = '';
-            $scope.name = '';
             $scope.value = '';
             $scope.factOptions = {
                 facts: []
@@ -35,7 +34,6 @@
 
                 facts.push(fact);
                 $scope.fact = '';
-                $scope.name = '';
                 $scope.value = '';
                 updateFilters();
                 $scope.buttonClicked = false;

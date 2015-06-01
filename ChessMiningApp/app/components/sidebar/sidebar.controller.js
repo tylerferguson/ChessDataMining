@@ -2,7 +2,6 @@
 
     $scope.$service = $appService;
     $scope.$closeMenuService = $closeMenuService;
-    //$scope.sideNavShown = true;
     
 
     var rules = [];
