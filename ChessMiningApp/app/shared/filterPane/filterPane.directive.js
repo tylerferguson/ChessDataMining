@@ -10,6 +10,13 @@
         },
         controller: ['$scope', 'appService', function ($scope, $appService) {
 
+            if ($scope.fact.type === "SimpleFact") {
+                $scope.displayType = $scope.fact.name;
+            } else {
+                $scope.displayType = $scope.fact.type.replace('Fact', '');
+            }
+            $scope.displayValue = $scope.fact.value;
+
             var remainingList;
             $scope.removeFact = function () {
                 $scope.facts.splice($scope.index, 1);

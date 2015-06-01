@@ -10,6 +10,8 @@
         controller: ['$scope', '$http', '$location', 'appService', function ($scope, $http, $location, $appService) {
 
             var facts = [];
+            var simpleFacts;
+
             $scope.fact = '';
             $scope.name = '';
             $scope.value = '';
@@ -19,9 +21,15 @@
             };
 
             $scope.submitFact = function () {
+                var fact = $scope.fact;
+                var name;
+                if (simpleFacts.indexOf(fact) > -1) {
+                    name = fact;
+                    fact = 'SimpleFact';
+                }
                 var fact = {
-                    type: $scope.fact,
-                    name: $scope.name,
+                    type: fact,
+                    name: name,
                     value: $scope.value
                 };
 
@@ -41,11 +49,17 @@
                 $http.get($location.$$absUrl.replace('#/', 'api/AssociationRules'), { 'Content-Type': 'application / json' })
                     .then(function (response) {
                         response.data.forEach(function (elem) {
-                            $scope.factOptions.facts.push(elem.FactType);
-                            $scope.factOptions[elem.FactType] = {};
                             if (elem.FactType === "SimpleFact") {
-                                $scope.factOptions.SimpleFact.validNameParams = elem.ValidParams;
-                            } else {
+                                simpleFacts = elem.ValidParams;
+                                simpleFacts.forEach(function (validNameParam) {
+                                    $scope.factOptions.facts.push(validNameParam);
+                                    $scope.factOptions[validNameParam] = {};
+                                    $scope.factOptions[validNameParam].validValueParams = '';
+                                })
+                            }
+                            else {
+                                $scope.factOptions.facts.push(elem.FactType);
+                                $scope.factOptions[elem.FactType] = {};
                                 $scope.factOptions[elem.FactType].validValueParams = elem.ValidParams;
                             }
                         })
