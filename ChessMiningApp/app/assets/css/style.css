@@ -387,6 +387,7 @@ floating-action-button {
       background-color: white;
       border-right: 1px solid rgba(0,0,0,0.14);
       padding-top: 60px;
+      position: absolute;
 }
 
 .side-nav {
@@ -431,6 +432,11 @@ floating-action-button {
         border-right: 1px solid rgba(0,0,0,0.14);
         padding-top: 60px;
         /*opacity: 1;*/
+    }
+    
+    #results-table {
+        width: auto;
+        border-spacing: 10px;
     }
 }
 
