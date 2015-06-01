@@ -10,7 +10,8 @@
         controller: ['$scope', '$http', '$location', 'appService', function ($scope, $http, $location, $appService) {
 
             var facts = [];
-            var simpleFacts;
+            var simpleFacts = [];
+            $scope.$appService = $appService;
 
             $scope.fact = '';
             $scope.value = '';
@@ -18,6 +19,12 @@
                 facts: []
                 //key value pairs of individual facts
             };
+
+            getFactOptions();
+
+            $scope.$watch('$appService.getDataFile()', function (newValue) {
+                updateValidValueParams(newValue);
+            })
 
             $scope.submitFact = function () {
                 var fact = $scope.fact;
@@ -52,7 +59,7 @@
                                 simpleFacts.forEach(function (validNameParam) {
                                     $scope.factOptions.facts.push(validNameParam);
                                     $scope.factOptions[validNameParam] = {};
-                                    $scope.factOptions[validNameParam].validValueParams = '';
+                                    $scope.factOptions[validNameParam].validValueParams = [];
                                 })
                             }
                             else {
@@ -66,9 +73,17 @@
                         console.log("get error!");
                     });
             }
-
-            getFactOptions();
           
+
+            function updateValidValueParams(dataFile) {
+                simpleFacts.forEach(function (fact) {
+                    dataFile && dataFile.data.forEach(function (game) {
+                        if ($scope.factOptions[fact].validValueParams.indexOf(game[fact]) < 0 ) {
+                            $scope.factOptions[fact].validValueParams.push(game[fact]);
+                        } 
+                    })
+                })
+            }
 
         }]
     }
