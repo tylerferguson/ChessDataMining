@@ -163,6 +163,7 @@ filter-pane {
     background-color: white;
     position: absolute;
     margin-top: 3px;
+    width: 200px;
 }
 
 .suggestion {
