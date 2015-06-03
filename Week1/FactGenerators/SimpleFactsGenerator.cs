@@ -16,7 +16,8 @@ namespace ChessDataMining
             {
                 new SimpleFact("White", game.White),
                 new SimpleFact("Black", game.Black),
-                new SimpleFact("Result", game.Result)
+                new SimpleFact("Result", game.Result),
+                new SimpleFact("Day", game.Day)
             };
 
             return result.Where(x => !excludedFacts.Contains(x)).ToList();

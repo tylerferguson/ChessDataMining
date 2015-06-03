@@ -9,7 +9,7 @@ namespace ChessDataMining.Facts
     public class SimpleFact : IFact<ChessGame>, IEquatable<SimpleFact>
     {
         public string PropertyName { get; set; }
-        public enum validParam { White, Black, Result};
+        public enum validParam { White, Black, Result, Day};
 
         public SimpleFact(string propertyName, string value)
         {

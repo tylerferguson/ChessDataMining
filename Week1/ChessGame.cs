@@ -23,5 +23,6 @@ namespace ChessDataMining
         public string Opening { get; set; }
         public string Moves { get; set; }
         public string End { get; set; }
+        public string Day { get; set; }
     }
 }
