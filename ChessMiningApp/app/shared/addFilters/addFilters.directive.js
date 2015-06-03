@@ -76,10 +76,11 @@
           
 
             function updateValidValueParams(dataFile) {
-                simpleFacts.forEach(function (fact) {
+                var facts = simpleFacts.concat(['OpeningFact']);
+                facts.forEach(function (fact) {
                     dataFile && dataFile.data.forEach(function (game) {
-                        if ($scope.factOptions[fact].validValueParams.indexOf(game[fact]) < 0 ) {
-                            $scope.factOptions[fact].validValueParams.push(game[fact]);
+                        if ($scope.factOptions[fact].validValueParams.indexOf(game[fact.replace('Fact', '')]) < 0 ) {
+                            $scope.factOptions[fact].validValueParams.push(game[fact.replace('Fact', '')]);
                         } 
                     })
                 })

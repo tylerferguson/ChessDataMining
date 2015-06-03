@@ -10,6 +10,8 @@
         },
         controller: ['$scope', function($scope)  {
 
+            $scope.limit = 10;
+
             $scope.selectFromSuggestedList = function (selection) {
                 $scope.optionType = selection;
                 $scope.optionsShown = false;
