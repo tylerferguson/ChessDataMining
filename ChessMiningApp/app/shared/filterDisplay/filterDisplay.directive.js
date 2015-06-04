@@ -9,20 +9,8 @@
 
             $scope.$service = $service;
 
-            $scope.closeInputForm = function () {
-                setTimeout(function () {
-                    var focus = $(document.activeElement);
-                    if (focus.is(".add-filter-form") || $('.add-filter-form').has(focus).length) {
-                        console.log("still focused");
-                    } else {
-                        $scope.$apply(function () {
-                            $scope.buttonClicked = false;
-                        })
-                    }
-                }, 0);
-            }
-
             $scope.showInputForm = function () {
+                event.stopPropagation();
                 $scope.buttonClicked = true;
             }
 

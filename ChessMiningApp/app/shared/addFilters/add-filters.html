@@ -1,16 +1,14 @@
-﻿<div class="add-filter-form lift-shadow-soft" ng-blur="closeInputForm()" ng-show="buttonClicked" tabindex="400" ng-click="$closeMenuService.publish('addFilterForm')">
+﻿<div class="add-filter-form lift-shadow-soft" ng-show="buttonClicked" tabindex="400" ng-click="formClicked()">
     <form class="filter-inputs" name="form" id="form'" ng-submit="submitFact()">
         <input-suggestion-field class="filter-input"
                                 input-label="Fact"
                                 input-type="fact"
-                                options="factOptions.facts"
-                                close-input-form="closeInputForm()">
+                                options="factOptions.facts">
         </input-suggestion-field>
         <input-suggestion-field class="filter-input"
                                 input-label="Value"
                                 input-type="value"
-                                options="factOptions[fact].validValueParams"
-                                close-input-form="closeInputForm()">
+                                options="factOptions[fact].validValueParams">
         </input-suggestion-field>
 
         <input class="button add-button" type="submit" value="Add" />

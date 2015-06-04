@@ -4,8 +4,7 @@
         templateUrl: 'app/shared/addFilters/add-filters.html',
         scope: {
             factStage: '@',
-            buttonClicked: '=',
-            closeInputForm: '&'
+            buttonClicked: '='
         },
         controller: ['$scope', '$http', '$location', 'appService', 'closeMenuService', function ($scope, $http, $location, $appService, $closeMenuService) {
 
@@ -20,6 +19,9 @@
                 facts: []
                 //key value pairs of individual facts
             };
+
+            $closeMenuService.subscribe('displayArea', update);
+            $closeMenuService.subscribe('navBar', update);
 
             getFactOptions();
 
@@ -49,6 +51,11 @@
                 function updateFilters() {
                     $appService['update' + $scope.factStage](facts);
                 }
+            }
+
+            $scope.formClicked = function () {
+                event.stopPropagation();
+                $closeMenuService.publish('addFilterForm');
             }
 
             function getFactOptions() {
@@ -85,6 +92,10 @@
                         } 
                     })
                 })
+            }
+
+            function update() {
+                $scope.buttonClicked = false;
             }
 
         }]

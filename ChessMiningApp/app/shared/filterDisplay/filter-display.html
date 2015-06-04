@@ -3,9 +3,9 @@
         <div class="info-title">
             {{factStage}}
         </div>
-        <i class="fa fa-plus info-plus button" ng-click="showInputForm()" tabindex="7000" ng-blur="closeInputForm()"></i>
+        <i class="fa fa-plus info-plus button" ng-click="showInputForm()" tabindex="7000"></i>
     </div>
-    <add-filters fact-stage="{{factStage}}" button-clicked="buttonClicked" close-input-form="closeInputForm()"></add-filters>
+    <add-filters fact-stage="{{factStage}}" button-clicked="buttonClicked"></add-filters>
     <span class="selection-notifier" ng-hide="facts[0]">No {{factStage.toLowerCase()}} selected</span>
     <div class="filters">
         <div ng-repeat="fact in facts = $service['get' + factStage]()">
