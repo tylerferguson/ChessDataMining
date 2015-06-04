@@ -14,9 +14,9 @@
         subscribers[topic].push(subscriber);
     }
      
-    function publish(topic, showStatus) {
+    function publish(topic) {
         subscribers[topic].forEach(function(subscriber) {
-            subscriber(topic, showStatus);
+            subscriber(topic);
         })
     }
 })

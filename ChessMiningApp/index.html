@@ -9,7 +9,7 @@
 </head>
 <body ng-app="ChessMining">
     <div class="side-nav" ng-controller="SidebarCtrl">
-        <div ng-click="$closeMenuService.publish('sideNav', true)">
+        <div ng-click="$closeMenuService.publish('showSideNavButton')">
             <i class="fa fa-bars side-nav-show-button"></i>
         </div>
         <ng-include src="'app/components/sidebar/sidebar.html'"></ng-include>

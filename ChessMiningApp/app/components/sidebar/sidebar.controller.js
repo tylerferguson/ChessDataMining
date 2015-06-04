@@ -5,7 +5,9 @@
 
     var rules = [];
 
-    $closeMenuService.subscribe('sideNav', update);
+    $closeMenuService.subscribe('showSideNavButton', update(true));
+    $closeMenuService.subscribe('displayArea', update(false));
+
 
     $scope.getAssociationRules = function () {
 
@@ -30,7 +32,9 @@
             });
     }
 
-    function update(topic, status) {
-        $scope[topic + 'ShownStatus'] = status;
+    function update(status) {
+        return function (topic) {
+            $scope.sideNavShownStatus = status;
+        }
     }
 }])

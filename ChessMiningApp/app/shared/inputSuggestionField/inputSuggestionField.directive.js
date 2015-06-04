@@ -10,7 +10,7 @@
         },
         controller: ['$scope', 'closeMenuService', function ($scope, $closeMenuService) {
 
-            $closeMenuService.subscribe('suggestionBox', update);
+            $closeMenuService.subscribe('addFilterForm', update);
 
             $scope.limit = 10;
 
@@ -24,8 +24,8 @@
                 $scope.optionsShown = true;
             }
 
-            function update(topic, status) {
-                $scope.optionsShown = status;
+            function update(topic) {
+                $scope.optionsShown = false;
             }
         }] 
     }
