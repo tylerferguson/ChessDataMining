@@ -1,16 +1,12 @@
 ﻿angular.module('ChessMining').factory('closeMenuService', function () {
 
-    //var sideNavShown;
     var subscribers = {
-        //topic: [] //subscribers
+        //<topic>: [<subscribers>] 
     };
 
     return {
         subscribe: subscribe,
         publish: publish
-        //closeSideNav: closeSideNav,
-        //showSideNav: showSideNav,
-        //getSideNavShownStatus: getSideNavShownStatus
     }
 
     function subscribe(topic, subscriber) {
@@ -23,16 +19,4 @@
             subscriber(topic, showStatus);
         })
     }
-
-//    function closeSideNav() {
-//        sideNavShown = false;
-//    }
-
-//    function showSideNav() {
-//        sideNavShown = true;
-//    }
-
-//    function getSideNavShownStatus() {
-//        return sideNavShown;
-//    }
 })

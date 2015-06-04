@@ -7,11 +7,12 @@
             buttonClicked: '=',
             closeInputForm: '&'
         },
-        controller: ['$scope', '$http', '$location', 'appService', function ($scope, $http, $location, $appService) {
+        controller: ['$scope', '$http', '$location', 'appService', 'closeMenuService', function ($scope, $http, $location, $appService, $closeMenuService) {
 
             var facts = [];
             var simpleFacts = [];
             $scope.$appService = $appService;
+            $scope.$closeMenuService = $closeMenuService;
 
             $scope.fact = '';
             $scope.value = '';

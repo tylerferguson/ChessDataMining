@@ -8,7 +8,9 @@
             options: '=options',
             closeInputForm: '&'
         },
-        controller: ['$scope', function($scope)  {
+        controller: ['$scope', 'closeMenuService', function ($scope, $closeMenuService) {
+
+            $closeMenuService.subscribe('suggestionBox', update);
 
             $scope.limit = 10;
 
@@ -18,7 +20,12 @@
             }
 
             $scope.showOptions = function () {
+                event.stopPropagation();
                 $scope.optionsShown = true;
+            }
+
+            function update(topic, status) {
+                $scope.optionsShown = status;
             }
         }] 
     }
