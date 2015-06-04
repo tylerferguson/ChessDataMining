@@ -2,9 +2,10 @@
 
     $scope.$service = $appService;
     $scope.$closeMenuService = $closeMenuService;
-    
 
     var rules = [];
+
+    $closeMenuService.subscribe('sideNav', update);
 
     $scope.getAssociationRules = function () {
 
@@ -27,5 +28,9 @@
             function (error) {
                 console.log('error!');
             });
+    }
+
+    function update(topic, status) {
+        $scope[topic + 'ShownStatus'] = status;
     }
 }])
