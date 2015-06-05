@@ -10,6 +10,9 @@
         controller: ['$scope', 'closeMenuService', function ($scope, $closeMenuService) {
 
             $closeMenuService.subscribe('addFilterForm', update);
+            $closeMenuService.subscribe('factInput', update);
+            $closeMenuService.subscribe('valueInput', update);
+
 
             $scope.limit = 10;
 
@@ -21,10 +24,14 @@
             $scope.showOptions = function () {
                 event.stopPropagation();
                 $scope.optionsShown = true;
+                $closeMenuService.publish($scope.label.toLowerCase() + 'Input');
             }
 
             function update(topic) {
-                $scope.optionsShown = false;
+                if (topic.replace('Input', '') !== $scope.label.toLowerCase()) {
+                    $scope.optionsShown = false;
+
+                }
             }
         }] 
     }
