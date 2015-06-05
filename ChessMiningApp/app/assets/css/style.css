@@ -227,8 +227,12 @@ td {
     min-width: 100px;
 }
 
-td.number {
+td.number, th {
     text-align: center;
+}
+
+th span {
+      width: 100%;
 }
 
 .mine-input {
