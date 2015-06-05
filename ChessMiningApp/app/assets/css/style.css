@@ -223,6 +223,10 @@ input:focus {
     user-select: none;
 }
 
+td {
+    min-width: 100px;
+}
+
 td.number {
     text-align: center;
 }

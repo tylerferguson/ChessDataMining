@@ -52,6 +52,8 @@ namespace ChessMiningApp.Controllers
             {
                 return new AssociationRuleDTO()
                 {
+                    Left = x.Left.ToString(),
+                    Right = x.Right.ToString(),
                     Value = x.ToString(),
                     AbsoluteSupport = x.AbsoluteSupport,
                     Confidence = x.Confidence,

@@ -34,10 +34,37 @@
     <table id="results-table" ng-show="rules[0]">
         <thead>
             <tr>
-                <th>Rule</th>
+                <!--<th>Rule</th>-->
+                <th ng-click="setPredicateAndReverse('Right')">
+                    <div class="table-column-title">
+                        <span>Outcome</span>
+                        <div class="sort-arrow-container">
+                            <i class="fa fa-caret-down sort-arrow" ng-show="predicate === 'Right' && reverse"></i>
+                            <i class="fa fa-caret-up sort-arrow" ng-show="predicate === 'Right' && !reverse"></i>
+                        </div>
+                    </div>
+                </th>
+                <th ng-click="setPredicateAndReverse('ProbabilityBefore')">
+                    <div class="table-column-title">
+                        <span>Outcome Probability</span>
+                        <div class="sort-arrow-container">
+                            <i class="fa fa-caret-down sort-arrow" ng-show="predicate === 'ProbabilityBefore' && reverse"></i>
+                            <i class="fa fa-caret-up sort-arrow" ng-show="predicate === 'ProbabilityBefore' && !reverse"></i>
+                        </div>
+                    </div>
+                </th>
+                <th ng-click="setPredicateAndReverse('Left')">
+                    <div class="table-column-title">
+                        <span>Variables</span>
+                        <div class="sort-arrow-container">
+                            <i class="fa fa-caret-down sort-arrow" ng-show="predicate === 'Left' && reverse"></i>
+                            <i class="fa fa-caret-up sort-arrow" ng-show="predicate === 'Left' && !reverse"></i>
+                        </div>
+                    </div>
+                </th>
                 <th ng-click="setPredicateAndReverse('Confidence')">
                     <div class="table-column-title">
-                        <span>Confidence</span>
+                        <span>Outcome Probability Becomes</span>
                         <div class="sort-arrow-container">
                             <i class="fa fa-caret-down sort-arrow" ng-show="predicate === 'Confidence' && reverse"></i>
                             <i class="fa fa-caret-up sort-arrow" ng-show="predicate === 'Confidence' && !reverse"></i>
@@ -46,37 +73,19 @@
                 </th>
                 <th ng-click="setPredicateAndReverse('AbsoluteSupport')">
                     <div class="table-column-title">
-                        <span>AbsoluteSupport</span>
+                        <span>Number of Occurences</span>
                         <div class="sort-arrow-container">
                             <i class="fa fa-caret-down sort-arrow" ng-show="predicate === 'AbsoluteSupport' && reverse"></i>
                             <i class="fa fa-caret-up sort-arrow" ng-show="predicate === 'AbsoluteSupport' && !reverse"></i>
                         </div>
                     </div>
                 </th>
-                <th ng-click="setPredicateAndReverse('RelativeSupport')">
-                    <div class="table-column-title">
-                        <span>RelativeSupport</span>
-                        <div class="sort-arrow-container">
-                            <i class="fa fa-caret-down sort-arrow" ng-show="predicate === 'RelativeSupport' && reverse"></i>
-                            <i class="fa fa-caret-up sort-arrow" ng-show="predicate === 'RelativeSupport' && !reverse"></i>
-                        </div>
-                    </div>
-                </th>
                 <th ng-click="setPredicateAndReverse('LiftCorrelation')">
                     <div class="table-column-title">
-                        <span>LiftCorrelation</span>
+                        <span>Correlation Coefficient</span>
                         <div class="sort-arrow-container">
                             <i class="fa fa-caret-down sort-arrow" ng-show="predicate === 'LiftCorrelation' && reverse"></i>
                             <i class="fa fa-caret-up sort-arrow" ng-show="predicate === 'LiftCorrelation' && !reverse"></i>
-                        </div>
-                    </div>
-                </th>
-                <th ng-click="setPredicateAndReverse('ProbabilityBefore')">
-                    <div class="table-column-title">
-                        <span>ProbabilityBefore</span>
-                        <div class="sort-arrow-container">
-                            <i class="fa fa-caret-down sort-arrow" ng-show="predicate === 'ProbabilityBefore' && reverse"></i>
-                            <i class="fa fa-caret-up sort-arrow" ng-show="predicate === 'ProbabilityBefore' && !reverse"></i>
                         </div>
                     </div>
                 </th>
@@ -84,12 +93,12 @@
         </thead>
         <tbody>
             <tr ng-repeat="rule in rules = $appService.getResults() | orderBy:predicate:reverse">
-                <td>{{rule.Value}}</td>
+                <td>{{rule.Right}}</td>
+                <td class="number">{{rule.ProbabilityBefore | number}}</td>
+                <td>{{rule.Left}}</td>
                 <td class="number">{{rule.Confidence | number}}</td>
                 <td class="number">{{rule.AbsoluteSupport | number}}</td>
-                <td class="number">{{rule.RelativeSupport | number}}</td>
                 <td class="number">{{rule.LiftCorrelation | number}}</td>
-                <td class="number">{{rule.ProbabilityBefore | number}}</td>
             </tr>
         </tbody>
     </table>

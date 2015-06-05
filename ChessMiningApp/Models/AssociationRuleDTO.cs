@@ -7,6 +7,8 @@ namespace ChessMiningApp.Models
 {
     public class AssociationRuleDTO
     {
+        public string Right { get; set; }
+        public string Left { get; set; }
         public string Value { get; set; }
         public int AbsoluteSupport { get; set; }
         public Double RelativeSupport { get; set; }
