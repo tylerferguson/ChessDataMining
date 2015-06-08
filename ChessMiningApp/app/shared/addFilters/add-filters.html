@@ -3,12 +3,14 @@
         <input-suggestion-field class="filter-input"
                                 input-label="Fact"
                                 input-type="fact"
-                                options="factOptions.facts">
+                                options="factOptions.facts"
+                                fact-stage="factStage">
         </input-suggestion-field>
         <input-suggestion-field class="filter-input"
                                 input-label="Value"
                                 input-type="value"
-                                options="factOptions[fact].validValueParams">
+                                options="factOptions[fact].validValueParams"
+                                fact-stage="factStage">
         </input-suggestion-field>
 
         <input class="button add-button" type="submit" value="Add" />

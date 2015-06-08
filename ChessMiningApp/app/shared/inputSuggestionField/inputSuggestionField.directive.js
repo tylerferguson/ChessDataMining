@@ -5,9 +5,12 @@
         scope: {
             label: '@inputLabel',
             optionType: '=inputType',
-            options: '=options'
+            options: '=options',
+            factStage: '='
         },
         controller: ['$scope', 'closeMenuService', function ($scope, $closeMenuService) {
+
+            $scope.current = 0;
 
             $closeMenuService.subscribe('addFilterForm', update);
             $closeMenuService.subscribe('factInput', update);
