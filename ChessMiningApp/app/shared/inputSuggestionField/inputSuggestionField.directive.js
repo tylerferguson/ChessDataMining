@@ -10,7 +10,7 @@
         },
         controller: ['$scope', 'closeMenuService', function ($scope, $closeMenuService) {
 
-            $scope.current = 0;
+            $scope.current = null;
 
             $closeMenuService.subscribe('addFilterForm', update);
             $closeMenuService.subscribe('factInput', update);
