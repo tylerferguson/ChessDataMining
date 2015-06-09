@@ -35,6 +35,8 @@
                 if (simpleFacts.indexOf(fact) > -1) {
                     name = fact;
                     fact = 'SimpleFact';
+                } else {
+                    fact = $scope.fact.concat('Fact');
                 }
                 var fact = {
                     type: fact,
@@ -71,9 +73,9 @@
                                 })
                             }
                             else {
-                                $scope.factOptions.facts.push(elem.FactType);
-                                $scope.factOptions[elem.FactType] = {};
-                                $scope.factOptions[elem.FactType].validValueParams = elem.ValidParams;
+                                $scope.factOptions.facts.push(elem.FactType.replace('Fact', ''));
+                                $scope.factOptions[elem.FactType.replace('Fact', '')] = {};
+                                $scope.factOptions[elem.FactType.replace('Fact', '')].validValueParams = elem.ValidParams;
                             }
                         })
                     },
@@ -84,7 +86,7 @@
           
 
             function updateValidValueParams(dataFile) {
-                var facts = simpleFacts.concat(['OpeningFact']);
+                var facts = simpleFacts.concat(['Opening']);
                 facts.forEach(function (fact) {
                     dataFile && dataFile.data.forEach(function (game) {
                         if ($scope.factOptions[fact].validValueParams.indexOf(game[fact.replace('Fact', '')]) < 0 ) {
