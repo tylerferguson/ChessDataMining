@@ -11,6 +11,7 @@
 
                 $elem.removeClass('suggestion-focus');
                 if (event.which === 40) {
+                    event.preventDefault();
                     if ($scope.current === null) {
                         $scope.current = -1;
                     }
@@ -19,6 +20,7 @@
                         $elem.addClass('suggestion-focus');
                     }
                 } else if (event.which === 38) {
+                    event.preventDefault();
                     if ($scope.current === null) {
                         $scope.current = $scope.filtered.length;
                     }
