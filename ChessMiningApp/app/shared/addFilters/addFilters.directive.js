@@ -89,8 +89,8 @@
                 var facts = simpleFacts.concat(['Opening']);
                 facts.forEach(function (fact) {
                     dataFile && dataFile.data.forEach(function (game) {
-                        if ($scope.factOptions[fact].validValueParams.indexOf(game[fact.replace('Fact', '')]) < 0 ) {
-                            $scope.factOptions[fact].validValueParams.push(game[fact.replace('Fact', '')]);
+                        if ($scope.factOptions[fact].validValueParams.indexOf(game[fact]) < 0 ) {
+                            $scope.factOptions[fact].validValueParams.push(game[fact]);
                         } 
                     })
                 })

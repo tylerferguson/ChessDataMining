@@ -47,7 +47,7 @@
             })
 
             function isCurrentlySelected() {
-                return $elem[0].innerText === $scope.filtered[$scope.current % $scope.filtered.length].replace('Fact', '');
+                return $elem[0].innerText === $scope.filtered[$scope.current % $scope.filtered.length];
             }
         }
     }
