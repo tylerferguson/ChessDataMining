@@ -168,7 +168,9 @@ filter-pane {
     cursor: pointer;
 }
 
-.suggestion-focus {
+
+
+.suggestion-focus, .suggestion-hover {
     background-color: #BBDEFB;
 }
 

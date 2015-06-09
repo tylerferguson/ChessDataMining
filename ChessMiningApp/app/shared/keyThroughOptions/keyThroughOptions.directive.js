@@ -8,7 +8,7 @@
             }, true)
 
             $('.' + $scope.factStage + '-filter-display' + ' .' + $scope.label + '-suggestion-field-input').on('keydown', function (event) {
-
+                $elem.removeClass('suggestion-hover');
                 $elem.removeClass('suggestion-focus');
                 if (event.which === 40) {
                     event.preventDefault();

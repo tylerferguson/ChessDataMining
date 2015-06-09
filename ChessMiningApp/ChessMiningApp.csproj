@@ -97,6 +97,7 @@
     <Content Include="app\components\mine\mine.html" />
     <Content Include="app\assets\css\style.css" />
     <Content Include="app\shared\loadingSpinner\loadingSpinner.directive.js" />
+    <Content Include="app\shared\removeHighlightHover\removeHighlightHover.directive.js" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
     <Content Include="Scripts\angular-animate.js" />
