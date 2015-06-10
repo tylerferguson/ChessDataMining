@@ -23,6 +23,13 @@
             $closeMenuService.subscribe('displayArea', update);
             $closeMenuService.subscribe('navBar', update);
 
+            var results = {
+                "White Wins": "1-0",
+                "Black Wins": "0-1",
+                "Draw": "1/2-1/2",
+                "*": "*"
+            }
+
             getFactOptions();
 
             $scope.$watch('$appService.getDataFile()', function (newValue) {
@@ -32,8 +39,13 @@
             $scope.submitFact = function () {
                 var fact = $scope.fact;
                 var name;
+                var value = $scope.value;
+
                 if (simpleFacts.indexOf(fact) > -1) {
                     name = fact;
+                    if (fact === "Result") {
+                        value = results[$scope.value];
+                    }
                     fact = 'SimpleFact';
                 } else {
                     fact = $scope.fact.concat('Fact');
@@ -41,7 +53,7 @@
                 var fact = {
                     type: fact,
                     name: name,
-                    value: $scope.value
+                    value: value
                 };
 
                 facts.push(fact);
@@ -88,16 +100,34 @@
             function updateValidValueParams(dataFile) {
                 var facts = simpleFacts.concat(['Opening']);
                 facts.forEach(function (fact) {
-                    dataFile && dataFile.data.forEach(function (game) {
-                        if ($scope.factOptions[fact].validValueParams.indexOf(game[fact]) < 0 ) {
-                            $scope.factOptions[fact].validValueParams.push(game[fact]);
-                        } 
-                    })
+                    if (fact === "Result") {
+                        dataFile && dataFile.data.forEach(function (game) {
+                            if ($scope.factOptions[fact].validValueParams.indexOf(getKeyByValue(results, game[fact])) < 0) {
+                                $scope.factOptions[fact].validValueParams.push(getKeyByValue(results, game[fact]));
+                            }
+                        })
+                    } else {
+                        dataFile && dataFile.data.forEach(function (game) {
+                            if ($scope.factOptions[fact].validValueParams.indexOf(game[fact]) < 0) {
+                                $scope.factOptions[fact].validValueParams.push(game[fact]);
+                            }
+                        })
+                    }
                 })
             }
 
             function update() {
                 $scope.buttonClicked = false;
+            }
+
+            function getKeyByValue(obj, val) {
+                for (var prop in obj) {
+                    if (obj.hasOwnProperty(prop)) {
+                        if (obj[prop] === val) {
+                            return prop;
+                        }
+                    }
+                }
             }
 
         }]
