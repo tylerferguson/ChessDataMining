@@ -12,6 +12,10 @@
 
             $scope.current = null;
 
+            $scope.$watch('current', function () {
+                console.log('it updated yo: ' + $scope.current);
+            })
+
             $closeMenuService.subscribe('addFilterForm', update);
             $closeMenuService.subscribe('factInput', update);
             $closeMenuService.subscribe('valueInput', update);

@@ -2,7 +2,7 @@
 <div>
     <input class="{{label}}-suggestion-field-input" type="text" placeholder="Search" ng-click="showOptions()" ng-keydown="showOptions()" ng-model="optionType">
     <div class="suggestion-box lift-shadow-soft" remove-highlight-hover>
-        <div class="suggestion" ng-if="optionsShown && (filtered.length < limit || optionType)" ng-repeat="option in filtered = (options | filter:optionType | limitTo:limit | orderBy ) || []" ng-click="selectFromSuggestedList(option)" tabindex="-2" key-through-options>
+        <div class="suggestion" ng-show="optionsShown && (filtered.length < limit || optionType)" ng-repeat="option in filtered = (options | filter:optionType | limitTo:limit | orderBy ) || []" ng-click="selectFromSuggestedList(option)" tabindex="-2" key-through-options>
             {{option}}
         </div>
     </div>

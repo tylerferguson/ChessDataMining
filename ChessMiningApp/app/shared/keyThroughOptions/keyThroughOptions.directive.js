@@ -5,7 +5,11 @@
 
             $scope.$watch('filtered', function () {
                 $scope.current = null;
-            }, true)
+            }, true);
+
+            $scope.$watch('currentHovered', function () {
+                $scope.current = $scope.currentHovered;
+            });
 
             $('.' + $scope.factStage + '-filter-display' + ' .' + $scope.label + '-suggestion-field-input').on('keydown', function (event) {
                 $elem.removeClass('suggestion-hover');
