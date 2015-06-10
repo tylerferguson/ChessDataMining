@@ -3,9 +3,6 @@
         restrict: 'A',
         link: function ($scope, $elem, $attrs) {
 
-            $scope.currentHovered = null;
-
-
             $elem.mousemove(function (event) {
                 $scope.currentHovered = null;
                 $scope.$apply();

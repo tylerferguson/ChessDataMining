@@ -10,7 +10,8 @@
         },
         controller: ['$scope', 'closeMenuService', function ($scope, $closeMenuService) {
 
-            $scope.current = null;
+            $scope.currentHovered = null;
+
 
             $closeMenuService.subscribe('addFilterForm', update);
             $closeMenuService.subscribe('factInput', update);
@@ -22,6 +23,7 @@
             $scope.selectFromSuggestedList = function (selection) {
                 $scope.optionType = selection;
                 $scope.optionsShown = false;
+                $scope.currentHovered = null;
             }
 
             $scope.showOptions = function () {

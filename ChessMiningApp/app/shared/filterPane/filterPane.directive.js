@@ -16,6 +16,15 @@
                 $scope.displayType = $scope.fact.type.replace('Fact', '');
             }
             $scope.displayValue = $scope.fact.value;
+            if ($scope.displayType === "Result") {
+                if ($scope.displayValue === "1-0") {
+                    $scope.displayValue = "White Wins";
+                } else if($scope.displayValue === "0-1") {
+                    $scope.displayValue = "Black Wins";
+                } else if ($scope.displayValue === "1/2-1/2") {
+                    $scope.displayValue = "Draw";
+                }
+            }
 
             var remainingList;
             $scope.removeFact = function () {
