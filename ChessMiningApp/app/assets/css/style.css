@@ -311,6 +311,10 @@ img {
     color: #2979FF;
 }
 
+filter-display .selection-notifier {
+    cursor: pointer;
+}
+
 .file-upload-check {
     color: green;
 }
